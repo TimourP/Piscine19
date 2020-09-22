@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 19:23:02 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/17 09:28:50 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/17 10:00:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,50 +53,51 @@ int		count_words(char *str, char *charset)
 	return (count);
 }
 
+void	add_word(int *ijcw, char *str, char **dest)
+{
+	char *currdst;
+
+	ijcw[1] = -1;
+	if (str[ijcw[0] + 1] == 0)
+	{
+		ijcw[2]++;
+		ijcw[0]++;
+	}
+	currdst = malloc(sizeof(char) * (ijcw[2] + 1));
+	while (++ijcw[1] < ijcw[2])
+	{
+		currdst[ijcw[1]] = str[ijcw[0] - ijcw[2] + ijcw[1]];
+	}
+	currdst[ijcw[1]] = 0;
+	dest[ijcw[3]] = currdst;
+	ijcw[3]++;
+	ijcw[2] = 0;
+}
+
 void	ret_world(char **dest, char *str, char *charset)
 {
-	int i;
-	int j;
-	char *currdst;
-	int currwordcount;
-	int currword;
+	int		ijcw[4];
 
-	i = -1;
-	currword = 0;
-	currwordcount = 0;
-	while (str[++i])
+	ijcw[0] = -1;
+	ijcw[3] = 0;
+	ijcw[2] = 0;
+	while (str[++ijcw[0]])
 	{
-		if (!is_in_list(charset, str[i]) && str[i + 1])
-			currwordcount++;
-		else if (currwordcount)
+		if (!is_in_list(charset, str[ijcw[0]]) && str[ijcw[0] + 1])
+			ijcw[2]++;
+		else if (ijcw[2])
 		{
-			j = -1;
-			if (str[i + 1] == 0)
-			{
-				currwordcount++;
-				i++;
-			}
-			currdst = malloc(sizeof(char) * (currwordcount + 1));
-			while (++j < currwordcount)
-			{
-				currdst[j] = str[i - currwordcount + j];
-			}
-			currdst[j] = 0;
-			dest[currword] = currdst;
-			currword++;
-			currwordcount = 0;
+			add_word(ijcw, str, dest);
 		}
 	}
-	
 }
 
 char	**ft_split(char *str, char *charset)
 {
-	char **dest;
-	int count;
+	char	**dest;
+	int		count;
 
 	count = count_words(str, charset);
-	
 	if (!(dest = malloc(sizeof(char *) * (count + 1))))
 		return (NULL);
 	if (count)
