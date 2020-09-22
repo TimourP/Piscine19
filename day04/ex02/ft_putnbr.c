@@ -6,32 +6,39 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/14 17:04:48 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 14:58:58 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_print(unsigned int nbr)
+{
+	if (nbr)
+	{
+		ft_print(nbr / 10);
+		ft_putchar('0' + nbr % 10);
+	}
+}
 
 void	ft_putnbr(int nb)
 {
-	char	toprint;
-	long	newnb;
+	unsigned int	newnb;
 
-	newnb = nb;
-	if (newnb < 0)
+	if (nb == 0)
+		ft_putchar('0');
+	if (nb < 0)
 	{
-		newnb = -newnb;
+		newnb = -nb;
 		write(1, "-", 1);
 	}
-	if (newnb > 9)
-	{
-		ft_putnbr(newnb / 10);
-		toprint = '0' + newnb % 10;
-		write(1, &toprint, 1);
-	}
 	else
-	{
-		toprint = '0' + newnb % 10;
-		write(1, &toprint, 1);
-	}
+		newnb = nb;
+	ft_print(newnb);
 }

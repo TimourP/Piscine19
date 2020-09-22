@@ -1,11 +1,8 @@
 #include <stdio.h>
 
-int		ft_is_prime(int nb);
+int		ft_ten_queen_puzzle(void);
 
 int main(void)
 {
-    int nbr = 2147483647;
-    int val = ft_is_prime(nbr);
-
-    printf("%d\n", val);
+    ft_ten_queen_puzzle();
 }

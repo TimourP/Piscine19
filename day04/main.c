@@ -1,14 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int			ft_atoi_base(char *str, char *base);
+void		ft_putnbr(int nb);
 
 int main(void)
 {
-    char test[100] = "-123";
-    char base[100] = "0123456789";
-    int test1 = ft_atoi_base(test, base);
-
-    printf("%d\n", test1);
+    ft_putnbr(-2147483648);
     return (0);
 }

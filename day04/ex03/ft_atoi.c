@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 09:54:01 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 14:31:20 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int			ft_atoi(char *str)
 	while (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			neg = !neg;
+			neg *= -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
@@ -30,7 +30,5 @@ int			ft_atoi(char *str)
 		num = 10 * num + ('0' - *str);
 		str++;
 	}
-	if (neg)
-		num = -num;
-	return (num);
+	return (num * neg);
 }
