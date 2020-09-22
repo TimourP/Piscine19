@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 12:14:47 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/09 12:17:21 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/09 11:53:10 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/09 12:12:30 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void ft_putchar(c)
+void ft_sort_int_tab(int * tab, int size)
 {
-    write(1,&c, 1);
+    int i;
+    i = -1;
+    while (i++ < size - 1)
+    {
+        int min;
+        int j;
+        int transit;
+        j = -1;
+        while (j++ < size - i - 1)
+        {
+            if (tab[j+i] < min || j == 0)
+            {
+                min = tab[j+i];
+                tab[j+i] = tab[i];
+                tab[i] = min;
+            }
+        }      
+    }
 }
