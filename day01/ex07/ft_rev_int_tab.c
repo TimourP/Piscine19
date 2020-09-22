@@ -1,14 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/09 20:42:29 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/09 20:43:54 by tpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-void ft_rev_int_tab(int * tab, int size)
+void	ft_rev_int_tab(int *tab, int size)
 {
-    int i;
-    i = -1;
-    while (i++ < size / 2)
-    {
-        int temp;
-        temp = tab[i];
-        tab[i] = tab [size - i - 1];
-        tab[size - i - 1] = temp;
-    }
+	int i;
+	int temp;
+
+	i = -1;
+	while (i++ < size / 2)
+	{
+		temp = tab[i];
+		tab[i] = tab[size - i - 1];
+		tab[size - i - 1] = temp;
+	}
 }

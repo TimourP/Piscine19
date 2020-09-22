@@ -1,12 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/09 20:38:23 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/09 20:39:14 by tpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-
-void ft_ultimate_div_mod(int * a, int * b)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
-    int fidiv;
-    int fimod;
-    fidiv = *a / *b;
-    fimod = *a % *b;
-    *a = fidiv;
-    *b = fimod;
+	int fidiv;
+	int fimod;
+
+	fidiv = *a / *b;
+	fimod = *a % *b;
+	*a = fidiv;
+	*b = fimod;
 }

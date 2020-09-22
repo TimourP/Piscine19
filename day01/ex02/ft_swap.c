@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/09 20:14:15 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/09 20:35:59 by tpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-
-void ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
-    int transition;
-    transition = *a;
-    *a = *b;
-    *b = transition;
+	int transition;
+
+	transition = *a;
+	*a = *b;
+	*b = transition;
 }
