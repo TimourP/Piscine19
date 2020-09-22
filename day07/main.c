@@ -1,11 +1,14 @@
 #include <stdio.h>
 
-char *ft_strjoin(int size, char **strs, char *sep);
+char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 int main(void)
 {
-    char *strr[10] = {"bonjouree", "commenttttt", "vas tu?"};
-    char step[10] = "|hello|";
-    char *dest = ft_strjoin(3, strr, step);
-    printf("%s\n", dest);
+    char nbr[100] = "1234";
+    char base1[100] = "0123456789";
+    char base2[100] = "0123456789";
+    char *c;
+    
+    c = ft_convert_base(nbr, base1, base2);
+    printf("%s", c);
 }
