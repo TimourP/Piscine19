@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 22:05:11 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 19:19:14 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/19 12:59:30 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	ft_ultimate_range(int **range, int min, int max)
 	{
 		dest[i] = min + i;
 	}
+	*range = dest;
 	return (destsize);
 }
