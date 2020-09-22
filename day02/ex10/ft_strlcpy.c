@@ -6,12 +6,9 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 09:40:04 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 11:12:55 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 17:45:20 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-#include <string.h>
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
