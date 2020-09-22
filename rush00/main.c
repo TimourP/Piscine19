@@ -6,12 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 16:25:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 17:01:15 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/13 11:02:18 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	rush(int x, int y);
-void	ft_putchar(char c);
 
 int		main(void)
 {

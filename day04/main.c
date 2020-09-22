@@ -9,7 +9,7 @@ void	ft_putnbr_base(int nbr, char *base);
 
 int		main(void)
 {
-	int test = 2147483647;
-	ft_putnbr_base(test, "01234");
+	int test = -2147483648;
+	ft_putnbr_base(test, "01");
 	return 0;
 }

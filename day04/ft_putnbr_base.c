@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 10:03:15 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 10:46:43 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/13 11:48:56 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,30 @@ void	ft_baselen(char *base, int *count)
 	*count = i;
 }
 
+int		test_error(char *base)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (base[++i])
+		if (base[i] == '-' || base[i] == '+')
+			return (1);
+	if (i <= 1)
+		return (1);
+	i = -1;
+	while (base[++i])
+	{
+		j = i;
+		while(base[j++])
+		{
+			if(base[j] == base[i] && i != j)
+				return (1);
+		}
+	}
+	return (0);
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
 	long	num;
@@ -32,6 +56,8 @@ void	ft_putnbr_base(int nbr, char *base)
 
 	i = 0;
 	num = nbr;
+	if (test_error(base))
+		return ;
 	if (num < 0)
 	{
 		write(1, "-", 1);
