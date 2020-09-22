@@ -1,18 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 21:47:18 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 09:09:06 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/10 09:22:46 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/10 09:36:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+char	*ft_strcapitalize(char *str)
 {
-	write(1, &c, 1);
+	int i;
+
+	i = -1;
+	while (str[++i] != '\0')
+	{
+		if (97 <= str[i] && str[i] <= 122)
+		{
+			if (i > 0)
+			{
+				if (65 <= str[i - 1] && str[i - 1] <= 90)
+				{
+					;
+				}
+				else if (97 <= str[i - 1] && str[i - 1] <= 122)
+				{
+					;
+				}
+				else
+					str[i] -= 32;
+			}
+			else
+				str[i] -= 32;
+		}
+	}
+	return (str);
 }
