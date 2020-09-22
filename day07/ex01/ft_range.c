@@ -6,27 +6,27 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:29:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 22:04:30 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 19:36:53 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int     *ft_range(int min, int max)
+int	*ft_range(int min, int max)
 {
-    int i;
-    int *dest;
-    int destsize;
+	int i;
+	int *dest;
+	int destsize;
 
-    if(min < max)
-        destsize = max - min;
-    else
-        return (NULL);
-    dest = malloc(destsize * sizeof(int));
-    i = -1;
-    while (++i < destsize)
-    {
-        dest[i] = min + i;
-    }
-    return (dest);
+	if(min < max)
+		destsize = max - min;
+	else
+		return (NULL);
+	dest = malloc(destsize * sizeof(int));
+	i = -1;
+	while (++i < destsize)
+	{
+		dest[i] = min + i;
+	}
+	return (dest);
 }

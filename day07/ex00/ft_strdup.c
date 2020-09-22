@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 20:55:24 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 21:25:57 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 19:35:53 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strdup(char *str)
 {
-	int i;
-	char *dest;
+	int		i;
+	char	*dest;
 
 	i = -1;
 	while (str[++i])

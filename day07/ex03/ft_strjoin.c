@@ -6,34 +6,34 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:38:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 15:25:16 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 19:34:39 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int     tot_len(int size, char **strs, char *step)
+int		tot_len(int size, char **strs, char *step)
 {
-    int i;
-    int j;
-    int count;
+	int i;
+	int j;
+	int count;
 
-    i = -1;
-    count = 0;
-    while (++i < size)
-    {
-        j = -1;
-        while (strs[i][++j])
-        {
-            count++;
-        }
-    }
-    i = -1;
-    while (step[++i])
-        ;
-    count += i * (size - 1);
-    return (count);
+	i = -1;
+	count = 0;
+	while (++i < size)
+	{
+		j = -1;
+		while (strs[i][++j])
+		{
+			count++;
+		}
+	}
+	i = -1;
+	while (step[++i])
+		;
+	count += i * (size - 1);
+	return (count);
 }
 
 char	*ft_strcat(char *dest, char *src)
@@ -57,21 +57,21 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char *ft_strjoin(int size, char **strs, char *step)
+char	*ft_strjoin(int size, char **strs, char *step)
 {
-    char *dest;
-    int i;
+	char *dest;
+	int i;
 
-    dest = malloc(sizeof(char) * tot_len(size, strs, step));
-    i = -1;
-    dest[0] = 0;
-    if (size == 0)
-        return "";
-    while (++i < size)
-    {
-        ft_strcat(dest, strs[i]);
-        if (i < size - 1)
-            ft_strcat(dest, step);
-    }
-    return (dest);
+	dest = malloc(sizeof(char) * tot_len(size, strs, step));
+	i = -1;
+	dest[0] = 0;
+	if (size == 0)
+		return "";
+	while (++i < size)
+	{
+		ft_strcat(dest, strs[i]);
+		if (i < size - 1)
+			ft_strcat(dest, step);
+	}
+	return (dest);
 }

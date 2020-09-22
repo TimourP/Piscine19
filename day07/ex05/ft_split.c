@@ -1,32 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 22:05:11 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 19:37:07 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/16 19:23:02 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/16 19:33:34 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-int	*ft_ultimate_range(int **range, int min, int max)
+char	**ft_split(char *str, char *charset)
 {
-	int i;
-	int *dest;
-	int destsize;
-
-	if(min < max)
-		destsize = max - min;
-	else
-		return (NULL);
-	dest = malloc(destsize * sizeof(int));
-	i = -1;
-	while (++i < destsize)
-	{
-		dest[i] = min + i;
-	}
-	*range = dest;
+	;
 }
