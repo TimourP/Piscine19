@@ -1,15 +1,20 @@
 #include <stdio.h>
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+char *ft_strjoin(int size, char **strs, char *sep);
 
 int main(void)
 {
-    char num[100] = "00001";
-    char b1[100] = "01";
-    char b2[100] = "01";
+    char *test[100] = {"hello", "comment", "tu", "vas"};
+    char sep[100] = " _ ";
+    int i;
     
-    char *test = ft_convert_base(num, b1, b2);
-
-    printf("%s\n", test);
+    char *teste = ft_strjoin(4, test, sep);
+    printf("%s\n", teste);
+    i = -1;
+    while (teste[++i])
+    {
+        printf("%d : %c\n", i, teste[i]);
+    }
+    printf("%d : %d\n", i, teste[i] == 0);
     return 0;
 }

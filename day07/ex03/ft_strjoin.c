@@ -6,32 +6,39 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:38:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 19:19:51 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/20 10:08:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
-int		tot_len(int size, char **strs, char *step)
+int		ft_strlen(char *str)
 {
 	int i;
-	int j;
+
+	i = -1;
+	while (str[++i])
+		;
+	return (i);
+}
+
+int count_tot_size(int size, char **strs, char *sep)
+{
+	int i;
 	int count;
+	int sepcount;
 
 	i = -1;
 	count = 0;
-	while (++i < size)
-	{
-		j = -1;
-		while (strs[i][++j])
-		{
-			count++;
-		}
-	}
+	sepcount = 0;
+	while (sep[++i])
+		sepcount++;
 	i = -1;
-	while (step[++i])
-		;
-	count += i * (size - 1);
+	while (++i < size)
+		count += ft_strlen(strs[i]);
+	count += sepcount * (size - 1);
+	count++;
 	return (count);
 }
 
@@ -56,22 +63,22 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-char	*ft_strjoin(int size, char **strs, char *step)
+char *ft_strjoin(int size, char **strs, char *sep)
 {
-	char	*dest;
-	int		i;
+	int i;
+	int destsize;
+	char *dest;
 
-	if (!(dest = malloc(sizeof(char) * tot_len(size, strs, step))))
-		return (NULL);
 	i = -1;
+	destsize = count_tot_size(size, strs, sep);
+	if(!(dest = malloc(sizeof(char) * destsize)))
+		return (NULL);
 	dest[0] = 0;
-	if (size == 0)
-		return ("");
 	while (++i < size)
 	{
 		ft_strcat(dest, strs[i]);
-		if (i < size - 1)
-			ft_strcat(dest, step);
+		if (i != size - 1)
+			ft_strcat(dest, sep);
 	}
 	return (dest);
 }
