@@ -1,6 +1,6 @@
-## Piscine s19
+## Piscine [s19]
 
-#Liste des projets et résultats de la moulinette :
+# Liste des projets et résultats de la moulinette :
 
 - Shell00 : 100
 - Shell01 : 77
