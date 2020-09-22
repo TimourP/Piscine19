@@ -6,17 +6,34 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 22:09:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 20:34:29 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 20:39:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 
 int		abs(int nb)
 {
 	if (nb > 0)
 		return (nb);
 	return (-nb);
+}
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void	ft_print_grid(int *grid)
+{
+	int i;
+
+	i = -1;
+	while (++i < 10)
+	{
+		ft_putchar(grid[i] + '0');
+	}
+	ft_putchar('\n');
 }
 
 int		check_poss(int *grid, int line)
@@ -52,9 +69,11 @@ int		ft_ten_queen_puzzle(void)
 {
 	int	grid[10];
 	int count;
+	int tot;
 	int i;
 
 	i = -1;
+	tot = 0;
 	while (++i < 10)
 		grid[i] = -1;
 	grid[0] = 0;
@@ -66,11 +85,11 @@ int		ft_ten_queen_puzzle(void)
 			count--;
 		else
 			count++;
-		if (count == 10)
+		if (count == 10 && ++tot)
 		{
-			printf("%d%d%d%d%d%d%d%d%d%d\n", grid[0], grid[1], grid[2], grid[3], grid[4], grid[5], grid[6], grid[7], grid[8], grid[9]);
+			ft_print_grid(grid);
 			count--;
 		}
 	}
-	return (0);
+	return (tot);
 }

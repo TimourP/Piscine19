@@ -4,6 +4,7 @@ int		ft_ten_queen_puzzle(void);
 
 int main(void)
 {
-    ft_ten_queen_puzzle();
+    int test = ft_ten_queen_puzzle();
+    printf("%d", test);
     return (0);
 }
