@@ -1,14 +1,12 @@
 #include <stdio.h>
 
-char *ft_convert_base(char *nbr, char *base_from, char *base_to);
+char	**ft_split(char *str, char *charset);
 
 int main(void)
 {
-    char nbr[100] = "131";
-    char base1[100] = "0123456789";
-    char base2[100] = "helo";
-    char *c;
+    char str[100] = "hello je dors bien";
+    char chars[100] = " ";
     
-    c = ft_convert_base(nbr, base1, base2);
-    printf("%s", c);
+    ft_split(str, chars);
+    return 0;
 }
