@@ -8,20 +8,5 @@ int main(void)
     char chars[100] = " ";
     
     char **test = ft_split(str, chars);
-    int i;
-    int count;
-    int j;
-
-    i = -1;
-    while (test[++i])
-    {
-        j = -1;
-        count = 0;
-        while (test[i][++j])
-        {
-            count++;
-        }
-        printf("%s --> %d\n", test[i], test[i][count] == 0);
-    }
     return 0;
 }
