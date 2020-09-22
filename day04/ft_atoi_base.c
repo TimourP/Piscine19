@@ -6,38 +6,26 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:55:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 13:19:54 by tpetit           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 09:45:03 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/13 13:54:37 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int         test_base(char c, char *base)
+int		test_base(char c, char *base)
 {
-    int i;
+	int i;
 
-    i = -1;
-    while (base[++i])
-    {
-        if (base[i] == c)
-            return (0);
-    }
-    return (1);
+	i = -1;
+	while (base[++i])
+	{
+		if (base[i] == c)
+			return (0);
+	}
+	return (1);
 }
 
-void		ft_charok(char *str, char *base, int min, int *max)
+void	ft_charok(char *str, char *base, int min, int *max)
 {
 	int i;
 
@@ -53,64 +41,66 @@ void		ft_charok(char *str, char *base, int min, int *max)
 	*max = i;
 }
 
-int findindex(char *base, char c)
+int		calculate_to_add(int nbr, int puiss, char *base, char c)
 {
-    int i;
+	int		i;
+	int		index;
+	int		value;
 
-    i = -1;
-    while (base[++i])
-    {
-        if (base[i] == c)
-            return (i);
-    }
-    return (0);
+	i = -1;
+	index = 0;
+	while (base[++i])
+	{
+		if (base[i] == c)
+		{
+			index = i;
+			break ;
+		}
+	}
+	i = -1;
+	value = 1;
+	while (++i < puiss)
+	{
+		value *= nbr;
+	}
+	return (value * index);
 }
 
-int expo(int nbr, int puiss)
+void	set_lenmax(char *str, char *base, int *baselen, int *minmaxne)
 {
-    int i;
-    int value;
+	int i;
 
-    i = -1;
-    value = 1;
-    while (++i < puiss)
-    {
-        value *= nbr;
-    }
-    return (value);
+	i = -1;
+	minmaxne[2] = 0;
+	*minmaxne = 0;
+	*baselen = 0;
+	while (base[++i])
+		*baselen = *baselen + 1;
+	if (str[0] == '-')
+	{
+		minmaxne[2] = 1;
+		*minmaxne = 1;
+	}
+	else if (str[0] == '+')
+		*minmaxne = 1;
 }
 
-int			ft_atoi_base(char *str, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
 	int		i;
 	long	num;
-	int		neg;
-	int		min;
-	int		max;
-    int     baselen;
+	int		minmax[3];
+	int		baselen;
 
 	num = 0;
-    min = 0;
-    max = 0;
-	neg = 0;
-    baselen = 0;
-    i = -1;
-    while (base[++i])
-        baselen ++;
-    if (str[0] == '-')
-    {
-        neg = 1;
-        min = 1;
-    }
-    else if(str[0] == '+')
-        min = 1;
-	ft_charok(str, base, min, &max);
-	i = min - 1;
-	while (++i < max)
+	set_lenmax(str, base, &baselen, minmax);
+	ft_charok(str, base, minmax[0], &minmax[1]);
+	i = minmax[0] - 1;
+	while (++i < minmax[1])
 	{
-        num += (findindex(base, str[i]) * expo(baselen, max - i - 1));
+		num += calculate_to_add(baselen, minmax[1] - i - 1, base, str[i]);
 	}
-	if (neg)
+	if (minmax[2])
 		num = -num;
 	return (num);
 }

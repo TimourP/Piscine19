@@ -10,8 +10,8 @@ void	ft_putnbr_base(int nbr, char *base);
 
 int		main(void)
 {
-	char test[100] = "hello";
-	int tt = ft_atoi_base(test, "hello");
+	char test[100] = "-19834";
+	int tt = ft_atoi_base(test, "0123456789");
 	printf("%d\n", tt);
 	return 0;
 }
