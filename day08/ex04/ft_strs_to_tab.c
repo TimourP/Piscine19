@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 12:03:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/20 09:20:11 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/20 11:09:00 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ int					ft_strlen(char *str)
 	return (i);
 }
 
-char				*ft_strdup(char *str)
+char				*ft_strdup(char *str, int len)
 {
 	int		i;
 	char	*dest;
 
-	if (!(dest = malloc(ft_strlen(str) * sizeof(char))))
+	if (!(dest = malloc(len * sizeof(char))))
 		return (NULL);
 	i = -1;
-	while (str[++i])
+	while (++i < len)
 		dest[i] = str[i];
-	dest[i] = '\0';
+	dest[i] = 0;
 	return (dest);
 }
 
@@ -52,7 +52,7 @@ struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 	{
 		t_stock[i].size = ft_strlen(av[i]);
 		t_stock[i].str = av[i];
-		t_stock[i].copy = ft_strdup(av[i]);
+		t_stock[i].copy = ft_strdup(av[i], ft_strlen(av[i]) + 1);
 	}
 	t_stock[i].str = 0;
 	return (t_stock);
