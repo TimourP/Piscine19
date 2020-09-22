@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:38:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 18:49:43 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/18 19:19:51 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ char	*ft_strjoin(int size, char **strs, char *step)
 	char	*dest;
 	int		i;
 
-	dest = malloc(sizeof(char) * tot_len(size, strs, step));
+	if (!(dest = malloc(sizeof(char) * tot_len(size, strs, step))))
+		return (NULL);
 	i = -1;
 	dest[0] = 0;
 	if (size == 0)
