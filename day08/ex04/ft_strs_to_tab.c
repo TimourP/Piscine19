@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 12:03:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 08:32:45 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/20 09:16:51 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char				*ft_strdup(char *str)
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
 	int					i;
-	struct s_stock_str	*t_stock;
+	t_stock_str			*t_stock;
 
 	i = -1;
 	if (ac < 0)
