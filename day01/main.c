@@ -1,11 +1,10 @@
 #include <stdio.h>
-#include "ft_swap.c"
+#include"ft_sort_int_tab.c"
 
 int main ()
 {
-    int a = 10;
-    int b = 20;
-    ft_swap(&a, &b);
-    printf("%d, %d", a, b);
-    return 0;
+    int test[4] = {17, 2, 3, 4};
+    ft_sort_int_tab(test, 4);
+    printf("%d, %d, %d, %d", test[0], test[1], test[2], test[3]);
+
 }
