@@ -6,16 +6,16 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 20:24:23 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/14 19:04:14 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 10:14:19 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
+	if (!n)
+			return (0);
 	while (n)
 	{
-		if (!n)
-			return (0);
 		if (!*s1 && !*s2)
 			return (0);
 		if (*s1 == *s2)

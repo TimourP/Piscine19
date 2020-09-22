@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:55:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/14 14:19:17 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 09:59:09 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,83 +25,27 @@ int		test_base(char c, char *base)
 	return (1);
 }
 
-void	ft_charok(char *str, char *base, int min, int *max)
+int			ft_atoi_base(char *str, char *base)
 {
-	int i;
+	int	num;
+	int	neg;
 
-	i = min - 1;
-	while (str[++i])
-	{
-		if (test_base(str[i], base))
-		{
-			*max = i;
-			return ;
-		}
-	}
-	*max = i;
-}
-
-int		calculate_to_add(int nbr, int puiss, char *base, char c)
-{
-	int		i;
-	int		index;
-	int		value;
-
-	i = -1;
-	index = 0;
-	while (base[++i])
-	{
-		if (base[i] == c)
-		{
-			index = i;
-			break ;
-		}
-	}
-	i = -1;
-	value = 1;
-	while (++i < puiss)
-	{
-		value *= nbr;
-	}
-	return (value * index);
-}
-
-void	set_lenmax(char *str, char *base, int *baselen, int *minmaxne)
-{
-	int i;
-
-	i = -1;
-	minmaxne[2] = 0;
-	*minmaxne = 0;
-	*baselen = 0;
-	while (base[++i])
-		*baselen = *baselen + 1;
-	if (str[0] == '-')
-	{
-		minmaxne[2] = 1;
-		*minmaxne = 1;
-	}
-	else if (str[0] == '+')
-		*minmaxne = 1;
-}
-
-int		ft_atoi_base(char *str, char *base)
-{
-	int		i;
-	long	num;
-	int		minmax[3];
-	int		baselen;
-
+	neg = 1;
 	num = 0;
-	set_lenmax(str, base, &baselen, minmax);
-	ft_charok(str, base, minmax[0], &minmax[1]);
-	i = minmax[0] - 1;
-	while (++i < minmax[1])
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	while (*str == '+' || *str == '-')
 	{
-		num += calculate_to_add(baselen, minmax[1] - i - 1, base, str[i]);
+		if (*str == '-')
+			neg = !neg;
+		str++;
 	}
-	if (minmax[2])
+	while (*str >= '0' && *str <= '9')
+	{
+		num = 10 * num + ('0' - *str);
+		str++;
+	}
+	if (neg)
 		num = -num;
-	i = num;
-	return (i);
+	return (num);
 }

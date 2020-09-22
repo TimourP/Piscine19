@@ -6,11 +6,16 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 10:03:15 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/14 09:57:05 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 09:50:01 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 void	ft_baselen(char *base, int *count)
 {
@@ -46,30 +51,35 @@ int		test_error(char *base)
 	return (0);
 }
 
+void	ft_print_base(char *base, int basecount, long nbr)
+{
+	if (nbr == 0)
+		return ;
+	else
+	{
+		ft_print_base(base, basecount, nbr / basecount);
+		ft_putchar(base[nbr % basecount]);
+	}
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
 	long	num;
-	int		i;
 	int		basecount;
-	char	toprint[33];
 
-	i = 0;
 	num = nbr;
 	if (test_error(base))
 		return ;
+	if (nbr == 0)
+	{
+		ft_putchar(base[0]);
+		return ;
+	}
 	if (num < 0)
 	{
-		write(1, "-", 1);
+		ft_putchar('-');
 		num = 0 - num;
 	}
 	ft_baselen(base, &basecount);
-	while (num > 0)
-	{
-		toprint[30 - i] = base[num % basecount];
-		num /= basecount;
-		i++;
-	}
-	i = 31 - i - 1;
-	while (toprint[++i])
-		write(1, &toprint[i], 1);
+	ft_print_base(base, basecount, num);
 }
