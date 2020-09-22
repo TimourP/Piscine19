@@ -6,12 +6,12 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 14:49:30 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 14:51:24 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/13 21:56:10 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- int	ft_iterative_power(int nb, int power)
- {
+int		ft_iterative_power(int nb, int power)
+{
 	int i;
 	int value;
 
@@ -21,5 +21,5 @@
 	{
 		value *= nb;
 	}
-	return value;
- }
+	return (value);
+}

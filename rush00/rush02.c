@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:50:07 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 16:47:30 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/13 19:23:19 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_check_case(int x, int y, int i, int j)
 {
 	if ((i == 0 && j == 0) || (i == x - 1 && j == 0))
 		ft_putchar('A');
-	else if ((i == 0 && j == x - 1) || (i == x - 1 && j == y - 1))
+	else if ((i == 0 && j == y - 1) || (i == x - 1 && j == y - 1))
 		ft_putchar('C');
 	else
 		ft_putchar('B');

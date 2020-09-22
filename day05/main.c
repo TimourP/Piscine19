@@ -2,11 +2,11 @@
 #include <stdio.h>
 
 
-int		ft_fibonacci(int index);
+int		ft_find_next_prime(int nb);
 
 int main(void)
 {
-    int fac = ft_fibonacci(6);
+    int fac = ft_find_next_prime(214748364);
     printf("%d\n", fac);
     return (0);
 }
