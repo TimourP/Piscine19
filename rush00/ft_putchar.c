@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 16:25:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 16:41:48 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/12 16:37:44 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/12 16:41:52 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	rush(int x, int y);
-void 	ft_putchar(char c);
+#include <unistd.h>
 
-int		main(void)
+void	ft_putchar(char c)
 {
-	rush(5, 5);
-	return (0);
+	write(1, &c, 1);
 }

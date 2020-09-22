@@ -6,11 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:50:03 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 16:14:04 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 16:44:13 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+void	ft_putchar(char c);
 
 void	rush_negatif(int *x, int *y)
 {
@@ -23,11 +23,11 @@ void	rush_negatif(int *x, int *y)
 void	ft_check_case(int x, int y, int i, int j)
 {
 	if ((i == 0 && j == 0) || (i == x - 1 && j == y - 1 && y > 1 && x > 1))
-		write(1, "/", 1);
+		ft_putchar('/');
 	else if ((i == x - 1 && j == 0) || (i == 0 && j == y - 1))
-		write(1, "\\", 1);
+		ft_putchar('\\');
 	else
-		write(1, "*", 1);
+		ft_putchar('*');
 }
 
 void	rush(int x, int y)
@@ -49,14 +49,8 @@ void	rush(int x, int y)
 				ft_check_case(x, y, i, j);
 			}
 			else
-				write(1, " ", 1);
+				ft_putchar(' ');
 		}
-		write(1, "\n", 1);
+		ft_putchar('\n');
 	}
-}
-
-int		main(void)
-{
-	rush(5, 5);
-	return (0);
 }
