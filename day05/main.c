@@ -4,7 +4,10 @@ int		ft_sqrt(int nb);
 
 int main(void)
 {
-    int test = ft_sqrt(214748367);
-    printf("%d", test);
+    int i;
+
+    i = -10;
+    while (++i <= 100)
+        printf("%d, %d\n", i, ft_sqrt(i));
     return (0);
 }
