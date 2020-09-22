@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ten_queen_puzzle.c                              :+:      :+:    :+:   */
+/*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 22:09:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 20:39:40 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 13:06:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		check_poss(int *grid, int line)
 	return (-1);
 }
 
-int		ft_ten_queen_puzzle(void)
+int		ft_ten_queens_puzzle(void)
 {
 	int	grid[10];
 	int count;

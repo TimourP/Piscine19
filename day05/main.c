@@ -1,13 +1,11 @@
 #include <stdio.h>
 
-int		ft_sqrt(int nb);
+int		ft_ten_queens_puzzle(void);
 
 int main(void)
 {
-    int i;
+    int test = ft_ten_queens_puzzle();
 
-    i = -10;
-    while (++i <= 100)
-        printf("%d, %d\n", i, ft_sqrt(i));
-    return (0);
+    printf("%d\n", test);
+    return 0;
 }
