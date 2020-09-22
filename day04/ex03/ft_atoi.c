@@ -6,16 +6,18 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 14:31:20 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 15:07:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int			ft_atoi(char *str)
 {
 	int	num;
 	int	neg;
 
-	neg = 1;
+	neg = -1;
 	num = 0;
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
