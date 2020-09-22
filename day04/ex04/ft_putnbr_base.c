@@ -6,12 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 10:03:15 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 11:50:35 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 09:57:05 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_baselen(char *base, int *count)
 {
@@ -66,11 +65,11 @@ void	ft_putnbr_base(int nbr, char *base)
 	ft_baselen(base, &basecount);
 	while (num > 0)
 	{
-		toprint[31 - i] = base[num % basecount];
+		toprint[30 - i] = base[num % basecount];
 		num /= basecount;
 		i++;
 	}
-	i = 32 - i - 1;
+	i = 31 - i - 1;
 	while (toprint[++i])
 		write(1, &toprint[i], 1);
 }
