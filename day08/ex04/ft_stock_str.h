@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_stock_str.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 20:55:24 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/17 12:25:49 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/17 12:09:01 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/17 12:11:38 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#ifndef FT_STOCK_STR_H
+# define FT_STOCK_STR_H
 
-char	*ft_strdup(char *str)
+typedef struct	s_stock_str
 {
-	int		i;
-	char	*dest;
+	int size;
+	char *str;
+    char *copy;
+}				t_stock_str;
 
-	i = -1;
-	while (str[++i])
-		;
-	i++;
-	if (!(dest = malloc(i * sizeof(char))))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dest[i] = str[i];
-	dest[i] = '\0';
-	return (dest);
-}
+#endif
