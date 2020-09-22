@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 15:48:19 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 18:48:36 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 18:53:38 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void	ft_fill_up_dest(char *dest, int *s_n_c, unsigned int num, char *base)
 
 	i = -1;
 	neg = !s_n_c[1];
+	if (num == 0)
+	{
+		dest[0] = base[0];
+		return ;
+	}
 	while (++i < s_n_c[0])
 	{
 		if (s_n_c[1])

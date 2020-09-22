@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 15:40:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 18:49:29 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 19:13:06 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	neg = 0;
 	num = 0;
 	max = 0;
-	test_error1(base_from, &baselen);
+	if (test_error1(base_from, &baselen))
+		return (NULL);
 	while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
 		nbr++;
 	while (*nbr == '+' || *nbr == '-')
@@ -113,9 +114,8 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 		;
 	while (check_inbase(base_from, *nbr))
 	{
-		num += calculate_to_add(base_from, baselen, *nbr, max - 1);
+		num += calculate_to_add(base_from, baselen, *nbr, --max);
 		nbr++;
-		max--;
 	}
 	return (ft_putnbr_base((neg ? -num : num), base_to));
 }
