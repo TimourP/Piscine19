@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 int		ft_strlen(char *str)
 {
 	int i;
@@ -23,55 +24,40 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		count_tot_size(int size, char **strs, char *sep)
-{
-	int i;
-	int count;
-	int sepcount;
-
-	i = -1;
-	count = 0;
-	sepcount = 0;
-	while (sep[++i])
-		sepcount++;
-	i = -1;
-	while (++i < size)
-		count += ft_strlen(strs[i]);
-	count += sepcount * (size - 1);
-	count++;
-	return (count);
-}
-
 char	*ft_strcpy(char *dest, char *src)
 {
 	int i;
 
 	i = -1;
 	while (src[++i])
-	{
 		dest[i] = src[i];
-	}
 	dest[i] = 0;
-	return (&dest[0]);
+	return (dest);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
-	int		co;
+	int		count;
 	char	*dest;
 
-	co = count_tot_size(size, strs, sep);
-	if (!(dest = malloc(co * sizeof(char))))
+	i = -1;
+	count = 0;
+	while (++i < size)
+		count += ft_strlen(strs[i]);
+	if (size > 0)
+		count += (size - 1) * ft_strlen(sep);
+	if (!(dest = malloc((count + 1) * sizeof(char))))
 		return (NULL);
-	i = 0;
-	co = 0;
-	while (i < size)
+	i = -1;
+	count = 0;
+	while (++i < size)
 	{
-		ft_strcpy(dest + co, strs[i]);
-		co += ft_strlen(strs[i]);
-		if (++i < size)
-			co += dest + co + ft_strlen(sep) - ft_strcpy(dest + co, sep);
+		ft_strcpy(dest + count, strs[i]);
+		count += ft_strlen(strs[i]);
+		if (i < size - 1)
+			count += dest + count + ft_strlen(sep) - ft_strcpy(dest + count, sep);
 	}
+	dest[count] = 0;
 	return (dest);
 }

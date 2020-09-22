@@ -13,12 +13,18 @@
 int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int i;
+	int comp1;
+	int comp2;
 
-	i = -1;
-	if (length <= 1)
-		return (1);
-	while (++i < length - 1)
-		if (f(tab[i], tab[i + 1]) > 0)
+	i = 1;
+	while (i < length && !(comp1 = f(tab[i - 1], tab[i])))
+		i++;
+	while (i < length)
+	{
+		comp2 = f(tab[i - 1], tab[i]);
+		if ((comp1 < 0 && comp2 > 0) || (comp1 > 0 && comp2 < 0))
 			return (0);
+		i++;
+	}
 	return (1);
 }

@@ -1,23 +1,13 @@
 #include <stdio.h>
 
 char	**ft_split(char *str, char *charset);
+char	*ft_strjoin(int size, char **strs, char *sep);
 
 int main(void)
 {
-    char test[100] = "hello comment vas tu";
-    char wesplit[100] = " ";
-    char **to = ft_split(test, wesplit);
-    int i;
-    int j;
-
-    i = -1;
-    while (to[++i])
-    {
-        j = -1;
-        while (to[i][++j])
-            printf("%i (%i) : \t char : %c \t ascii : %d\n", i, j, to[i][j], to[i][j]);
-        printf("%i (%i) : \t char : %c \t ascii : %d\n", i, j, to[i][j], to[i][j]);
-    }
+    char *test[100] = {};
+    char *testt = ft_strjoin(0, test, " ");
+    printf("%s\n", testt);
     
     return 0;
 }
