@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-int		ft_ten_queens_puzzle(void);
+int		ft_sqrt(int nb);
 
 int main(void)
 {
-    int test = ft_ten_queens_puzzle();
+    int test = ft_sqrt(1);
 
     printf("%d\n", test);
     return 0;

@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/11 08:35:47 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 13:25:18 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	ft_print_combn(int n)
 
 	n--;
 	i = -1;
+	if (n < 1 || n > 9)
+		return ;
 	while (++i < n + 1)
 	{
 		main_array[i] = i;
