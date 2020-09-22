@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 15:40:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 17:15:22 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 18:49:29 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,10 +93,10 @@ int		calculate_to_add(char *base, int baselen, char c, int puiss)
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int	num;
-	int	neg;
-	int baselen;
-	int max;
+	int				num;
+	int				neg;
+	int				baselen;
+	int				max;
 
 	neg = 0;
 	num = 0;

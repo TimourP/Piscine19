@@ -4,7 +4,7 @@ char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 int main(void)
 {
-    char nbr[100] = "1234";
+    char nbr[100] = "-2147483648";
     char base1[100] = "0123456789";
     char base2[100] = "0123456789";
     char *c;
