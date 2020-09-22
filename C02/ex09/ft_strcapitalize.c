@@ -6,15 +6,15 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 09:22:46 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 11:31:03 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/22 18:19:56 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		check_if_not_alpha(char c)
+int		not_alpha_num(char str)
 {
-	if (!((97 <= c && c <= 122) || (65 <= c && c <= 90)))
-		return (1);
-	return (0);
+	if (('a' <= str && str <= 'z') || ('A' <= str && str <= 'Z') || ('0' <= str && str <= '9'))
+		return (0);
+	return (1);
 }
 
 char	*ft_strcapitalize(char *str)
@@ -24,24 +24,16 @@ char	*ft_strcapitalize(char *str)
 	i = -1;
 	while (str[++i] != '\0')
 	{
-		if ((97 <= str[i] && str[i] <= 122) || (65 <= str[i] && str[i] <= 90))
-		{
-			if (i > 0)
-			{
-				if (check_if_not_alpha(str[i - 1]))
-				{
-					if (97 <= str[i] && str[i] <= 122)
-						str[i] -= 32;
-				}
-				else
-				{
-					if (65 <= str[i] && str[i] <= 90)
-						str[i] += 32;
-				}
-			}
-			else if (97 <= str[i] && str[i] <= 122)
-				str[i] -= 32;
-		}
+		if ('A' <= str[i] && str[i] <= 'Z')
+			str[i] += 32;
+	}
+	if ('a' <= str[0] && str[0] <= 'z')
+		str[0] -= 32;
+	i = 0;
+	while (str[++i] != '\0')
+	{
+		if (('a' <= str[i] && str[i] <= 'z') && not_alpha_num(str[i - 1]))
+			str[i] -= 32;
 	}
 	return (str);
 }
