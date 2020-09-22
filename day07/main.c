@@ -1,17 +1,16 @@
 #include <stdio.h>
 
-int	ft_ultimate_range(int **range, int min, int max);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+char	*ft_2convert_base(char *nbr, char *base_from, char *base_to);
 
 int main(void)
 {
-    int *test;
-    int i;
-    
-    int tes = ft_ultimate_range(&test, -10, 10);
-    i = -4;
-    while (++i < 21)
-    {
-        printf("%i : %i\n", i, test[i]);
-    }
+    char num[100] = "2147483F7";
+    char base1[100] = "-03";
+    char base2[100] = "01";
+    char *numtobase2 = ft_convert_base(num, base1, base2);
+    char *numtobase22 = ft_convert_base(num, base1, base2);
+    printf("%s\n", numtobase2);
+    printf("%s\n", numtobase22);
     return 0;
 }
