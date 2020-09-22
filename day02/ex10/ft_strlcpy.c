@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 09:40:04 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 10:54:06 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 11:00:39 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,10 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 		else if (src[i] == '\0')
 			end = 1;
 		if (end)
+		{
 			dest[i] = '\0';
+			break ;
+		}
 	}
-	return (0);
-}
-
-int		main(void)
-{
-	char str[10];
-
-	ft_strlcpy(str, "hello", 10);
-	printf("%d, %d, %d\n", str[5] == '\0', str[6] == '\0', str[7] == '\0');
-	printf("%s", str);
 	return (0);
 }
