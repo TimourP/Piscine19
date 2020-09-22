@@ -1,36 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/21 08:56:36 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 15:01:05 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/21 14:55:47 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/21 15:00:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
-
-int		ft_strcmp(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-		{
-			return (s1[i] - s2[i]);
-		}
-		i++;
-	}
-	if (s1[i] != '\0')
-		return (s1[i]);
-	else if (s2[i] != '\0')
-		return (0 - s2[i]);
-	return (0);
-}
 
 int		ft_count(char **tab)
 {
@@ -51,7 +29,7 @@ void	ft_swap(char **s1, char **s2)
 	*s2 = temp;
 }
 
-void	ft_sort_string_tab(char **tab)
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	int i;
 	int size;
@@ -60,7 +38,7 @@ void	ft_sort_string_tab(char **tab)
 	size = ft_count(tab);
 	while (++i < size - 1)
 	{
-		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
+		if (cmp(tab[i], tab[i + 1]) > 0)
 		{
 			ft_swap(&tab[i], &tab[i + 1]);
 			i = -1;
