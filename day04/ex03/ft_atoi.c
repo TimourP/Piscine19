@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 09:45:03 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 14:18:26 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ int			ft_atoi(char *str)
 	}
 	if (neg)
 		num = -num;
-	return (num);
+	i = num;
+	return (i);
 }

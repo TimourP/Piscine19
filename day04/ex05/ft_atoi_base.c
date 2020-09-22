@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:55:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 13:54:37 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 14:19:17 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ int		ft_atoi_base(char *str, char *base)
 	}
 	if (minmax[2])
 		num = -num;
-	return (num);
+	i = num;
+	return (i);
 }

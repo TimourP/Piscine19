@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:01:30 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/14 09:26:51 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 16:15:12 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	unsigned int	countdst;
 
 	ft_str_len(src, dest, &countsrc, &countdst);
-	i = -1;
-	while (++i < size - 1 - countdst)
+	i = countdst - 1;
+	while (++i < size - 1)
 	{
-		dest[i + countdst] = src[i];
+		dest[i] = src[i - countdst];
 	}
+	dest[i] = '\0';
 	return (countsrc + countdst);
 }
