@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:49:57 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 16:43:08 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 16:59:16 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ void	ft_check_case(int x, int y, int i, int j)
 {
 	if ((i == 0 && j == 0) || (i == x - 1 && j == 0))
 		ft_putchar('o');
-    else if ((i == 0 && j == y - 1) || (i == x - 1 && j == y - 1))
+	else if ((i == 0 && j == y - 1) || (i == x - 1 && j == y - 1))
 		ft_putchar('o');
-    else if (j == 0 || j == y - 1)
-        ft_putchar('-');
-    else if (i == 0 || i == x - 1)
-        ft_putchar('|');
-
+	else if (j == 0 || j == y - 1)
+		ft_putchar('-');
+	else if (i == 0 || i == x - 1)
+		ft_putchar('|');
 }
 
 void	rush(int x, int y)
