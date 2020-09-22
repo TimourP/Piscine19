@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-int		ft_find_next_prime(int nb);
+int		ft_ten_queen_puzzle(void);
 
 int main(void)
 {
-    int test = ft_find_next_prime(2147483641);
-    printf("%d\n", test);
+    ft_ten_queen_puzzle();
+    return (0);
 }
