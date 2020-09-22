@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 20:42:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/09 20:43:54 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 10:53:39 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_rev_int_tab(int *tab, int size)
 	int temp;
 
 	i = -1;
-	while (i++ < size / 2)
+	while (++i < size / 2)
 	{
 		temp = tab[i];
 		tab[i] = tab[size - i - 1];

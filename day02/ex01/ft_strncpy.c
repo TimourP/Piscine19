@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 21:39:26 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 08:39:16 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 10:49:56 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,24 @@
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int count;
 	int i;
+	int end;
 
-	count = 0;
+	end = 1;
 	i = -1;
-	while (src[++i] != '\0')
+	while (++i < n)
 	{
-		count++;
-	}
-	i = -1;
-	while (i++ < count)
-	{
-		if (i < n)
+		if (src[i] != '\0' && end)
+		{
 			dest[i] = src[i];
+		}
+		else if (end && src[i] == '\0')
+		{
+			dest[i] = '\0';
+			end = 0;
+		}
 		else
 			dest[i] = '\0';
 	}
-	return (&dest[0]);
-}
-
-int		main(void)
-{
-	char str[10];
-
-	ft_strncpy(str, "hello", 3);
-	printf("%d, %d, %d\n", str[3] == '\0', str[4] == '\0', str[5] == '\0');
-	printf("%s", str);
+	return (dest);
 }
