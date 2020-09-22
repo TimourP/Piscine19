@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush01header.h                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/19 13:34:40 by mlefevre          #+#    #+#             */
-/*   Updated: 2020/09/19 13:34:45 by mlefevre         ###   ########.fr       */
+/*   Created: 2020/09/12 22:37:17 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/12 22:44:05 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RUSH01HEADER_H
-# define RUSH01HEADER_H
+#include <unistd.h>
 
-int		respect_borders(int *grid, int *borders);
-int		can_put_nbr(int index, int nbr);
-void	put_nbr_in_grid(int index, int nbr);
-void	print_solution(void);
-int		search(int index, int *borders);
+void	ft_putstr(char *str)
+{
+	int i;
 
-#endif
+	i = -1;
+	while (str[++i])
+		write(1, &str[i], 1);
+}
