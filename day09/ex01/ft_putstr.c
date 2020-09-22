@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 20:55:24 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 18:09:54 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/12 22:37:17 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/12 22:44:05 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-char	*ft_strdup(char *str)
+void	ft_putstr(char *str)
 {
-	int		i;
-	char	*dest;
+	int i;
 
 	i = -1;
 	while (str[++i])
-		;
-	i++;
-	if (!(dest = malloc(i * sizeof(char))))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dest[i] = str[i];
-	dest[i] = '\0';
-	return (dest);
+		write(1, &str[i], 1);
 }

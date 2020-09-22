@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 20:55:24 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 18:09:54 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/10 19:23:28 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/10 20:23:01 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(char *str)
+int		ft_strcmp(char *s1, char *s2)
 {
-	int		i;
-	char	*dest;
+	int i;
 
-	i = -1;
-	while (str[++i])
-		;
-	i++;
-	if (!(dest = malloc(i * sizeof(char))))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dest[i] = str[i];
-	dest[i] = '\0';
-	return (dest);
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+		{
+			return (s1[i] - s2[i]);
+		}
+		i++;
+	}
+	if (s1[i] != '\0')
+		return (s1[i]);
+	else if (s2[i] != '\0')
+		return (0 - s2[i]);
+	return (0);
 }

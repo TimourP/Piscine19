@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/15 20:55:24 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 18:09:54 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/09 20:14:15 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/10 16:25:12 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-char	*ft_strdup(char *str)
+void	ft_swap(int *a, int *b)
 {
-	int		i;
-	char	*dest;
+	int transition;
 
-	i = -1;
-	while (str[++i])
-		;
-	i++;
-	if (!(dest = malloc(i * sizeof(char))))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		dest[i] = str[i];
-	dest[i] = '\0';
-	return (dest);
+	transition = *a;
+	*a = *b;
+	*b = transition;
 }

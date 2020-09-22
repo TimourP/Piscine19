@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:29:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 19:36:53 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/18 07:09:10 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	*ft_range(int min, int max)
 		destsize = max - min;
 	else
 		return (NULL);
-	dest = malloc(destsize * sizeof(int));
+	if (!(dest = malloc(destsize * sizeof(int))))
+		return (NULL);
 	i = -1;
 	while (++i < destsize)
 	{
