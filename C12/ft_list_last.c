@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_file.c                                     :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/19 17:02:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 16:11:47 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/21 18:29:09 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/21 18:45:41 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mylib.h"
+#include "ft_list.h"
+#include <stdio.h>
 
-int	ft_open_file(char *filetitle)
+t_list *ft_list_last(t_list *begin_list)
 {
-	char	buff[2048];
-	int		filedesc;
-	int		bufflen;
-
-	if ((filedesc = open(filetitle, O_RDONLY)) == -1)
-		return (-1);
-	while ((bufflen = read(filedesc, buff, 2048)) > 0)
-		ft_putstr(buff);
-	close(filedesc);
-	if (bufflen)
-		return (-1);
-	return (0);
+	if (!begin_list -> next)
+		return (begin_list);
+	return (ft_list_last(begin_list -> next));
 }

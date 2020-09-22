@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_open_file.c                                     :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/19 17:02:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 16:11:47 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/21 15:07:17 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/21 18:08:29 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mylib.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-int	ft_open_file(char *filetitle)
+typedef struct		s_list
 {
-	char	buff[2048];
-	int		filedesc;
-	int		bufflen;
+	struct s_list	*next;
+	void			*data;
+	     
+}					t_list;
 
-	if ((filedesc = open(filetitle, O_RDONLY)) == -1)
-		return (-1);
-	while ((bufflen = read(filedesc, buff, 2048)) > 0)
-		ft_putstr(buff);
-	close(filedesc);
-	if (bufflen)
-		return (-1);
-	return (0);
-}
+t_list  *ft_create_elem(void *data);
+
+#endif

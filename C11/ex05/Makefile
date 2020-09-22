@@ -2,7 +2,7 @@ SRCS = ft_atoi.c ft_ope.c ft_putnbr.c ft_putstr.c ft_solve_eq.c main.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-PROG = do_op
+PROG = do-op
 
 all : ${PROG}
 
