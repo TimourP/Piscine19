@@ -1,0 +1,5 @@
+Credentials cache: API:7AD32ACE-5065-41CC-BDD2-3B8C0CB81F3D
+        Principal: tpetit@S19.BE
+
+  Issued                Expires               Principal
+Sep  7 13:43:37 2020  Sep  7 23:43:29 2020  krbtgt/S19.BE@S19.BE
