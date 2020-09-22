@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:55:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 11:06:25 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 12:05:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int			test_error(char *base, int *baselen)
 	i = -1;
 	while (base[++i])
 		;
+	*baselen = 0;
 	*baselen = i;
 	return (0);
 }
@@ -74,18 +75,18 @@ int			calculate_to_add(char *base, int baselen, char c, int puiss)
 	while (base[++i])
 	{
 		if (base[i] == c)
- 		{
- 			index = i;
- 			break ;
- 		}
- 	}
- 	i = -1;
- 	value = 1;
+		{
+			index = i;
+			break ;
+		}
+	}
+	i = -1;
+	value = 1;
 	while (++i < puiss)
- 	{
- 		value *= baselen;
- 	}
- 	return (value * index);
+	{
+		value *= baselen;
+	}
+	return (value * index);
 }
 
 int			ft_atoi_base(char *str, char *base)
@@ -96,7 +97,6 @@ int			ft_atoi_base(char *str, char *base)
 	int max;
 
 	neg = 0;
-	baselen = 0;
 	num = 0;
 	max = 0;
 	test_error(base, &baselen);
@@ -104,8 +104,7 @@ int			ft_atoi_base(char *str, char *base)
 		str++;
 	while (*str == '+' || *str == '-')
 	{
-		if (*str == '-')
-			neg = !neg;
+		neg = (*str == '-') ? !neg : neg;
 		str++;
 	}
 	while (check_inbase(base, str[++max]))
@@ -116,7 +115,5 @@ int			ft_atoi_base(char *str, char *base)
 		str++;
 		max--;
 	}
-	if (neg)
-		num = -num;
-	return (num);
+	return (neg ? -num : num);
 }

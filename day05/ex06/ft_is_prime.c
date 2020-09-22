@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 20:25:41 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 21:55:23 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 13:07:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@ int		ft_is_prime(int nb)
 	int i;
 
 	i = 1;
-	while (++i <= nb / 2)
+	if (nb <= 1)
+		return (0);
+	if (nb % 2 == 0 || nb % 3 == 0)
+		return (0);
+	while (++i <= nb / 5)
 	{
 		if (nb % i == 0)
 			return (0);
