@@ -6,12 +6,12 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 15:07:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 15:08:50 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 16:09:19 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
 typedef struct		s_list
 {

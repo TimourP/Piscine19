@@ -6,12 +6,12 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 08:00:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 08:51:53 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 16:08:46 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#ifndef FT_OP_H
+# define FT_OP_H
 
 void	ft_add(int nb1, int nb2);
 void	ft_sub(int nb1, int nb2);
