@@ -6,17 +6,15 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 20:24:23 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 10:14:19 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 11:19:22 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	if (!n)
-			return (0);
-	while (n)
+	while (1)
 	{
-		if (!*s1 && !*s2)
+		if (!*s1 && !*s2 || !n)
 			return (0);
 		if (*s1 == *s2)
 		{
@@ -25,7 +23,6 @@ int		ft_strncmp(char *s1, char *s2, unsigned int n)
 			n--;
 		}
 		else
-			return (*s1 - *s2);
+			return ((unsigned char)(*s1) - (unsigned char)(*s2));
 	}
-	return (*s1 - *s2);
 }
