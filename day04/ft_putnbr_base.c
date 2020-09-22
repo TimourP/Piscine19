@@ -1,35 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 12:35:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 09:49:44 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/13 10:03:15 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/13 10:46:43 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 
-void	ft_putnbr(int nb)
+void	ft_baselen(char *base, int *count)
 {
-	char	finalnb[12];
-	long	newnb;
+	int i;
+
+	i = -1;
+	while (base[++i])
+		;
+	*count = i;
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	long	num;
 	int		i;
+	int		basecount;
+	char	toprint[33];
 
 	i = 0;
-	newnb = nb;
-	if (newnb < 0)
+	num = nbr;
+	if (num < 0)
 	{
-		newnb = -newnb;
 		write(1, "-", 1);
+		num = 0 - num;
 	}
-	while (newnb > 0)
+	ft_baselen(base, &basecount);
+	while (num > 0)
 	{
-		finalnb[11 - i] = '0' + newnb % 10;
-		newnb /= 10;
+		toprint[31 - i] = base[num % basecount];
+		num /= basecount;
 		i++;
 	}
-	write(1, finalnb, 12);
+	i = 32 - i - 1;
+	while (toprint[++i])
+		write(1, &toprint[i], 1);
 }
