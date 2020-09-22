@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:38:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/20 19:04:50 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/20 20:50:58 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,20 @@ char	*ft_strcpy(char *dest, char *src)
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	int		i;
-	int		count;
+	int		co;
 	char	*dest;
 
-	count = count_tot_size(size, strs, sep);
-	if (!(dest = malloc(count * sizeof(char))))
+	co = count_tot_size(size, strs, sep);
+	if (!(dest = malloc(co * sizeof(char))))
 		return (NULL);
-	i = -1;
-	count = 0;
-	while (++i < size)
+	i = 0;
+	co = 0;
+	while (i < size)
 	{
-		ft_strcpy(dest + count, strs[i]);
-		count += ft_strlen(strs[i]);
-		if (i != size - 1)
-		{
-			ft_strcpy(dest + count, sep);
-			count += ft_strlen(sep);
-		}
+		ft_strcpy(dest + co, strs[i]);
+		co += ft_strlen(strs[i]);
+		if (++i < size)
+			co += dest + co + ft_strlen(sep) - ft_strcpy(dest + co, sep);
 	}
 	return (dest);
 }
