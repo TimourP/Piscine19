@@ -6,12 +6,9 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 20:24:23 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 22:19:11 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/11 16:45:25 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <string.h>
-#include <stdio.h>
 
 int		ft_strncmp(char *s1, char *s2, int size)
 {
