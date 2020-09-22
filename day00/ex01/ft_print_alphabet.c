@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/09 12:21:06 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/09 12:24:02 by tpetit           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-void ft_print_alphabet(void)
+void	ft_print_alphabet(void)
 {
-    write(1,"abcdefghijklmnopqrstuvwxyz", 26);
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
 }
