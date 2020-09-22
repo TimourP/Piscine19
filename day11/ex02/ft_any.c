@@ -6,11 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 21:09:51 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 07:41:43 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 08:42:34 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_any(char **tab, int(*f)(char*))
+int	ft_any(char **tab, int (*f)(char*))
 {
 	int i;
 

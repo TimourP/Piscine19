@@ -6,16 +6,16 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 07:42:48 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 07:44:06 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 08:44:34 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_count_if(char **tab, int length, int(*f)(char))
+int	ft_count_if(char **tab, int length, int (*f)(char))
 {
-    int i;
-    int count;
+	int i;
+	int count;
 
-    count = 0;
+	count = 0;
 	i = -1;
 	while (++i < length)
 		if (f(tab[i]))

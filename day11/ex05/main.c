@@ -6,16 +6,16 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 08:00:50 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 08:25:52 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 08:51:49 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_op.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    if (argc != 4)
-        return (0);
-    ft_solve_eq(argv[1], argv[2], argv[3]);
-    return (0);
+	if (argc != 4)
+		return (0);
+	ft_solve_eq(argv[1], argv[2], argv[3]);
+	return (0);
 }

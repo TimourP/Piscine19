@@ -6,15 +6,15 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 20:56:59 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/20 20:58:59 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 08:42:09 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    ft_foreach(int *tab, int length, void(*f)(int))
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-    int i;
+	int i;
 
-    i = -1;
-    while (++i < length)
-        f(tab[i]);
+	i = -1;
+	while (++i < length)
+		f(tab[i]);
 }
