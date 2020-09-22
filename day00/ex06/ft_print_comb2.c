@@ -6,24 +6,36 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/09 14:00:37 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/09 19:37:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	print_list(int *arr)
+void	ft_string(char *pointeur, char *str)
 {
-	char	nub[10] = "0123456789";
-	int		i;
+	int i;
 
 	i = -1;
-	while (i++ < 2)
+	while (str[++i] != '\0')
+	{
+		pointeur[i] = str[i];
+	}
+}
+
+void	print_list(int *arr)
+{
+	char	nub[10];
+	int		i;
+
+	ft_string(nub, "0123456789");
+	i = -1;
+	while (i++ < 1)
 	{
 		write(1, &nub[arr[i] / 10], 1);
 		write(1, &nub[arr[i] % 10], 1);
 		if (i == 0)
-			write(1, " ", 2);
+			write(1, " ", 1);
 	}
 	if (arr[0] != 98)
 		write(1, ", ", 2);
@@ -43,10 +55,10 @@ void	new_step(int *arr)
 
 void	ft_print_comb2(void)
 {
-	int main_array[2] = {0, 0};
-	int i;
+	int main_array[2];
 
-	i = -1;
+	main_array[0] = 0;
+	main_array[1] = 0;
 	while (main_array[0] != 98)
 	{
 		new_step(main_array);
