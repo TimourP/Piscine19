@@ -6,19 +6,27 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/22 08:31:51 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/22 10:08:18 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/22 14:29:25 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdio.h>
 
+int	ft_list_size2(t_list *begin_list)
+{
+	if (begin_list)
+		return (1 + ft_list_size2(begin_list -> next));
+	else
+		return (0);
+}
+
 void print_node(t_list *begin_list)
 {
     t_list *tmp;
 
     tmp = begin_list;
-    printf("Cette structure comporte < %i > elements et < %i > nodes\n", ft_list_size(begin_list), ft_list_size(begin_list) - 1);
+    printf("Cette structure comporte < %i > elements et < %i > nodes\n", ft_list_size2(begin_list), ft_list_size2(begin_list) - 1);
 	while (tmp)
     {
         if (tmp->next)
