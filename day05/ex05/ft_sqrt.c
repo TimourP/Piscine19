@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 22:05:22 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 08:30:17 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/16 11:33:17 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_sqrt(int nb)
 	i = 0;
 	while (i * i <= nb)
 	{
+		if (i == nb)
+			return (0);
 		if (i * i == nb)
 			return (i);
 		i++;
