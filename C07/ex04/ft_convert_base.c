@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 15:40:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 19:13:06 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/21 15:38:36 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	neg = 0;
 	num = 0;
 	max = 0;
-	if (test_error1(base_from, &baselen))
+	if (test_error1(base_from, &baselen) || test_error1(base_to, &baselen))
 		return (NULL);
 	while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
 		nbr++;
