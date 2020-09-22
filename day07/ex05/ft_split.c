@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 19:23:02 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 22:19:09 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/17 09:28:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,54 @@ int		count_words(char *str, char *charset)
 	return (count);
 }
 
-char	*ret_world(char *str, char *charset, int num)
+void	ret_world(char **dest, char *str, char *charset)
 {
 	int i;
-	char *dest;
-	int numcount;
+	int j;
+	char *currdst;
+	int currwordcount;
+	int currword;
 
 	i = -1;
-	numcount = 0;
+	currword = 0;
+	currwordcount = 0;
+	while (str[++i])
+	{
+		if (!is_in_list(charset, str[i]) && str[i + 1])
+			currwordcount++;
+		else if (currwordcount)
+		{
+			j = -1;
+			if (str[i + 1] == 0)
+			{
+				currwordcount++;
+				i++;
+			}
+			currdst = malloc(sizeof(char) * (currwordcount + 1));
+			while (++j < currwordcount)
+			{
+				currdst[j] = str[i - currwordcount + j];
+			}
+			currdst[j] = 0;
+			dest[currword] = currdst;
+			currword++;
+			currwordcount = 0;
+		}
+	}
+	
 }
 
 char	**ft_split(char *str, char *charset)
 {
 	char **dest;
-	char *temp;
-	int i;
 	int count;
 
 	count = count_words(str, charset);
-	dest = malloc(sizeof(char *) * (count + 1));
-	i = -1;
-	while (++i < count)
-	{
-		ret_world(str, charset, i);
-	}
+	
+	if (!(dest = malloc(sizeof(char *) * (count + 1))))
+		return (NULL);
+	if (count)
+		ret_world(dest, str, charset);
+	dest[count] = 0;
 	return (dest);
 }
