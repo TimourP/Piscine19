@@ -6,19 +6,22 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 15:35:49 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/11 16:07:05 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 08:58:42 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	int i;
+	unsigned int i;
+	unsigned int dstsize;
 
 	i = -1;
-	while (src[++i] != '\0' && i < nb)
-	{
-		dest[i] = src[i];
-	}
+	dstsize = 0;
+	while (dest[++i] != '\0')
+		dstsize++;
+	i = dstsize - 1;
+	while (++i < nb + dstsize)
+		dest[i] = src[i - dstsize];
 	dest[i] = '\0';
 	return (dest);
 }

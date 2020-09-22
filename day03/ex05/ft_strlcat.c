@@ -6,9 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:01:30 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 20:31:35 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 09:20:47 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 void			ft_str_len(char *s1, char *s2, unsigned int *c, unsigned int *d)
 {
@@ -30,12 +32,12 @@ void			ft_str_len(char *s1, char *s2, unsigned int *c, unsigned int *d)
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	int				i;
-	int				max;
+	unsigned int	i;
 	unsigned int	countsrc;
 	unsigned int	countdst;
 
 	ft_str_len(src, dest, &countsrc, &countdst);
+	printf("%d, %d\n", countdst, countsrc);
 	i = -1;
 	while (++i < size - 1 - countdst)
 	{

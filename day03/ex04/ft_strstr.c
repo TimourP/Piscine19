@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 16:09:13 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/11 17:16:33 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/14 09:08:56 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strstr(char *str, char *to_find)
 	{
 		value = 1;
 		j = -1;
-		while (j++ < findcount - 1)
+		while (++j < findcount)
 		{
 			if (str[i + j] != to_find[j])
 				value = 0;
