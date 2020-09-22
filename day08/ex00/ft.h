@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 10:36:45 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/19 16:26:54 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/20 10:46:12 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	ft_putchar(char c);
 void	ft_swap(int *a, int *b);
 void	ft_putstr(char *str);
 int		ft_strlen(char *str);
-int		ft_strcmp(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
