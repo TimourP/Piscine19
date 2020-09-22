@@ -6,11 +6,9 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 15:40:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 15:38:36 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/22 08:11:12 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 char	*ft_putnbr_base(int nbr, char *base);
 

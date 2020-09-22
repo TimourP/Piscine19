@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.h                                          :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/21 15:07:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/22 10:45:57 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/22 08:29:58 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/22 11:43:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST_H
-# define FT_LIST_H
+#include "ft_list.h"
+#include <stdio.h>
 
-typedef struct		s_list
+void    ft_list_push_back(t_list **begin_list, void *data)
 {
-	struct s_list	*next;
-	void			*data;
-}					t_list;
+    t_list *tmp;
 
-t_list  *ft_create_elem(void *data);
-int	ft_list_size(t_list *begin_list);
-t_list *ft_list_last(t_list *begin_list);
-
-#endif
+    if (!begin_list || !*begin_list)
+    {
+        if (!begin_list)
+            return ;
+        *begin_list = ft_create_elem(data);
+        return ;
+    }
+    tmp = *begin_list;
+	while (tmp->next)
+		tmp = tmp->next;
+    tmp->next = ft_create_elem(data);
+}

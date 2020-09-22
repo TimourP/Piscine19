@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/21 17:29:41 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 18:09:05 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/21 15:07:17 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/22 11:44:38 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include "stdlib.h"
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-void	ft_list_push_front(t_list **begin_list, void *data)
+typedef struct		s_list
 {
-	t_list *first;
+	struct s_list	*next;
+	void			*data;
+}					t_list;
 
-	if ((first = ft_create_elem(data)))
-	{
-		if (*begin_list)
-			first -> next = *begin_list;
-		*begin_list = first;
-	}
-}
+#endif
