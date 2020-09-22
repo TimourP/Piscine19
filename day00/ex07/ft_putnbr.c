@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/09 19:14:51 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 12:11:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,14 @@ void	ft_putnbr(int nb)
 	char	int_2_string[12];
 	char	possint[10];
 	int		count;
+	int		neg;
 
+	neg = 0;
+	if (nb < 0)
+	{
+		neg = 1;
+		nb = -nb;
+	}
 	ft_string(possint, "0123456789");
 	count = 0;
 	while (nb > 0)
@@ -37,11 +44,12 @@ void	ft_putnbr(int nb)
 		nb = nb / 10;
 		count++;
 	}
-	write(1, int_2_string, 12);
-}
-
-int		main(void)
-{
-	ft_putnbr(1837);
-	return (0);
+	if (neg)
+		write(1, "-", 1);
+	if (nb != -2147483648 && nb != 0)
+		write(1, int_2_string, 12);
+	else if (nb != 0)
+		write(1, "2147483648", 11);	
+	else
+		write(1, "0", 11);
 }

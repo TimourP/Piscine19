@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 10:52:40 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 12:10:01 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_list(int *arr)
 
 	ft_string(nub, "0123456789");
 	i = -1;
-	while (++i < 1)
+	while (++i < 2)
 	{
 		write(1, &nub[arr[i] / 10], 1);
 		write(1, &nub[arr[i] % 10], 1);

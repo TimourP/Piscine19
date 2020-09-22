@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 10:53:09 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 12:12:28 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_list(int *arr, int n)
 
 	ft_string(nub, "0123456789");
 	i = -1;
-	while (++i < n)
+	while (++i < n+1)
 	{
 		write(1, &nub[arr[i]], 1);
 	}
@@ -41,7 +41,6 @@ void	print_list(int *arr, int n)
 void	new_step(int *arr, int n)
 {
 	int count;
-	int true;
 	int i;
 
 	count = n;
@@ -75,7 +74,7 @@ void	init_arr(int *arr, int size)
 
 void	ft_print_combn(int n)
 {
-	int main_array[n - 1];
+	int main_array[10];
 	int i;
 
 	n--;
