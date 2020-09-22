@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 10:03:15 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/13 11:48:56 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/13 11:50:35 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int		test_error(char *base)
 	while (base[++i])
 	{
 		j = i;
-		while(base[j++])
+		while (base[j++])
 		{
-			if(base[j] == base[i] && i != j)
+			if (base[j] == base[i] && i != j)
 				return (1);
 		}
 	}
