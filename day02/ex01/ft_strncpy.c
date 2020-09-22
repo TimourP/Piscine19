@@ -6,14 +6,14 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 21:39:26 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/11 21:51:09 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 12:19:20 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	unsigned int i;
-	int end;
+	unsigned int	i;
+	int				end;
 
 	end = 1;
 	i = -1;

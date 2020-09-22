@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush04.c                                           :+:      :+:    :+:   */
+/*   rush02.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 08:05:36 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 11:50:00 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/12 15:50:07 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/12 16:05:01 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,25 @@ void	rush_negatif(int *x, int *y)
 		*y = 0 - *y;
 }
 
+void	ft_check_case(int x, int y, int i, int j)
+{
+	if ((i == 0 && j == 0) || (i == x - 1 && j == 0))
+		write(1, "A", 1);
+	else if ((i == 0 && j == x - 1) || (i == x - 1 && j == y - 1))
+		write(1, "C", 1);
+	else
+		write(1, "B", 1);
+}
+
 void	rush(int x, int y)
 {
 	int i;
 	int j;
 
+	if (x == 0 || y == 0)
+		return ;
 	j = -1;
-	if (x < 0 || y < 0)
-		rush_negatif(&x, &y);
+	rush_negatif(&x, &y);
 	while (++j < y)
 	{
 		i = -1;
@@ -35,12 +46,7 @@ void	rush(int x, int y)
 		{
 			if (j == 0 || j == y - 1 || i == 0 || i == x - 1)
 			{
-				if ((i == 0 && j == 0) || (i == x - 1 && j == y - 1))
-					write(1, "A", 1);
-				else if ((i == x - 1 && j == 0) || (i == 0 && j == y - 1))
-					write(1, "C", 1);
-				else
-					write(1, "B", 1);
+				ft_check_case(x, y, i, j);
 			}
 			else
 				write(1, " ", 1);
@@ -51,6 +57,6 @@ void	rush(int x, int y)
 
 int		main(void)
 {
-	rush(10000, 10000);
+	rush(5, 5);
 	return (0);
 }
