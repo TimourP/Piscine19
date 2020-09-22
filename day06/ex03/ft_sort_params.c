@@ -6,23 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 12:04:04 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/14 12:26:01 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/15 13:27:58 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-
-void	ft_print_params(char *parname)
-{
-	int i;
-
-	i = -1;
-	while (parname[++i])
-	{
-		write(1, &parname[i], 1);
-	}
-	write(1, "\n", 1);
-}
 
 int		ft_strcmp(char *s1, char *s2)
 {
@@ -44,6 +32,26 @@ int		ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
+void	ft_print_params(char *parname, char **argv)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (argv[++i])
+	{
+		j = -1;
+		if (!ft_strcmp(parname, argv[i]))
+		{
+			while (parname[++j])
+			{
+				write(1, &parname[j], 1);
+			}
+			write(1, "\n", 1);
+		}
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	int i;
@@ -61,12 +69,12 @@ int		main(int argc, char **argv)
 		{
 			if (ft_strcmp(argv[j], argv[min]) < 0 || min == 0)
 			{
-				if (ft_strcmp(argv[j], argv[last]) > 0 || last == 0)
+				if ((ft_strcmp(argv[j], argv[last]) > 0) || last == 0)
 					min = j;
 			}
 		}
-		ft_print_params(argv[min]);
-		last = min;
+		min ? ft_print_params(argv[min], argv) : 0;
+		last = min ? min : last;
 	}
 	return (0);
 }
