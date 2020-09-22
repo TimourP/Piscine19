@@ -5,10 +5,9 @@ void print_node(t_list *begin_list);
 t_list *ft_list_push_strs(int size, char **strs);
 void ft_list_foreach(t_list *begin_list, void (*f)(void *));
 
-char *chante(char *str)
+void chante(void *data)
 {
-    str[0] = 'h';
-    return (str);
+    printf("%s\n", data);
 }
 
 int main(void)
@@ -17,7 +16,7 @@ int main(void)
     char *tab[100] = {"jarvis", "hello", "helloa", "jemange"};
    
     list = ft_list_push_strs(4, tab);
-    ft_list_foreach(list, chante);
+    ft_list_foreach(list, &chante);
     printf("------------------------------------------\n");
     print_node(list);
     printf("------------------------------------------\n");
