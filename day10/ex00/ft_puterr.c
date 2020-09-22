@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_puterr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 20:14:15 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 16:25:12 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/19 16:56:56 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/19 16:57:15 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_swap(int *a, int *b)
-{
-	int transition;
+#include <unistd.h>
 
-	transition = *a;
-	*a = *b;
-	*b = transition;
+void	ft_puterr(char *str)
+{
+	int i;
+
+	i = -1;
+	while (str[++i])
+		write(2, &str[i], 1);
 }

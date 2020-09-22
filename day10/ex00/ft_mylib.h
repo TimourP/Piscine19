@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_mylib.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 22:04:16 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 22:42:07 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/19 16:25:56 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/19 17:12:24 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int i;
+#ifndef FT_H
+# define FT_H
 
-	i = -1;
-	while (str[++i])
-		;
-	return (i);
-}
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
+void	ft_putstr(char *str);
+void	ft_puterr(char *str);
+int     ft_open_file(char *filetitle);
+
+#endif

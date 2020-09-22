@@ -1,20 +1,24 @@
-SRCS = ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
-OBJS = $(addprefix srcs/, ${SRCS:.c=.o})
+SRC = ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
+SRCS = $(addprefix srcs/, ${SRC})
+OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
+LIB = libft.a
 
-.o.c :
-	${CC} ${FLAGS} -c ${SRCS} -o ${OBJS}
+all : ${LIB}
 
-${libft.a} : ${OBJS}
-	ar rs $@ ${OBJS}
+${LIB} : ${OBJS}
+	ar -rcs ${LIB} ${OBJS}
 
-all : ${libft.a}
+${OBJS} :
+	${CC} ${FLAGS} -c -I./includes ${@:.o=.c} -o $@
 
 clean:
 	rm -f ${OBJS}
 
 fclean : clean
-	rm -f ${libft.a}
+	rm -f ${LIB}
 
 re : fclean all
+
+.PHONY : all clean fclean re
