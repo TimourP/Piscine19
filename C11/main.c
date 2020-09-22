@@ -9,8 +9,8 @@ int sort(int nb1, int nb2)
 
 int main()
 {
-    int test[100] = {8, 10};
-    printf("%d\n", ft_is_sort(test, 2, sort));
+    int test[100] = {1, 2, 3, 4, 5, 6, 0};
+    printf("%d\n", ft_is_sort(test, 7, sort));
     
     return 0;
 }

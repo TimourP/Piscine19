@@ -6,21 +6,29 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 07:44:55 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/22 07:55:27 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/22 13:48:20 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdio.h>
 
 int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int i;
+	int val1;
+	int val2;
 
 	i = -1;
+	val1 = 1;
+	val2 = 1;
 	if (length <= 1)
 		return (1);
 	while (++i < length - 1)
 	{
 		if (f(tab[i], tab[i + 1]) > 0)
-			return (0);
+			val1 = 0;
+		if (f(tab[i], tab[i + 1]) < 0)
+			val2 = 0;
 	}
-	return (1);
+	return (val1 || val2);
 }

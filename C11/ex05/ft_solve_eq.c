@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 08:04:44 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/21 08:51:42 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/22 13:22:30 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ void	ft_solve_eq(char *num1, char *operation, char *num2)
 	nbr2 = ft_atoi(num2);
 	op = ret_ope(operation);
 	if (op < 0)
+	{
 		ft_putnbr(0);
+		ft_putstr("\n");
+	}
+		
 	else
 		g_make_op[op](nbr1, nbr2);
 }
