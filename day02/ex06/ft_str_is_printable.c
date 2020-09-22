@@ -6,11 +6,11 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 08:32:12 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 08:35:22 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 09:51:22 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_str_is_uppercase(char *str)
+int		ft_str_is_printable(char *str)
 {
 	int i;
 
@@ -18,9 +18,7 @@ int		ft_str_is_uppercase(char *str)
 	while (str[++i] != '\0')
 	{
 		if (str[i] <= 31)
-		{
 			return (0);
-		}
 	}
 	return (1);
 }

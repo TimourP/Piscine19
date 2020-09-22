@@ -6,15 +6,15 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 09:40:04 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/11 19:41:36 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 11:46:07 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int i;
-	int end;
-	int count;
+	unsigned int	i;
+	unsigned int	count;
+	int				end;
 
 	end = 0;
 	i = -1;

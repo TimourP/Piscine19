@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 08:26:26 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 08:31:15 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 09:37:17 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@ int		ft_str_is_uppercase(char *str)
 	i = -1;
 	while (str[++i] != '\0')
 	{
-		if (65 <= str[i] && str[i] <= 90)
-		{
-			;
-		}
-		else
+		if (!(65 <= str[i] && str[i] <= 90))
 			return (0);
 	}
 	return (1);

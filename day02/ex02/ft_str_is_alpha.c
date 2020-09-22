@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 08:00:27 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 08:31:27 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 09:17:34 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,10 @@ int		ft_str_is_alpha(char *str)
 	i = -1;
 	while (str[++i] != '\0')
 	{
-		if (65 <= str[i] && str[i] <= 90)
-		{
+		if ('A' <= str[i] && str[i] <= 'Z')
 			;
-		}
-		else if (97 <= str[i] && str[i] <= 122)
-		{
+		else if ('a' <= str[i] && str[i] <= 'z')
 			;
-		}
 		else
 			return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 08:19:48 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 08:36:04 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/12 09:29:58 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@ int		ft_str_is_numeric(char *str)
 	i = -1;
 	while (str[++i] != '\0')
 	{
-		if (48 <= str[i] && str[i] <= 57)
-		{
-			;
-		}
-		else
+		if (!('0' <= str[i] && str[i] <= '9'))
 			return (0);
 	}
 	return (1);
