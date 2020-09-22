@@ -6,12 +6,9 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 21:39:26 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 10:49:56 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/11 19:16:10 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <string.h>
-#include <stdio.h>
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
