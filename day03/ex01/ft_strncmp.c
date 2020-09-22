@@ -6,11 +6,14 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 20:24:23 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/10 20:43:22 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/10 22:19:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strncmp(char *s1, char *s2)
+#include <string.h>
+#include <stdio.h>
+
+int		ft_strncmp(char *s1, char *s2, int size)
 {
 	int i;
 
@@ -21,6 +24,8 @@ int		ft_strncmp(char *s1, char *s2)
 		{
 			return (s1[i] - s2[i]);
 		}
+		if (i >= size - 1)
+			return (0);
 		i++;
 	}
 	if (s1[i] != '\0')
