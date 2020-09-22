@@ -6,11 +6,10 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:38:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 19:34:39 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/18 18:49:43 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
 int		tot_len(int size, char **strs, char *step)
@@ -59,14 +58,14 @@ char	*ft_strcat(char *dest, char *src)
 
 char	*ft_strjoin(int size, char **strs, char *step)
 {
-	char *dest;
-	int i;
+	char	*dest;
+	int		i;
 
 	dest = malloc(sizeof(char) * tot_len(size, strs, step));
 	i = -1;
 	dest[0] = 0;
 	if (size == 0)
-		return "";
+		return ("");
 	while (++i < size)
 	{
 		ft_strcat(dest, strs[i]);

@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 21:29:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 07:09:10 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/18 18:47:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	*ft_range(int min, int max)
 	int *dest;
 	int destsize;
 
-	if(min < max)
+	if (min < max)
 		destsize = max - min;
 	else
 		return (NULL);

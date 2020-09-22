@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 22:05:11 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/18 18:31:03 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/18 18:51:09 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	ft_ultimate_range(int **range, int min, int max)
 	int *dest;
 	int destsize;
 
-	if(min < max)
+	if (min < max)
 		destsize = max - min;
 	else
-		return (NULL);
+		return (0);
 	if (!(dest = malloc(destsize * sizeof(int))))
-		return (NULL);
+		return (0);
 	i = -1;
 	while (++i < destsize)
 	{
