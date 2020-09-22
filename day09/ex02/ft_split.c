@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 19:23:02 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/17 10:00:11 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/20 14:49:14 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		count_words(char *str, char *charset)
 	return (count);
 }
 
-void	add_word(int *ijcw, char *str, char **dest)
+void	add_word(int *ijcw, char *str, char **dest, char *charset)
 {
 	char *currdst;
 
@@ -66,7 +66,8 @@ void	add_word(int *ijcw, char *str, char **dest)
 	currdst = malloc(sizeof(char) * (ijcw[2] + 1));
 	while (++ijcw[1] < ijcw[2])
 	{
-		currdst[ijcw[1]] = str[ijcw[0] - ijcw[2] + ijcw[1]];
+		if (!is_in_list(charset, str[ijcw[0] - ijcw[2] + ijcw[1]]))
+			currdst[ijcw[1]] = str[ijcw[0] - ijcw[2] + ijcw[1]];
 	}
 	currdst[ijcw[1]] = 0;
 	dest[ijcw[3]] = currdst;
@@ -87,7 +88,7 @@ void	ret_world(char **dest, char *str, char *charset)
 			ijcw[2]++;
 		else if (ijcw[2])
 		{
-			add_word(ijcw, str, dest);
+			add_word(ijcw, str, dest, charset);
 		}
 	}
 }
