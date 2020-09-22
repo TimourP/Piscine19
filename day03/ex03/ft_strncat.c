@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/11 08:27:15 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/11 15:38:28 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/11 15:35:49 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/11 16:07:05 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
 	int i;
 
 	i = -1;
-	while (src[++i] != '\0')
+	while (src[++i] != '\0' && i < nb)
 	{
 		dest[i] = src[i];
 	}
