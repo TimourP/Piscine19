@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 11:46:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/12 12:14:34 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/23 17:42:17 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@ void	ft_putchar(char c)
 
 void	ft_putstr_non_printable(char *str)
 {
-	int		i;
-	char	*hexbase;
+	int			i;
+	const char	*hexbase = "0123456789abcdef";
 
 	i = -1;
 	while (str[++i])
 	{
 		if (str[i] <= 31)
 		{
-			hexbase = "0123456789abcdef";
 			ft_putchar('\\');
 			ft_putchar(hexbase[str[i] / 16]);
 			ft_putchar(hexbase[str[i] % 16]);
