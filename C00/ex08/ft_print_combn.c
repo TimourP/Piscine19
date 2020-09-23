@@ -6,34 +6,24 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/16 13:25:18 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/23 12:00:04 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_string(char *pointeur, char *str)
+void ft_putchar(char c)
 {
-	int i;
-
-	i = -1;
-	while (str[++i] != '\0')
-	{
-		pointeur[i] = str[i];
-	}
+	write(1, &c, 1);
 }
 
 void	print_list(int *arr, int n)
 {
-	char	nub[10];
 	int		i;
 
-	ft_string(nub, "0123456789");
 	i = -1;
 	while (++i < n + 1)
-	{
-		write(1, &nub[arr[i]], 1);
-	}
+		ft_putchar(arr[i] + '0');
 	if (arr[0] != 9 - n)
 		write(1, ", ", 2);
 }
@@ -61,33 +51,20 @@ void	new_step(int *arr, int n)
 	print_list(arr, n);
 }
 
-void	init_arr(int *arr, int size)
-{
-	int i;
-
-	i = -1;
-	while (++i < size + 1)
-	{
-		arr[i] = i;
-	}
-}
-
 void	ft_print_combn(int n)
 {
 	int main_array[10];
 	int i;
 
-	n--;
 	i = -1;
-	if (n < 1 || n > 9)
-		return ;
-	while (++i < n + 1)
+	if (n >= 1 && n <= 9)
 	{
-		main_array[i] = i;
-	}
-	print_list(main_array, n);
-	while (main_array[0] != 9 - n)
-	{
-		new_step(main_array, n);
+		while (++i < n)
+		{
+			main_array[i] = i;
+		}
+		print_list(main_array, n - 1);
+		while (main_array[0] != 10 - n)
+			new_step(main_array, n - 1);
 	}
 }
