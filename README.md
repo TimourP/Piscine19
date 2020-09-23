@@ -15,6 +15,6 @@
 - C08 : 100
 - C09 : 100
 - C10 : not yet
-- C11 : not yet
+- C11 : 100
 - C12 : not yet
 - C13 : not yet
