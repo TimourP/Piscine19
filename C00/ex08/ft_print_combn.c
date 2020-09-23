@@ -6,65 +6,69 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 12:35:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/23 12:00:04 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/23 13:22:08 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+int g_tab[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+int g_count = 0;
 
-void	print_list(int *arr, int n)
+void	init_tab(int n, int from)
 {
-	int		i;
+	int i;
 
 	i = -1;
-	while (++i < n + 1)
-		ft_putchar(arr[i] + '0');
-	if (arr[0] != 9 - n)
+	while (++i < from)
+	{
+		g_tab[8 - i] = n - i - 1;
+	}
+}
+
+void	print_tab(n)
+{
+	int i;
+	char c;
+
+	i = -1;
+	c = 0;
+	while (++i < n)
+	{
+		c = g_tab[9 - n + i] + '0';
+		write(1, &c, 1);
+	}
+	if (g_tab[9 - n] != 10 - n)
 		write(1, ", ", 2);
 }
 
-void	new_step(int *arr, int n)
+void	reinit_tab(int val)
 {
-	int count;
 	int i;
 
-	count = n;
-	while (arr[count] == 9 - (n - count))
+	i = -1;
+	while (++i < g_count)
 	{
-		count--;
+		g_tab[8 - i] = val + g_count - i;
 	}
-	arr[count] = arr[count] + 1;
-	if (count != n)
-	{
-		i = -1;
-		while (++i < n - count)
-		{
-			count += 1;
-			arr[count] = arr[count - 1] + 1;
-		}
-	}
-	print_list(arr, n);
+}
+
+void	next_step(int n)
+{
+	while (g_tab[8 - g_count] == 9 - g_count)
+		g_count++;
+	g_tab[8 - g_count] += 1;
+	reinit_tab(g_tab[8 - g_count]);
+	g_count = 0;
+	print_tab(n);
 }
 
 void	ft_print_combn(int n)
 {
-	int main_array[10];
-	int i;
-
-	i = -1;
-	if (n >= 1 && n <= 9)
-	{
-		while (++i < n)
-		{
-			main_array[i] = i;
-		}
-		print_list(main_array, n - 1);
-		while (main_array[0] != 10 - n)
-			new_step(main_array, n - 1);
-	}
+	if (n < 1 || n > 9)
+		return ;
+	init_tab(n, n);
+	print_tab(n);
+	while (g_tab[9 - n] != 10 - n)
+		next_step(n);
 }
