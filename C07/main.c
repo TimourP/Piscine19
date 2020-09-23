@@ -4,8 +4,8 @@ char	*ft_strjoin(int size, char **strs, char *sep);
 
 int main(void)
 {
-    char *test[100] = {"hello", "je", "ma\0nge", "tout le\n\ntemps parce que c'est genial de manger"};
-    char *testt = ft_strjoin(4, test, " ");
+    char *test[100] = {"hello", "je", "mange", "tout letemps parce que c'est genial de manger"};
+    char *testt = ft_strjoin(4, test, " test ");
     int i;
     char c;
 
