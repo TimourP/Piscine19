@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/09 12:35:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/23 13:22:08 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/23 13:35:28 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/23 13:41:49 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int g_tab[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 int g_count = 0;
 
-void	init_tab(int n, int from)
+void	init_grid(int n, int from)
 {
 	int i;
 
@@ -26,7 +26,7 @@ void	init_tab(int n, int from)
 	}
 }
 
-void	print_tab(n)
+void	print_grid(n)
 {
 	int i;
 	char c;
@@ -42,7 +42,7 @@ void	print_tab(n)
 		write(1, ", ", 2);
 }
 
-void	reinit_tab(int val)
+void	reinit_grid(int val)
 {
 	int i;
 
@@ -58,17 +58,23 @@ void	next_step(int n)
 	while (g_tab[8 - g_count] == 9 - g_count)
 		g_count++;
 	g_tab[8 - g_count] += 1;
-	reinit_tab(g_tab[8 - g_count]);
+	reinit_grid(g_tab[8 - g_count]);
 	g_count = 0;
-	print_tab(n);
+	print_grid(n);
 }
 
 void	ft_print_combn(int n)
 {
 	if (n < 1 || n > 9)
 		return ;
-	init_tab(n, n);
-	print_tab(n);
+	init_grid(n, n);
+	print_grid(n);
 	while (g_tab[9 - n] != 10 - n)
 		next_step(n);
+}
+
+int main(void)
+{
+	ft_print_combn(3);
+	return (0);
 }
