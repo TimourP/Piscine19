@@ -6,46 +6,36 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/11 18:01:30 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/15 08:19:20 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/23 14:22:14 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void			ft_str_len(char *s1, char *s2, unsigned int *c, unsigned int *d)
+unsigned int	ft_strlen(char *str)
 {
 	int i;
 
 	i = -1;
-	*c = 0;
-	*d = 0;
-	while (s1[++i])
-	{
-		*c = *c + 1;
-	}
-	i = -1;
-	while (s2[++i])
-	{
-		*d = *d + 1;
-	}
+	while (str[++i])
+		;
+	return (i);
 }
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
-	unsigned int	countsrc;
-	unsigned int	countdst;
 	unsigned int	tot;
 
-	ft_str_len(src, dest, &countsrc, &countdst);
-	if (countdst > size)
-		tot = size + countsrc;
+	if (ft_strlen(dest) < size)
+		tot = ft_strlen(src) + ft_strlen(dest);
 	else
-		tot = countsrc + countdst;
-	i = countdst - 1;
-	while (++i < size - 1 && src[i - countdst])
-	{
-		dest[i] = src[i - countdst];
-	}
-	if (dest[i])
-		dest[i] = '\0';
+		tot = size + ft_strlen(src);
+	while (*(dest++) && size)
+		size--;
+	dest--;
+	i = -1;
+	while (src[++i] && i < size - 1 && size)
+		dest[i] = src[i];
+	if (size)
+		dest[i] = 0;
 	return (tot);
 }

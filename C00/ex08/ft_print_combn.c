@@ -6,30 +6,28 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 13:35:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/23 13:41:49 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/23 13:56:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int g_tab[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+int g_tab[9];
 int g_count = 0;
 
-void	init_grid(int n, int from)
+void	init_g(int n, int from)
 {
 	int i;
 
 	i = -1;
 	while (++i < from)
-	{
 		g_tab[8 - i] = n - i - 1;
-	}
 }
 
-void	print_grid(n)
+void	print_grid(int n)
 {
-	int i;
-	char c;
+	int		i;
+	char	c;
 
 	i = -1;
 	c = 0;
@@ -48,9 +46,7 @@ void	reinit_grid(int val)
 
 	i = -1;
 	while (++i < g_count)
-	{
 		g_tab[8 - i] = val + g_count - i;
-	}
 }
 
 void	next_step(int n)
@@ -67,14 +63,8 @@ void	ft_print_combn(int n)
 {
 	if (n < 1 || n > 9)
 		return ;
-	init_grid(n, n);
+	init_g(n, n);
 	print_grid(n);
 	while (g_tab[9 - n] != 10 - n)
 		next_step(n);
-}
-
-int main(void)
-{
-	ft_print_combn(3);
-	return (0);
 }
