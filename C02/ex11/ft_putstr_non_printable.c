@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 11:46:58 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/23 17:42:17 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/24 14:29:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putstr_non_printable(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] <= 31)
+		if (str[i] <= 31 || str[i] == 127)
 		{
 			ft_putchar('\\');
 			ft_putchar(hexbase[str[i] / 16]);
