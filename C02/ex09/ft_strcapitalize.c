@@ -6,13 +6,14 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/10 09:22:46 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/22 18:19:56 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/24 16:05:28 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		not_alpha_num(char str)
 {
-	if (('a' <= str && str <= 'z') || ('A' <= str && str <= 'Z') || ('0' <= str && str <= '9'))
+	if (('a' <= str && str <= 'z') || ('A' <= str && str <= 'Z')
+	|| ('0' <= str && str <= '9'))
 		return (0);
 	return (1);
 }
