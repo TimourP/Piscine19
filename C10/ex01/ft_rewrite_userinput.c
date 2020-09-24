@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rewrite_userinput.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/24 14:49:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 15:27:56 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/24 19:07:28 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void ft_rewrite_userinput()
 {
-    char buff[2048];
-    int bufflen;
+		char buff[2048];
+		int bufflen;
 
-    while ((bufflen = read(STDIN_FILENO, buff, 2048)) > 0)
-		ft_putstr(buff);
+		while ((bufflen = read(STDIN_FILENO, buff, 2048)) > 0)
+			write(1, buff, bufflen);
 }

@@ -16,7 +16,6 @@ int		ft_strlen(char *str)
 
 int main(void)
 {
-    //char memo[10000] = "Hello comment\n\n tu vas je me demade si ca fontionne je pense que ou\0iiiiiiiiiiiiiii";
-    //ft_print_memory(memo, ft_strlen(memo)+1);
-	ft_putstr_non_printable("hell\n\n\n\a\ao");
+    char memo[10000] = "Hello comment\n\n tu vas je me demade si ca fontionne je pense que ou\0iiiiiiiiiiiiiii";
+    ft_print_memory(memo, ft_strlen(memo)+1);
 }
