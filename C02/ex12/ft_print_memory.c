@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 11:27:46 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/23 17:05:14 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/24 14:23:38 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ void	ft_print_end_line(char *addr, int max, int index)
 	i = -1;
 	while (++i < 16 && (max > index + i))
 	{
-		if ((unsigned long)addr[i] < 16)
+		if ((unsigned char)addr[i] < 16)
 			ft_putstr("0", 1);
-		if ((unsigned long)addr[i] == 0)
+		if ((unsigned char)addr[i] == 0)
 			ft_putstr("0", 1);
-		int_in_hex((unsigned long)addr[i]);
+		int_in_hex((unsigned char)addr[i]);
 		if (i % 2)
 			ft_putstr(" ", 1);
 	}
