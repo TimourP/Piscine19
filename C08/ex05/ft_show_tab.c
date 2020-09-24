@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 15:04:09 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 19:06:34 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/24 19:13:04 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_putstr(char *str)
 	write(1, "\n", 1);
 }
 
-void	ft_show_tab(t_stock_str *par)
+void	ft_show_tab(struct s_stock_str *par)
 {
 	int i;
 
