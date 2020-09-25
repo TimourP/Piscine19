@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/25 08:22:34 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/25 08:47:53 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/25 08:53:22 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,17 @@ int		test_error(char *base)
 	return (0);
 }
 
-int ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
-    int i;
+	int i;
 
-    i = -1;
-    while (str[++i])
-        ;
-    return (i);
+	i = -1;
+	while (str[++i])
+		;
+	return (i);
 }
 
-int		calculate_to_add(char *base, int baselen, char c, int puiss)
+int		calc_to_add(char *base, int baselen, char c, int puiss)
 {
 	int index;
 	int i;
@@ -83,30 +83,30 @@ int		calculate_to_add(char *base, int baselen, char c, int puiss)
 	return (value * index);
 }
 
-char *ft_convert_base(char *nbr, char *base_from, char *base_to)
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-    int num;
-    int negatif;
-    int numlen;
+	int num;
+	int negatif;
+	int numlen;
 
-    negatif = 0;
+	negatif = 0;
 	num = 0;
 	numlen = 0;
-    if (test_error(base_from) || test_error(base_to))
+	if (test_error(base_from) || test_error(base_to))
 		return (0);
-    while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
+	while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
 		nbr++;
 	while (*nbr == '+' || *nbr == '-')
 	{
 		negatif = (*nbr == '-') ? !negatif : negatif;
 		nbr++;
 	}
-    while (check_inbase(base_from, nbr[++numlen]))
+	while (check_inbase(base_from, nbr[++numlen]))
 		;
-    while (check_inbase(base_from, *nbr))
+	while (check_inbase(base_from, *nbr))
 	{
-		num += calculate_to_add(base_from, ft_strlen(base_from), *nbr, --numlen);
+		num += calc_to_add(base_from, ft_strlen(base_from), *nbr, --numlen);
 		nbr++;
 	}
-    return (ft_putnbr_base(negatif ? -num : num, base_to));
+	return (ft_putnbr_base(negatif ? -num : num, base_to));
 }
