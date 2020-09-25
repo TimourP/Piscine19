@@ -6,17 +6,14 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 22:37:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 19:07:23 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/25 09:05:20 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "ft_mylib.h"
 
 void	ft_putstr(char *str)
 {
-	int i;
-
-	i = -1;
-	while (str[++i])
-		write(1, &str[i], 1);
+	write(2, str, ft_strlen(str));
 }

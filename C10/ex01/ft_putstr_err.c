@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_err.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/19 16:56:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/25 09:10:06 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/25 09:03:00 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/25 09:06:35 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "ft_mylib.h"
 
-void	ft_puterr(char *programme, char *filename, char *error)
+void	ft_putstr_err(char *str)
 {
-	ft_putstr_err(programme);
-	ft_putstr_err(": ");
-	ft_putstr_err(filename);
-	ft_putstr_err(": ");
-	ft_putstr_err(error);
-	ft_putstr_err("\n");
+	write(2, str, ft_strlen(str));
 }

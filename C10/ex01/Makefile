@@ -1,4 +1,4 @@
-SRCS = main.c ft_putstr.c ft_open_file.c ft_rewrite_userinput.c ft_strcmp.c ft_puterr.c
+SRCS = main.c ft_putstr.c ft_open_file.c ft_rewrite_userinput.c ft_strcmp.c ft_puterr.c ft_putstr_err.c ft_strlen.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror

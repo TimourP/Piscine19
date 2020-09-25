@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/20 19:37:18 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 19:07:31 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/25 09:11:18 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
             return (0);
         }
         if (ft_open_file(argv[i]) == -1)
-            ft_puterr(argv[0], argv[i]);     
+            ft_puterr(argv[0], argv[i], strerror(errno));     
     }
     return (0);
 }

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puterr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/19 16:56:56 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/25 09:10:06 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/12 22:04:16 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/24 18:59:42 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_mylib.h"
-
-void	ft_puterr(char *programme, char *filename, char *error)
+int		ft_strlen(char *str)
 {
-	ft_putstr_err(programme);
-	ft_putstr_err(": ");
-	ft_putstr_err(filename);
-	ft_putstr_err(": ");
-	ft_putstr_err(error);
-	ft_putstr_err("\n");
+	int i;
+
+	i = -1;
+	while (str[++i])
+		;
+	return (i);
 }
