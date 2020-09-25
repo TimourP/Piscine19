@@ -5,27 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/16 15:40:17 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 19:01:38 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/25 08:22:34 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/25 08:47:53 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
 char	*ft_putnbr_base(int nbr, char *base);
-
-int		test_base(char c, char *base)
-{
-	int i;
-
-	i = -1;
-	while (base[++i])
-	{
-		if (base[i] == c)
-			return (0);
-	}
-	return (1);
-}
 
 int		check_inbase(char *base, char c)
 {
@@ -38,7 +25,7 @@ int		check_inbase(char *base, char c)
 	return (0);
 }
 
-int		test_error1(char *base, int *baselen)
+int		test_error(char *base)
 {
 	int i;
 	int j;
@@ -59,12 +46,17 @@ int		test_error1(char *base, int *baselen)
 				return (1);
 		}
 	}
-	i = -1;
-	while (base[++i])
-		;
-	*baselen = 0;
-	*baselen = i;
 	return (0);
+}
+
+int ft_strlen(char *str)
+{
+    int i;
+
+    i = -1;
+    while (str[++i])
+        ;
+    return (i);
 }
 
 int		calculate_to_add(char *base, int baselen, char c, int puiss)
@@ -91,31 +83,30 @@ int		calculate_to_add(char *base, int baselen, char c, int puiss)
 	return (value * index);
 }
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char *ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int				num;
-	int				neg;
-	int				baselen;
-	int				max;
+    int num;
+    int negatif;
+    int numlen;
 
-	neg = 0;
+    negatif = 0;
 	num = 0;
-	max = 0;
-	if (test_error1(base_from, &baselen) || test_error1(base_to, &baselen))
-		return (NULL);
-	while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
+	numlen = 0;
+    if (test_error(base_from) || test_error(base_to))
+		return (0);
+    while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
 		nbr++;
 	while (*nbr == '+' || *nbr == '-')
 	{
-		neg = (*nbr == '-') ? !neg : neg;
+		negatif = (*nbr == '-') ? !negatif : negatif;
 		nbr++;
 	}
-	while (check_inbase(base_from, nbr[++max]))
+    while (check_inbase(base_from, nbr[++numlen]))
 		;
-	while (check_inbase(base_from, *nbr))
+    while (check_inbase(base_from, *nbr))
 	{
-		num += calculate_to_add(base_from, baselen, *nbr, --max);
+		num += calculate_to_add(base_from, ft_strlen(base_from), *nbr, --numlen);
 		nbr++;
 	}
-	return (ft_putnbr_base((neg ? -num : num), base_to));
+    return (ft_putnbr_base(negatif ? -num : num, base_to));
 }

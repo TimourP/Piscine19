@@ -1,25 +1,9 @@
 #include <stdio.h>
 
-char	*ft_strjoin(int size, char **strs, char *sep);
+char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 int main(void)
 {
-    char *test[100] = {"hello", "je", "mange", "tout letemps parce que c'est genial de manger"};
-    char *testt = ft_strjoin(4, test, " test ");
-    int i;
-    char c;
-
-    i = -1;
-    printf("%s\n", testt);
-    while (testt[++i])
-    {
-        if (testt[i] <= 31)
-            c = '.';
-        else
-            c = testt[i];
-        printf("%i :\tasci : %i\tchar : %c\n", i, testt[i], c);
-    }
-        
-    printf("%i :\tascii : %i\tchar : %c\n", i, testt[i], testt[i]);
+    printf("%s", ft_convert_base("158", "0123456789", "01"));
     return 0;
 }

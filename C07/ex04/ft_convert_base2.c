@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/16 15:48:19 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 19:01:39 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/25 08:40:34 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/25 08:47:57 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
 
 void	ft_baselen(char *base, int *count)

@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/21 17:24:12 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/24 19:08:25 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/24 22:15:54 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list 	*ft_create_elem(void *data)
 
 	if (!(new = malloc(sizeof(t_list))))
 		return (NULL);
-	new -> data = data;
-	new -> next = NULL;
+	new->data = data;
+	new->next = NULL;
 	return (new);
 }
