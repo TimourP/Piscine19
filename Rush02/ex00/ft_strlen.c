@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 04:25:06 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/12 22:04:16 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/24 18:59:42 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int			ft_atoi(char *str)
+int		ft_strlen(char *str)
 {
-	int	num;
-	int	neg;
+	int i;
 
-	neg = 1;
-	num = 0;
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	while (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = 10 * num + (*str - '0');
-		str++;
-	}
-	return (num * neg);
+	i = -1;
+	while (str[++i])
+		;
+	return (i);
 }

@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lib.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 04:25:06 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/26 04:17:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FT_LIB_H
+# define FT_LIB_H
+
 #include <stdio.h>
 
-int			ft_atoi(char *str)
-{
-	int	num;
-	int	neg;
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_atoi(char *str);
+void    write_numbers(char *file_name, char *number);
 
-	neg = 1;
-	num = 0;
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	while (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = 10 * num + (*str - '0');
-		str++;
-	}
-	return (num * neg);
-}
+#endif

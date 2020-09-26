@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 04:25:06 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/26 03:49:47 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/26 04:18:08 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "ft_lib.h"
 
-int			ft_atoi(char *str)
+int main(int argc, char **argv)
 {
-	int	num;
-	int	neg;
-
-	neg = 1;
-	num = 0;
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	while (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			neg *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = 10 * num + (*str - '0');
-		str++;
-	}
-	return (num * neg);
+    if (argc == 2)
+        write_numbers("dictionnaire.txt", argv[1]);
+    else if (argc == 3)
+        write_numbers(argv[1], argv[2]);
+    else
+        ft_putstr("The number of arguments is not valid\n");
+    return (0);
 }
