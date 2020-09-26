@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 15:43:57 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 17:21:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		count_lines(char *file_name);
 void	write_numbers(char *file_name, char *number)
 {
 	const int init_value = init_dict(file_name);
-
 	if (!init_value)
 	{
 		ft_putstr("Dict Error\n");
@@ -43,6 +42,7 @@ void	write_numbers(char *file_name, char *number)
 		write(1, find_in_dict(g_dict, "0"), ft_strlen(find_in_dict(g_dict, "0")));
 	else
 		print_result(g_dict, number);
+	write(1, "\n", 1);
 }
 
 int		init_dict(char *file_name)
@@ -116,12 +116,12 @@ void	add_word(char *buffer, int i, int count, int tot_word)
 		num[j] = buffer[i - count + j];
 	num[j] = 0;
 	j--;
-	while (buffer[i - count + ++j] == ' ')
+	while (is_space(buffer[i - count + ++j]))
 		;
 	if (buffer[i - count + j] == ':')
 		j++;
 	j--;
-	while (buffer[i - count + ++j] == ' ')
+	while (is_space(buffer[i - count + ++j]))
 		;
 	wordindex = 0;
 	currword = malloc(sizeof(char) * (count - j + 1));

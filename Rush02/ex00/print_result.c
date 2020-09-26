@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:22:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 16:15:13 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 17:20:49 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void print_result(t_num **dict, char *nbr)
         if ((nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
             write_suffix(count - i - 2, dict, i, nbr);
         i += 3;
-    } 
+    }
 }
 
 void print_units(char c, char d, char u, t_num **dict)
@@ -55,9 +55,9 @@ void print_units(char c, char d, char u, t_num **dict)
 
     if (c != '0')
     {
-        ft_putstr(find_char_in_dict(dict, c));
+        ft_puttextnumber(find_char_in_dict(dict, c));
         ft_putstr(" ");
-        ft_putstr(find_in_dict(dict, "100"));
+        ft_puttextnumber(find_in_dict(dict, "100"));
     }
     if ((d != '0' || u != '0') && c != '0')
         ft_putstr(" ");
@@ -66,19 +66,19 @@ void print_units(char c, char d, char u, t_num **dict)
         if (d < '1')
         {
             if (u != '0')
-                ft_putstr(find_char_in_dict(dict, u));
+                ft_puttextnumber(find_char_in_dict(dict, u));
         }
         else
-            ft_putstr(find_in_dict(dict, arr));
+            ft_puttextnumber(find_in_dict(dict, arr));
     }
     else
     {
         arr[1] = '0';
-        ft_putstr(find_in_dict(dict, arr));
+        ft_puttextnumber(find_in_dict(dict, arr));
         if (u != '0')
         {
             ft_putstr(" ");
-            ft_putstr(find_char_in_dict(dict, u));
+            ft_puttextnumber(find_char_in_dict(dict, u));
         }   
     }
 }
