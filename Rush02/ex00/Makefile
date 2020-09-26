@@ -9,16 +9,16 @@ all : ${PROG}
 allup : all clean
 
 ${PROG} : ${OBJS}
-	${CC} ${FLAGS} $^ -o $@
+	@${CC} ${FLAGS} $^ -o $@
 
 .c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 clean:
-	rm -f ${OBJS}
+	@rm -f ${OBJS}
 
 fclean : clean
-	rm -f ${PROG}
+	@rm -f ${PROG}
 
 re : fclean all
 
