@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 12:53:34 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 15:12:35 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int				ft_strcmp(char *s1, char *s2);
 void			write_numbers(char *file_name, char *number);
 int				check_num(char *str);
 void			print_result(t_num **dict, char *nbr);
+char			*find_in_dict(t_num **dict, char *str);
+void			write_suffix(unsigned int count, t_num **dict);
 
 #endif

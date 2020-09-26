@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_result2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/26 03:49:47 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 14:30:12 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/26 15:05:40 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/26 15:19:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-int	main(int argc, char **argv)
+void write_suffix(unsigned int count, t_num **dict)
 {
-	if (argc == 2)
-		write_numbers("numbers.dict", argv[1]);
-	else if (argc == 3)
-		write_numbers(argv[1], argv[2]);
-	else
-		ft_putstr("The number of arguments is not valid\n");
-	return (0);
+    char *suff;
+    unsigned int i;
+
+    i = -1;
+    if (count == 1)
+        return ;
+    if (!(suff = malloc(sizeof(char) * (count + 1))))
+        return ;
+    while (++i < count)
+        suff[i] = '0';
+    suff[0] = '1';
+    suff[count] = 0;
+    write(1, find_in_dict(dict, suff), ft_strlen(find_in_dict(dict, suff)));
+    free(suff);
 }
