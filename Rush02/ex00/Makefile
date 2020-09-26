@@ -1,4 +1,4 @@
-SRCS = main.c ft_putstr.c ft_strlen.c ft_atoi.c write_number.c
+SRCS = main.c ft_putstr.c ft_strlen.c ft_atoi.c write_number.c write_functions.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
