@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 17:21:50 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 18:22:30 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ void	write_numbers(char *file_name, char *number)
 	const int init_value = init_dict(file_name);
 	if (!init_value)
 	{
-		ft_putstr("Dict Error\n");
+		ft_putstr("Dict Error");
 		return ;
 	}
 	else if (init_value == -1)
 	{
-		ft_putstr("Malloc Error\n");
+		ft_putstr("Malloc Error");
 		return ;
 	}
 	if (!check_num(number))
 	{
-		ft_putstr("Error\n");
+		ft_putstr("Error");
 		return ;
 	}
 	while (*number == '0')
@@ -41,8 +41,14 @@ void	write_numbers(char *file_name, char *number)
 	if (!*number)
 		write(1, find_in_dict(g_dict, "0"), ft_strlen(find_in_dict(g_dict, "0")));
 	else
-		print_result(g_dict, number);
+	{
+		if (check_result(g_dict, number))
+			print_result(g_dict, number);
+		else
+			ft_putstr("Error");
+	}
 	write(1, "\n", 1);
+	free_all(g_dict);
 }
 
 int		init_dict(char *file_name)
@@ -74,6 +80,7 @@ int		fill_dict(char *buffer, int length)
 
 	i = -1;
 	tot_word = 0;
+	inword = 0;
 	word_count = 0;
 	while (++i < length)
 	{
