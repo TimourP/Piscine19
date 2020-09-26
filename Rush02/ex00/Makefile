@@ -1,4 +1,4 @@
-SRCS = main.c ft_putstr.c ft_strlen.c ft_atoi.c write_number.c write_functions.c
+SRCS = main.c ft_putstr.c ft_strlen.c write_number.c check_num.c ft_strcmp.c print_result.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -22,4 +22,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all clean fclean re allup

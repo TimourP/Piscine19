@@ -6,36 +6,38 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 06:53:45 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 12:36:49 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-t_num **g_dict;
+t_num	**g_dict;
 int		init_dict(char *file_name);
 int		fill_dict(char *buffer, int length);
 void	add_word(char *buffer, int index, int count, int tot_word);
+int		count_lines(char *file_name);
 
 void	write_numbers(char *file_name, char *number)
 {
-	int nbr;
+	const int init_value = init_dict(file_name);
 
-	nbr = ft_atoi(number);
-	if (!(init_dict(file_name)))
+	if (!init_value)
 	{
 		ft_putstr("Dict Error\n");
 		return ;
 	}
-	if (nbr < 0)
+	else if (init_value == -1)
 	{
-		ft_putstr("error\n");
+		ft_putstr("Malloc Error\n");
 		return ;
 	}
-	write_billions(nbr / 1000000000, g_dict, nbr);
-	write_millions((nbr % 1000000000) / 1000000, g_dict, nbr);
-	write_thousands((nbr % 1000000) / 1000, g_dict, nbr);
-	write_units(nbr % 1000, g_dict, nbr);
+	if (!check_num(number))
+	{
+		ft_putstr("Error\n");
+		return ;
+	}
+	print_result(g_dict, number);
 }
 
 int		init_dict(char *file_name)
@@ -43,15 +45,17 @@ int		init_dict(char *file_name)
 	char	buff[16384];
 	int		filedesc;
 	int		bufflen;
+	int		num_of_lines;
 
-	g_dict = malloc(sizeof(t_num) * 42);
-	g_dict[42] = 0;
+	num_of_lines = count_lines(file_name);
+	if (!(g_dict = malloc(sizeof(t_num *) * (num_of_lines + 1))))
+		return (-1);
+	g_dict[num_of_lines] = 0;
 	if ((filedesc = open(file_name, O_RDONLY)) == -1)
 		return (0);
 	while ((bufflen = read(filedesc, buff, 16384)) > 0)
 		fill_dict(buff, bufflen);
-	close(filedesc);
-	if (bufflen)
+	if (close(filedesc)|| bufflen)
 		return (0);
 	return (1);
 }
@@ -89,7 +93,7 @@ int		fill_dict(char *buffer, int length)
 
 void	add_word(char *buffer, int i, int count, int tot_word)
 {
-	long	num;
+	char	*num;
 	int		j;
 	int		wordindex;
 	char	*currword;
@@ -99,7 +103,13 @@ void	add_word(char *buffer, int i, int count, int tot_word)
 	num = 0;
 	new = malloc(sizeof(t_num));
 	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
-		num = 10 * num + (buffer[i - count + j] - '0');
+		;
+	if (!(num = malloc(sizeof(char) * (j + 1))))
+		return ;
+	j = -1;
+	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
+		num[j] = buffer[i - count + j];
+	num[j] = 0;
 	j--;
 	while (buffer[i - count + ++j] == ' ')
 		;
@@ -117,4 +127,22 @@ void	add_word(char *buffer, int i, int count, int tot_word)
 	new->nbr = num;
 	new->text_nbr = currword;
 	g_dict[tot_word] = new;
+}
+
+int count_lines(char *file_name)
+{
+	char	buff;
+	int		filedesc;
+	int		bufflen;
+	int		count;
+
+	count = 0;
+	if ((filedesc = open(file_name, O_RDONLY)) == -1)
+		return (-1);
+	while ((bufflen = read(filedesc, &buff, 1)) > 0)
+		if (buff == '\n')
+			count++;
+	if (close(filedesc) == -1 || bufflen)
+		return (-1);
+	return (count);
 }

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 22:04:16 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 12:24:41 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/10 19:23:28 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/26 12:53:18 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	ft_strlen(char *str)
+int		ft_strcmp(char *s1, char *s2)
 {
-	unsigned int i;
-
-	i = -1;
-	while (str[++i])
-		;
-	return (i);
+	while (*s1 && *s1 == *s2)
+	{
+		s1++;
+		s2++;
+	}
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }

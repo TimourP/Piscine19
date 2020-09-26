@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   check_num.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 04:23:17 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/26 11:41:09 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/26 12:07:04 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_lib.h"
-
-int			ft_atoi(char *str)
+int check_num(char *str)
 {
-	int	num;
-	int i;
+    int i;
 
-	num = 0;
-	i = -1;
-	while (str[++i])
-		if (!(str[i] >= '0' && str[i] <= '9'))
-			return (-1);
-	while (*str >= '0' && *str <= '9')
-	{
-		num = 10 * num + (*str - '0');
-		str++;
-	}
-	return (num);
+    i = -1;
+    while (str[++i])
+        if (!(str[i] >= '0' && str[i] <= '9'))
+            return (0);
+    return (1);
 }
