@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:32:57 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 06:50:43 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 07:01:19 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ void	write_units(int nbr, t_num **dict, int totnum)
 {
 	if (nbr / 100)
 	{
-		ft_putstr(" ");
 		ft_putstr(find_name(dict, nbr / 100));
 		ft_putstr(" hundred");
 	}
 	if (nbr % 100 < 20 && nbr && nbr != 100)
 	{
+		if (totnum > 100)
+			ft_putstr(" ");
 		ft_putstr(find_name(dict, nbr % 100));
 	}
 	else if (nbr && nbr != 100)
