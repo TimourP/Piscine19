@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:22:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 15:31:01 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 15:37:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void print_result(t_num **dict, char *nbr)
         print_units('0', nbr[i], nbr[i + 1], dict);
         i += 2;
     }
-    if (i != 0 && (nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
+    if (i != 0)
     {
         write(1, " ", 1);
         write_suffix(count - i + 1, dict);
