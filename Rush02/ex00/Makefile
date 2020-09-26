@@ -12,7 +12,7 @@ ${PROG} : ${OBJS}
 	${CC} ${FLAGS} $^ -o $@
 
 .c.o:
-	${CC}  -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 clean:
 	rm -f ${OBJS}
