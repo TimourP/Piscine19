@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 18:22:30 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 18:40:56 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int		count_lines(char *file_name);
 void	write_numbers(char *file_name, char *number)
 {
 	const int init_value = init_dict(file_name);
+	int test;
+
+	test = 0;
 	if (!init_value)
 	{
 		ft_putstr("Dict Error");
@@ -42,10 +45,13 @@ void	write_numbers(char *file_name, char *number)
 		write(1, find_in_dict(g_dict, "0"), ft_strlen(find_in_dict(g_dict, "0")));
 	else
 	{
-		if (check_result(g_dict, number))
+		test = check_result(g_dict, number);
+		if (test > 0)
 			print_result(g_dict, number);
-		else
+		else if (test == 0)
 			ft_putstr("Error");
+		else
+			ft_putstr("Dict Error");
 	}
 	write(1, "\n", 1);
 	free_all(g_dict);

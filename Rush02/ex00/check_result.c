@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:43:10 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 18:14:26 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 18:41:32 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	check_units(char c, char d, char u, t_num **dict);
 int		check_char_in_dict(t_num **dict, char c);
+int check_non_printable(t_num **dict);
 
 int		check_result(t_num **dict, char *nbr)
 {
@@ -22,6 +23,8 @@ int		check_result(t_num **dict, char *nbr)
 	int mainval;
 
 	mainval = 1;
+	if (!check_non_printable(dict))
+		return (-1);
 	count = ft_strlen(nbr);
 	i = 0;
 	if (count % 3 == 1)
@@ -106,4 +109,20 @@ int check_in_dict(t_num **dict, char *str)
 			return (1);
 	}
 	return (0);
+}
+
+int check_non_printable(t_num **dict)
+{
+	int i;
+	int j;
+
+	i = -1;
+	while (dict[++i])
+	{
+		j = -1;
+		while (dict[i]->text_nbr[++j])
+			if (dict[i]->text_nbr[j] <= 31 && !is_space(dict[i]->text_nbr[j]))
+				return (0);
+	}
+	return (1);
 }
