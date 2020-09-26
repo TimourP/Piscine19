@@ -6,13 +6,13 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:05:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 16:03:17 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 16:14:37 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-void write_suffix(unsigned int count, t_num **dict)
+void write_suffix(unsigned int count, t_num **dict, int index, char *num)
 {
     char *suff;
     unsigned int i;
@@ -27,6 +27,19 @@ void write_suffix(unsigned int count, t_num **dict)
     suff[0] = '1';
     suff[count] = 0;
     write(1, find_in_dict(dict, suff), ft_strlen(find_in_dict(dict, suff)));
-    write(1, " ", 1);
+    if (test_if_end(index, num))
+        write(1, " ", 1);
     free(suff);
+}
+
+int test_if_end(int index, char *num)
+{
+    unsigned int i;
+
+    i = (unsigned int)index + 1;
+    while (num[++i])
+        if (num[i] != '0')
+            return (1);
+    
+    return (0);
 }
