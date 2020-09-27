@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 18:07:28 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 20:15:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int				is_space(char c);
 void			ft_puttextnumber(char *str);
 void			free_all(t_num **dict);
 int				check_in_dict(t_num **dict, char *str);
-int 			check_suffix(unsigned int count, t_num **dict, int index, char *num);
+int 			check_suffix(unsigned int count, t_num **dict);
 int				check_result(t_num **dict, char *nbr);
 
 #endif

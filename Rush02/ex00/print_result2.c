@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:05:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 17:21:33 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 20:45:07 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,5 @@ int test_if_end(int index, char *num)
     while (num[++i])
         if (num[i] != '0')
             return (1);
-    
     return (0);
 }

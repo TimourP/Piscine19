@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:43:10 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 18:41:32 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 20:15:38 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int		check_result(t_num **dict, char *nbr)
 	if (i != 0)
 	{
 		if (count > 3)
-		mainval *= check_suffix(count - i + 1, dict, i, nbr);
+		mainval *= check_suffix(count - i + 1, dict);
 	}
 	while (i < count)
 	{
 		mainval *= check_units(nbr[i], nbr[i + 1], nbr[i + 2], dict);
 		if ((nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
-			mainval *= check_suffix(count - i - 2, dict, i, nbr);
+			mainval *= check_suffix(count - i - 2, dict);
 		i += 3;
 	}
 	return (mainval);

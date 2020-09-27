@@ -6,13 +6,13 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:56:02 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 18:13:28 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/26 20:15:24 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-int  check_suffix(unsigned int count, t_num **dict, int index, char *num)
+int  check_suffix(unsigned int count, t_num **dict)
 {
     char *suff;
     unsigned int i;
@@ -29,8 +29,6 @@ int  check_suffix(unsigned int count, t_num **dict, int index, char *num)
     suff[0] = '1';
     suff[count] = 0;
     value *= check_in_dict(dict, suff);
-    if (test_if_end(index, num))
-        write(1, " ", 1);
     free(suff);
     return (value);
 }
