@@ -6,22 +6,18 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 09:32:11 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:20:13 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
 t_num	**g_dict;
-int		init_dict(char *file_name);
-int		fill_dict(char *buffer, int length);
-int	add_word(char *buffer, int index, int count, int tot_word);
-int		count_lines(char *file_name);
 
 void	write_numbers(char *file_name, char *number)
 {
-	const int init_value = init_dict(file_name);
-	int test;
+	const int	init_value = init_dict(file_name);
+	int			test;
 
 	test = 0;
 	if (!init_value)
@@ -73,7 +69,7 @@ int		init_dict(char *file_name)
 	while ((bufflen = read(filedesc, buff, 16384)) > 0)
 		if (!fill_dict(buff, bufflen))
 			return (-1);
-	if (close(filedesc)|| bufflen)
+	if (close(filedesc) || bufflen)
 		return (0);
 	return (1);
 }
@@ -108,7 +104,7 @@ int		fill_dict(char *buffer, int length)
 	return (1);
 }
 
-int	add_word(char *buffer, int i, int count, int tot_word)
+int		add_word(char *buffer, int i, int count, int tot_word)
 {
 	char	*num;
 	int		j;
@@ -123,7 +119,7 @@ int	add_word(char *buffer, int i, int count, int tot_word)
 	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
 		;
 	if (!(num = malloc(sizeof(char) * (j + 1))))
-		return 0;
+		return (0);
 	j = -1;
 	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
 		num[j] = buffer[i - count + j];
@@ -151,7 +147,7 @@ int	add_word(char *buffer, int i, int count, int tot_word)
 	return (1);
 }
 
-int count_lines(char *file_name)
+int		count_lines(char *file_name)
 {
 	char	buff;
 	int		filedesc;

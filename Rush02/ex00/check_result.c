@@ -6,15 +6,11 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:43:10 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:04:04 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:16:42 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
-
-int		check_units(char c, char d, char u, t_num **dict);
-int		check_non_printable(t_num **dict);
-int		check_units2(t_num **dict, char *arr);
 
 int		pass_non_mod(t_num **dict, char *nbr, unsigned int *index, int count)
 {

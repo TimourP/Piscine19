@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:07:11 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:17:51 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,14 @@ int				check_in_dict(t_num **dict, char *str);
 int				check_suffix(unsigned int count, t_num **dict);
 int				check_result(t_num **dict, char *nbr);
 int				check_char_in_dict(t_num **dict, char c);
+int				init_dict(char *file_name);
+int				fill_dict(char *buffer, int length);
+int				add_word(char *buffer, int index, int count, int tot_word);
+int				count_lines(char *file_name);
+int				check_units(char c, char d, char u, t_num **dict);
+int				check_non_printable(t_num **dict);
+int				check_units2(t_num **dict, char *arr);
+void			print_units(char c, char d, char u, t_num **dict);
+char			*find_char_in_dict(t_num **dict, char c);
 
 #endif
