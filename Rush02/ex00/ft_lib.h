@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 14:21:54 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 18:17:12 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int				check_units2(t_num **dict, char *arr);
 void			print_units(char c, char d, char u, t_num **dict);
 char			*find_char_in_dict(t_num **dict, char c);
 void			pass_not_mod_print(t_num **dict, char *nbr,
-				unsigned int *i, int count);
+				unsigned int *i, unsigned int count);
 void			print_units2(t_num **dict, char *arr, char u);
 int				check_init_and_num(int init_value, char *number, t_num **dict);
 char			*setnum(char *buffer, int i, int *j, int count);

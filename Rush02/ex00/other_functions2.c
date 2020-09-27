@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 10:44:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 14:24:21 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 18:32:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,25 @@ int		pass_spaces(char *buffer, int i, int *j, int count)
 char	*setnum(char *buffer, int i, int *j, int count)
 {
 	char *num;
+	int toobig;
 
+	toobig = 0;
+	while (is_space(buffer[i - count + *j]) && ++toobig)
+		*j = *j + 1;
 	while (buffer[i - count + *j] >= '0' && buffer[i - count + *j] <= '9')
 		*j = *j + 1;
-	if (!(num = malloc(sizeof(char) * (*j + 1))))
+	if (!(num = malloc(sizeof(char) * (*j + 1 - toobig))))
 		return (NULL);
 	*j = 0;
+	toobig = 0;
+	while (is_space(buffer[i - count + *j]) && ++toobig)
+		*j = *j + 1;
 	while (buffer[i - count + *j] >= '0' && buffer[i - count + *j] <= '9')
 	{
-		num[*j] = buffer[i - count + *j];
+		num[*j - toobig] = buffer[i - count + *j];
 		*j = *j + 1;
 	}
-	num[*j] = 0;
+	num[*j - toobig] = 0;
 	return (num);
 }
 
