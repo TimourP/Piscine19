@@ -3,25 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: timour <timour@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 16:21:46 by timour            #+#    #+#             */
-/*   Updated: 2020/09/27 16:30:39 by timour           ###   ########.fr       */
+/*   Updated: 2020/09/27 20:14:59 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		check_in_base(char c, char *base)
-{
-	int i;
-
-	i = -1;
-	while (base[++i])
-		if (c == base[i])
-			return (i);
-	return (-1);
-}
+int		ft_atoi_base(char *str, char *base, int size);
 
 int		ft_checkbase(char *base)
 {
@@ -50,29 +41,11 @@ int		ft_checkbase(char *base)
 	return (i);
 }
 
-int		ft_atoi_base(char *str, char *base, int size)
-{
-	int i;
-	int n;
-	int neg;
-
-	neg = 1;
-	while ((*str >= 9 && *str <= 13) || *str == ' ')
-		str++;
-	while (*str == '-' || *str == '+')
-		if (*str++ == '-')
-			neg = !neg;
-	n = 0;
-	while ((i = check_in_base(*str++, base)) >= 0)
-		n = n * size + i;
-	return (neg ? -n : n);
-}
-
 int		next_nbr_len(unsigned int n, unsigned int base_size)
 {
 	if (n < base_size)
 		return (1);
-	return (1 + ft_nbrlen(n / base_size, base_size));
+	return (1 + next_nbr_len(n / base_size, base_size));
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
