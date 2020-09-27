@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:22:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:34:04 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 11:27:27 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	pass_not_mod_print(t_num **dict, char *nbr, unsigned int *i, int count)
 		print_units('0', nbr[*i], nbr[*i + 1], dict);
 		*i = *i + 2;
 	}
-	if (i != 0)
+	if (i != 0 && count % 3)
 	{
 		if (count > 3)
 			write(1, " ", 1);
