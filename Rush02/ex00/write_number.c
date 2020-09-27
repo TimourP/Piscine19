@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 18:40:56 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 09:29:18 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_num	**g_dict;
 int		init_dict(char *file_name);
 int		fill_dict(char *buffer, int length);
-void	add_word(char *buffer, int index, int count, int tot_word);
+int	add_word(char *buffer, int index, int count, int tot_word);
 int		count_lines(char *file_name);
 
 void	write_numbers(char *file_name, char *number)
@@ -71,7 +71,8 @@ int		init_dict(char *file_name)
 	if ((filedesc = open(file_name, O_RDONLY)) == -1)
 		return (0);
 	while ((bufflen = read(filedesc, buff, 16384)) > 0)
-		fill_dict(buff, bufflen);
+		if (!fill_dict(buff, bufflen))
+			return (-1);
 	if (close(filedesc)|| bufflen)
 		return (0);
 	return (1);
@@ -104,12 +105,10 @@ int		fill_dict(char *buffer, int length)
 			tot_word++;
 		}
 	}
-	if (inword)
-		add_word(buffer, i, word_count, tot_word);
 	return (1);
 }
 
-void	add_word(char *buffer, int i, int count, int tot_word)
+int	add_word(char *buffer, int i, int count, int tot_word)
 {
 	char	*num;
 	int		j;
@@ -119,11 +118,12 @@ void	add_word(char *buffer, int i, int count, int tot_word)
 
 	j = -1;
 	num = 0;
-	new = malloc(sizeof(t_num));
+	if (!(new = malloc(sizeof(t_num))))
+		return (0);
 	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
 		;
 	if (!(num = malloc(sizeof(char) * (j + 1))))
-		return ;
+		return 0;
 	j = -1;
 	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
 		num[j] = buffer[i - count + j];
@@ -137,7 +137,8 @@ void	add_word(char *buffer, int i, int count, int tot_word)
 	while (is_space(buffer[i - count + ++j]))
 		;
 	wordindex = 0;
-	currword = malloc(sizeof(char) * (count - j + 1));
+	if (!(currword = malloc(sizeof(char) * (count - j + 1))))
+		return (0);
 	j--;
 	while (++j < count && ++wordindex)
 		currword[wordindex - 1] = buffer[i - count + j];
@@ -145,6 +146,7 @@ void	add_word(char *buffer, int i, int count, int tot_word)
 	new->nbr = num;
 	new->text_nbr = currword;
 	g_dict[tot_word] = new;
+	return (1);
 }
 
 int count_lines(char *file_name)
