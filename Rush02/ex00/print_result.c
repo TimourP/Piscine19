@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:22:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 11:27:27 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 11:37:01 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	print_result(t_num **dict, char *nbr)
 	while (i < count)
 	{
 		print_units(nbr[i], nbr[i + 1], nbr[i + 2], dict);
-		if (i != count - 3 && test_if_end(i, nbr))
+		if (i != count - 3 && test_if_end(i, nbr) &&
+		(nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
 			write(1, " ", 1);
 		if ((nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
 			write_suffix(count - i - 2, dict, i, nbr);
@@ -66,7 +67,7 @@ void	print_units(char c, char d, char u, t_num **dict)
 	}
 	if ((d != '0' || u != '0') && c != '0')
 		ft_putstr(" ");
-	print_units2(dict, arr);
+	print_units2(dict, arr, u);
 }
 
 char	*find_char_in_dict(t_num **dict, char c)
