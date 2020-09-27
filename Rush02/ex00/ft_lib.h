@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:32:09 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 11:19:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@ typedef struct	s_num
 	char *nbr;
 	char *text_nbr;
 }				t_num;
+
+typedef struct	s_lines
+{
+	char	*num;
+	int		j;
+	int		wordindex;
+	char	*currword;
+	t_num	*new;
+}				t_lines;
 
 void			ft_putstr(char *str);
 unsigned int	ft_strlen(char *str);
@@ -52,5 +61,9 @@ char			*find_char_in_dict(t_num **dict, char c);
 void			pass_not_mod_print(t_num **dict, char *nbr,
 				unsigned int *i, int count);
 void			print_units2(t_num **dict, char *arr);
+int				check_init_and_num(int init_value, char *number);
+char			*setnum(char *buffer, int i, int *j, int count);
+int				pass_spaces(char *buffer, int i, int *j, int count);
+int				free_bulk(t_lines *bulk, int param);
 
 #endif

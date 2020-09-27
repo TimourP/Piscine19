@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:20:13 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 11:20:05 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,34 +20,20 @@ void	write_numbers(char *file_name, char *number)
 	int			test;
 
 	test = 0;
-	if (!init_value)
-	{
-		ft_putstr("Dict Error");
+	if (!check_init_and_num(init_value, number))
 		return ;
-	}
-	else if (init_value == -1)
-	{
-		ft_putstr("Malloc Error");
-		return ;
-	}
-	if (!check_num(number))
-	{
-		ft_putstr("Error");
-		return ;
-	}
 	while (*number == '0')
 		number++;
 	if (!*number)
-		write(1, find_in_dict(g_dict, "0"), ft_strlen(find_in_dict(g_dict, "0")));
+		write(1, find_in_dict(g_dict, "0"),
+		ft_strlen(find_in_dict(g_dict, "0")));
 	else
 	{
 		test = check_result(g_dict, number);
 		if (test > 0)
 			print_result(g_dict, number);
-		else if (test == 0)
-			ft_putstr("Error");
 		else
-			ft_putstr("Dict Error");
+			test == 0 ? ft_putstr("Error") : ft_putstr("Dict Error");
 	}
 	write(1, "\n", 1);
 	free_all(g_dict);
@@ -89,8 +75,7 @@ int		fill_dict(char *buffer, int length)
 	{
 		if (buffer[i] != '\n')
 		{
-			if (!inword)
-				inword = 1;
+			inword = 1;
 			word_count++;
 		}
 		else if (inword)
@@ -106,44 +91,26 @@ int		fill_dict(char *buffer, int length)
 
 int		add_word(char *buffer, int i, int count, int tot_word)
 {
-	char	*num;
-	int		j;
-	int		wordindex;
-	char	*currword;
-	t_num	*new;
+	t_lines bulk;
 
-	j = -1;
-	num = 0;
-	if (!(new = malloc(sizeof(t_num))))
+	bulk.j = 0;
+	bulk.num = 0;
+	if (!(bulk.new = malloc(sizeof(t_num))))
 		return (0);
-	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
-		;
-	if (!(num = malloc(sizeof(char) * (j + 1))))
+	if (!(bulk.num = setnum(buffer, i, &(bulk.j), count)))
+		return (free_bulk(&bulk, 0));
+	if (!pass_spaces(buffer, i, &(bulk.j), count))
 		return (0);
-	j = -1;
-	while (buffer[i - count + ++j] >= '0' && buffer[i - count + j] <= '9')
-		num[j] = buffer[i - count + j];
-	num[j] = 0;
-	j--;
-	while (is_space(buffer[i - count + ++j]))
-		;
-	if (buffer[i - count + j] == ':')
-		j++;
-	else
-		return (0);
-	j--;
-	while (is_space(buffer[i - count + ++j]))
-		;
-	wordindex = 0;
-	if (!(currword = malloc(sizeof(char) * (count - j + 1))))
-		return (0);
-	j--;
-	while (++j < count && ++wordindex)
-		currword[wordindex - 1] = buffer[i - count + j];
-	currword[wordindex] = 0;
-	new->nbr = num;
-	new->text_nbr = currword;
-	g_dict[tot_word] = new;
+	bulk.wordindex = 0;
+	if (!(bulk.currword = malloc(sizeof(char) * (count - bulk.j + 1))))
+		return (free_bulk(&bulk, 1));
+	bulk.j--;
+	while (++bulk.j < count && ++(bulk.wordindex))
+		bulk.currword[bulk.wordindex - 1] = buffer[i - count + bulk.j];
+	bulk.currword[bulk.wordindex] = 0;
+	bulk.new->nbr = bulk.num;
+	bulk.new->text_nbr = bulk.currword;
+	g_dict[tot_word] = bulk.new;
 	return (1);
 }
 
