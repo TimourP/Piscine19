@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 15:05:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:09:34 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 18:05:01 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	write_suffix(unsigned int count, t_num **dict, int index, char *num)
 	char			*suff;
 	unsigned int	i;
 
+	(void)num;
+	(void)index;
 	i = -1;
 	if (count == 1)
 		return ;
@@ -27,8 +29,6 @@ void	write_suffix(unsigned int count, t_num **dict, int index, char *num)
 	suff[0] = '1';
 	suff[count] = 0;
 	ft_puttextnumber(find_in_dict(dict, suff));
-	if (test_if_end(index, num))
-		write(1, " ", 1);
 	free(suff);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:22:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 11:37:01 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 18:08:26 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,14 @@ void	print_result(t_num **dict, char *nbr)
 	while (i < count)
 	{
 		print_units(nbr[i], nbr[i + 1], nbr[i + 2], dict);
-		if (i != count - 3 && test_if_end(i, nbr) &&
-		(nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
-			write(1, " ", 1);
 		if ((nbr[i] != '0' || nbr[i + 1] != '0' || nbr[i + 2] != '0'))
+		{
+			if (i != count - 3)
+				write(1, " ", 1);
 			write_suffix(count - i - 2, dict, i, nbr);
+			if (i + 3 < count && test_if_end(i + 3, nbr))
+				write(1, " ", 1);
+		}
 		i += 3;
 	}
 }
@@ -44,11 +47,13 @@ void	pass_not_mod_print(t_num **dict, char *nbr, unsigned int *i, int count)
 		print_units('0', nbr[*i], nbr[*i + 1], dict);
 		*i = *i + 2;
 	}
-	if (i != 0 && count % 3)
+	if (*i != 0 && count % 3)
 	{
 		if (count > 3)
 			write(1, " ", 1);
 		write_suffix(count - *i + 1, dict, *i, nbr);
+		if (test_if_end(*i, nbr))
+			write(1, " ", 1);
 	}
 }
 

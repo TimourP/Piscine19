@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 17:43:10 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:16:42 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 18:09:51 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		pass_non_mod(t_num **dict, char *nbr, unsigned int *index, int count)
 		mainvalue *= check_units('0', nbr[*index], nbr[*index + 1], dict);
 		*index = *index + 2;
 	}
-	if (index != 0)
+	if (*index != 0)
 	{
 		if (count > 3)
 			mainvalue *= check_suffix(count - *index + 1, dict);
