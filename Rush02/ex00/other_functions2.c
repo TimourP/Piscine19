@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 10:44:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 13:42:41 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 13:45:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		check_init_and_num(int init_value, char *number, t_num **dict)
 		return (0);
 	}
 	if (init_value == -1 || init_value == 0)
-			free_all(dict);
+		free_all(dict);
 	if (!check_num(number))
 	{
 		ft_putstr("Error");
