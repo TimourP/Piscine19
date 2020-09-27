@@ -3,29 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
+/*   By: timour <timour@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/25 08:22:34 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/25 08:53:22 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/27 16:21:46 by timour            #+#    #+#             */
+/*   Updated: 2020/09/27 16:30:39 by timour           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_putnbr_base(int nbr, char *base);
-
-int		check_inbase(char *base, char c)
+int		check_in_base(char c, char *base)
 {
 	int i;
 
 	i = -1;
 	while (base[++i])
-		if (base[i] == c)
-			return (1);
-	return (0);
+		if (c == base[i])
+			return (i);
+	return (-1);
 }
 
-int		test_error(char *base)
+int		ft_checkbase(char *base)
 {
 	int i;
 	int j;
@@ -33,9 +31,9 @@ int		test_error(char *base)
 	i = -1;
 	while (base[++i])
 		if (base[i] == '-' || base[i] == '+')
-			return (1);
+			return (0);
 	if (i <= 1)
-		return (1);
+		return (0);
 	i = -1;
 	while (base[++i])
 	{
@@ -43,70 +41,64 @@ int		test_error(char *base)
 		while (base[j++])
 		{
 			if (base[j] == base[i] && i != j)
-				return (1);
+				return (0);
 		}
 	}
-	return (0);
-}
-
-int		ft_strlen(char *str)
-{
-	int i;
-
 	i = -1;
-	while (str[++i])
+	while (base[++i])
 		;
 	return (i);
 }
 
-int		calc_to_add(char *base, int baselen, char c, int puiss)
+int		ft_atoi_base(char *str, char *base, int size)
 {
-	int index;
 	int i;
-	int value;
+	int n;
+	int neg;
 
-	i = -1;
-	while (base[++i])
-	{
-		if (base[i] == c)
-		{
-			index = i;
-			break ;
-		}
-	}
-	i = -1;
-	value = 1;
-	while (++i < puiss)
-	{
-		value *= baselen;
-	}
-	return (value * index);
+	neg = 1;
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	while (*str == '-' || *str == '+')
+		if (*str++ == '-')
+			neg = !neg;
+	n = 0;
+	while ((i = check_in_base(*str++, base)) >= 0)
+		n = n * size + i;
+	return (neg ? -n : n);
+}
+
+int		next_nbr_len(unsigned int n, unsigned int base_size)
+{
+	if (n < base_size)
+		return (1);
+	return (1 + ft_nbrlen(n / base_size, base_size));
 }
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int num;
-	int negatif;
-	int numlen;
+	char			*dest;
+	unsigned int	nb;
+	int				base_len;
+	int				i;
+	int				n;
 
-	negatif = 0;
-	num = 0;
-	numlen = 0;
-	if (test_error(base_from) || test_error(base_to))
-		return (0);
-	while ((*nbr >= 9 && *nbr <= 13) || *nbr == ' ')
-		nbr++;
-	while (*nbr == '+' || *nbr == '-')
+	n = ft_checkbase(base_from);
+	if (!(n && (base_len = ft_checkbase(base_to))))
+		return (NULL);
+	n = ft_atoi_base(nbr, base_from, n);
+	nb = (n < 0) ? -n : n;
+	i = next_nbr_len(nb, base_len);
+	i += (n < 0) ? 1 : 0;
+	if (!(dest = malloc((i + 1) * sizeof(char))))
+		return (NULL);
+	dest[i] = 0;
+	while (i--)
 	{
-		negatif = (*nbr == '-') ? !negatif : negatif;
-		nbr++;
+		dest[i] = base_to[nb % base_len];
+		nb /= base_len;
 	}
-	while (check_inbase(base_from, nbr[++numlen]))
-		;
-	while (check_inbase(base_from, *nbr))
-	{
-		num += calc_to_add(base_from, ft_strlen(base_from), *nbr, --numlen);
-		nbr++;
-	}
-	return (ft_putnbr_base(negatif ? -num : num, base_to));
+	if (n < 0)
+		dest[0] = '-';
+	return (dest);
 }
