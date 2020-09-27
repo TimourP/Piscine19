@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 12:22:28 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:29:16 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:34:04 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,26 +66,7 @@ void	print_units(char c, char d, char u, t_num **dict)
 	}
 	if ((d != '0' || u != '0') && c != '0')
 		ft_putstr(" ");
-	if (d < '2')
-	{
-		if (d < '1')
-		{
-			if (u != '0')
-				ft_puttextnumber(find_char_in_dict(dict, u));
-		}
-		else
-			ft_puttextnumber(find_in_dict(dict, arr));
-	}
-	else
-	{
-		arr[1] = '0';
-		ft_puttextnumber(find_in_dict(dict, arr));
-		if (u != '0')
-		{
-			ft_putstr(" ");
-			ft_puttextnumber(find_char_in_dict(dict, u));
-		}
-	}
+	print_units2(dict, arr);
 }
 
 char	*find_char_in_dict(t_num **dict, char c)

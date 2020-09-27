@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 16:43:14 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 10:07:53 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:32:30 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,28 @@ int		check_units2(t_num **dict, char *arr)
 		}
 	}
 	return (mainval);
+}
+
+void	print_units2(t_num **dict, char *arr)
+{
+	if (arr[0] < '2')
+	{
+		if (arr[0] < '1')
+		{
+			if (arr[1] != '0')
+				ft_puttextnumber(find_char_in_dict(dict, arr[1]));
+		}
+		else
+			ft_puttextnumber(find_in_dict(dict, arr));
+	}
+	else
+	{
+		arr[1] = '0';
+		ft_puttextnumber(find_in_dict(dict, arr));
+		if (arr[1] != '0')
+		{
+			ft_putstr(" ");
+			ft_puttextnumber(find_char_in_dict(dict, arr[1]));
+		}
+	}
 }
