@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 13:40:50 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 14:20:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	write_numbers(char *file_name, char *number)
 	while (*number == '0')
 		number++;
 	if (!*number)
-		write(1, find_in_dict(g_dict, "0"),
-		ft_strlen(find_in_dict(g_dict, "0")));
+		print_zero(g_dict);
 	else
 	{
 		test = check_result(g_dict, number);

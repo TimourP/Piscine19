@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 10:44:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 13:45:45 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 14:24:21 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,15 @@ char	*setnum(char *buffer, int i, int *j, int count)
 	}
 	num[*j] = 0;
 	return (num);
+}
+
+void	print_zero(t_num **dict)
+{
+	char	*zero;
+	int		i;
+
+	zero = find_in_dict(dict, "0");
+	i = -1;
+	while (dict[++i] && not_only_space(i, zero))
+		write(1, &zero[i], 1);
 }

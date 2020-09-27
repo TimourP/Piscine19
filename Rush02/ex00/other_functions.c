@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 16:43:14 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 11:36:47 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 14:22:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_puttextnumber(char *str)
 
 	i = -1;
 	space = 0;
-	while (str[++i])
+	while (str[++i] && not_only_space(i, str))
 	{
 		if (is_space(str[i]))
 		{

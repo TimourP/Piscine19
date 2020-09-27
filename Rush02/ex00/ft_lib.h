@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 13:40:36 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 14:21:54 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,7 @@ int				check_init_and_num(int init_value, char *number, t_num **dict);
 char			*setnum(char *buffer, int i, int *j, int count);
 int				pass_spaces(char *buffer, int i, int *j, int count);
 int				free_bulk(t_lines *bulk, int param);
+int				not_only_space(int i, char *str);
+void			print_zero(t_num **dict);
 
 #endif
