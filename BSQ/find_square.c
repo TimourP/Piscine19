@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 00:37:50 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 01:21:47 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,28 +102,39 @@ void print_grid(int *grid, int width, int height)
 
 int get_min(int *grid, t_grid_prop grid_info, int index)
 {
-	if (grid[1] < grid[2] && grid [1] < grid[3])
-		return (grid[1]);
-	if (grid[2] < grid[1] && grid [2] < grid[3])
-		return (grid[2]);
-	if (grid[3] < grid[2] && grid [3] < grid[1])
-		return (grid[3]);
+	int nb1;
+	int nb2;
+	int nb3;
+
+	nb1 = grid[index - 1];
+	nb2 = grid[index - grid_info.width];
+	nb3 = grid[index - grid_info.width - 1];
+	if (nb1 <= nb2 && nb1 <= nb3)
+    	return (nb1);
+	else if (nb2 <= nb3 && nb2 <= nb1)
+    	return (nb2);
+	else 
+    	return (nb3);
 }
 
-void fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
+int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 {
 	int index;
 	char	buff[1];
 	int		filedesc;
 	int		bufflen;
 	int		first;
+	int max;
+	int index_of_max;
 
 	(void)grid_info;
 	(void)grid;
 	index = 0;
+	index_of_max = 0;
+	max = 0;
 	first = 1;
 	if ((filedesc = open(file_title, O_RDONLY)) == -1)
-		return ;
+		return 0;
 	while ((bufflen = read(filedesc, buff, 1)) > 0)
 	{
 		if (buff[0] != '\n' && first)
@@ -139,26 +150,35 @@ void fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 			else if (!(index%grid_info.width))
 				grid[index] = 1;
 			else
-				grid[index] = get_min(grid, grid_info, index);
+			{
+				if ((grid[index] = get_min(grid, grid_info, index) + 1) > max)
+				{
+					max = grid[index];
+					index_of_max = index;
+				}
+			}
 			index++;
 		}
 	}
 	close(filedesc);
-	return ;
+	return (index_of_max);
 }
 
 void find_square(char *file_title)
 {
 	t_grid_prop grid_info;
 	int			*main_grid;
+	int index;
 
+	index = 0;
 	if (!read_first_line(&grid_info, file_title))
 		return ;
 	if (!count_lines(&grid_info, file_title))
 		return ;
 	if (!(main_grid = malloc(sizeof(int) * (grid_info.width * grid_info.height))))
 		return ;
-	init_grid(main_grid, grid_info.width * grid_info.height);
-	fill_up_grid(main_grid, grid_info, file_title);
-	print_grid(main_grid, grid_info.width, grid_info.height);
+	//init_grid(main_grid, grid_info.width * grid_info.height);
+	index = fill_up_grid(main_grid, grid_info, file_title);
+	printf("x : %d\ty: %d\n", index % grid_info.width, index / grid_info.width);
+	//print_grid(main_grid, grid_info.width, grid_info.height);
 }

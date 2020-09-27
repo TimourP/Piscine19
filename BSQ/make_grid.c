@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 00:21:27 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 01:11:49 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void make_grid(int h, int w, char em, char nem, char square)
         j = -1;
         while (++j < w)
         {
-            if (rand() % 10)
+            if (rand() % 100)
                 write(1, &em, 1);
             else
                 write(1, &nem, 1);
@@ -46,8 +46,8 @@ int main(void)
     char    square;
 
     srand( time( NULL ) );
-    height = 5;
-    width = 5;
+    height = 1000;
+    width = 1000;
     empty = '.';
     notempty = 'O';
     square = '#';
