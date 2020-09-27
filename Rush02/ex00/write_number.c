@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 09:29:18 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 09:32:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,8 @@ int	add_word(char *buffer, int i, int count, int tot_word)
 		;
 	if (buffer[i - count + j] == ':')
 		j++;
+	else
+		return (0);
 	j--;
 	while (is_space(buffer[i - count + ++j]))
 		;

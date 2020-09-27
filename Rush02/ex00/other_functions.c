@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 16:43:14 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 17:22:09 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:03:03 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_puttextnumber(char *str)
 			if (!space)
 			{
 				space = 1;
-				write(1, &str[i], 1);
+				write(1, " ", 1);
 			}
 		}
 		else
@@ -42,5 +42,44 @@ void	ft_puttextnumber(char *str)
 			space = 0;
 		}
 	}
-	
+}
+
+int		check_in_dict(t_num **dict, char *str)
+{
+	int i;
+
+	i = -1;
+	while (dict[++i])
+	{
+		if (!ft_strcmp(str, dict[i]->nbr))
+			return (1);
+	}
+	return (0);
+}
+
+int		check_units2(t_num **dict, char *arr)
+{
+	int mainval;
+
+	mainval = 1;
+	if (arr[0] < '2')
+	{
+		if (arr[0] < '1')
+		{
+			if (arr[1] != '0')
+				mainval *= check_char_in_dict(dict, arr[1]);
+		}
+		else
+			mainval *= check_in_dict(dict, arr);
+	}
+	else
+	{
+		arr[1] = '0';
+		mainval *= check_in_dict(dict, arr);
+		if (arr[1] != '0')
+		{
+			mainval *= check_char_in_dict(dict, arr[1]);
+		}
+	}
+	return (mainval);
 }

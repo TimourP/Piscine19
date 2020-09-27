@@ -6,17 +6,17 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 11:41:09 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 12:07:04 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 09:45:57 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int check_num(char *str)
+int	check_num(char *str)
 {
-    int i;
+	int i;
 
-    i = -1;
-    while (str[++i])
-        if (!(str[i] >= '0' && str[i] <= '9'))
-            return (0);
-    return (1);
+	i = -1;
+	while (str[++i])
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (0);
+	return (1);
 }

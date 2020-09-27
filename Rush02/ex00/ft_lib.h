@@ -6,14 +6,13 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 03:54:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/26 20:15:45 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 10:03:24 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LIB_H
 # define FT_LIB_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -39,5 +38,6 @@ void			free_all(t_num **dict);
 int				check_in_dict(t_num **dict, char *str);
 int 			check_suffix(unsigned int count, t_num **dict);
 int				check_result(t_num **dict, char *nbr);
+int				check_char_in_dict(t_num **dict, char c);
 
 #endif
