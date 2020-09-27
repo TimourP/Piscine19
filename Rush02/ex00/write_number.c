@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 04:06:06 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 11:20:05 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 13:40:50 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	write_numbers(char *file_name, char *number)
 	int			test;
 
 	test = 0;
-	if (!check_init_and_num(init_value, number))
+	if (!check_init_and_num(init_value, number, g_dict))
 		return ;
 	while (*number == '0')
 		number++;
@@ -46,9 +46,10 @@ int		init_dict(char *file_name)
 	int		bufflen;
 	int		num_of_lines;
 
-	num_of_lines = count_lines(file_name);
+	if ((num_of_lines = count_lines(file_name)) == -1)
+		return (0);
 	if (!(g_dict = malloc(sizeof(t_num *) * (num_of_lines + 1))))
-		return (-1);
+		return (-2);
 	g_dict[num_of_lines] = 0;
 	if ((filedesc = open(file_name, O_RDONLY)) == -1)
 		return (0);

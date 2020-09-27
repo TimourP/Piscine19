@@ -6,13 +6,13 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 10:44:40 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/27 11:20:24 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/27 13:42:41 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-int		check_init_and_num(int init_value, char *number)
+int		check_init_and_num(int init_value, char *number, t_num **dict)
 {
 	if (!init_value)
 	{
@@ -20,12 +20,14 @@ int		check_init_and_num(int init_value, char *number)
 		write(1, "\n", 1);
 		return (0);
 	}
-	else if (init_value == -1)
+	else if (init_value < 0)
 	{
 		ft_putstr("Malloc Error");
 		write(1, "\n", 1);
 		return (0);
 	}
+	if (init_value == -1 || init_value == 0)
+			free_all(dict);
 	if (!check_num(number))
 	{
 		ft_putstr("Error");
