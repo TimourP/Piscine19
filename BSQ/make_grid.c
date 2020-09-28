@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 12:47:11 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 13:04:44 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(void)
     char    square;
 
     srand( time( NULL ) );
-    height = 40000;
+    height = 10000;
     width = 10000;
     empty = '.';
     notempty = 'O';

@@ -6,11 +6,9 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 23:08:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 12:35:14 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 12:52:03 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 unsigned int	ft_atoi(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 12:45:34 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 13:07:13 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	read_first_line(t_grid_prop *grid, char *file_title)
 {
-	const float start = (float)clock() / CLOCKS_PER_SEC;////
-
 	char	buff[128];
 	int		filedesc;
 	int		bufflen;
@@ -34,16 +32,11 @@ int	read_first_line(t_grid_prop *grid, char *file_title)
 		grid->square = buff[i + 2];
 	}
 	close(filedesc);
-
-	const float end = (float)clock() / CLOCKS_PER_SEC;////
-    write_bench("read_first_line", end - start);////
-
 	return (1);
 }
 
 int count_colums(t_grid_prop *grid, char *file_title)
 {
-	const float start = (float)clock() / CLOCKS_PER_SEC;////
 	char	buff[1];
 	int		filedesc;
 	int		bufflen;
@@ -65,9 +58,6 @@ int count_colums(t_grid_prop *grid, char *file_title)
 	}
 	close(filedesc);
 	grid->width = count;
-
-	const float end = (float)clock() / CLOCKS_PER_SEC;////
-    write_bench("count_columns", end - start);////
 	return (1);
 }
 
@@ -90,8 +80,6 @@ int get_min(int *grid, t_grid_prop grid_info, int index)
 
 unsigned int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 {
-	const float start = (float)clock() / CLOCKS_PER_SEC;////
-
 	unsigned int index;
 	char	*buff;
 	int		filedesc;
@@ -133,16 +121,11 @@ unsigned int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 		}
 	}
 	close(filedesc);
-
-	const float end = (float)clock() / CLOCKS_PER_SEC;////
-    write_bench("fill_up_grid", end - start);////
-
 	return (index_of_max);
 }
 
 void print_result(int *grid, t_grid_prop grid_info, int index)
 {
-	const float start = (float)clock() / CLOCKS_PER_SEC;////
 	unsigned int x;
 	unsigned int y;
 	const unsigned int indx = index % grid_info.width;
@@ -169,14 +152,10 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 		write(1, toprint, grid_info.width);
 		ft_putstr("\n");
 	}
-	const float end = (float)clock() / CLOCKS_PER_SEC;////
-    write_bench("print_result", end - start);////
 }
 
 void find_square(char *file_title)
 {
-	const float start = (float)clock() / CLOCKS_PER_SEC;////
-	
 	t_grid_prop grid_info;
 	int			*main_grid;
 	unsigned int index;
@@ -194,6 +173,4 @@ void find_square(char *file_title)
 	ft_putnbr(index / grid_info.width);
 	ft_putstr("\n");
 	print_result(main_grid, grid_info, index);
-	const float end = (float)clock() / CLOCKS_PER_SEC;////
-    write_bench("find_square", end - start);////
 }

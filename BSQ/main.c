@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:40:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 10:50:28 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 13:07:20 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void write_bench(char *str, float t)
 
 int main(int argc, char **argv)
 {
-    const float start = (float)clock() / CLOCKS_PER_SEC;////
-    
     int i;
 
     i = 0;
@@ -33,7 +31,4 @@ int main(int argc, char **argv)
             find_square(argv[i]);
         }
     }
-
-    const float end = (float)clock() / CLOCKS_PER_SEC;////
-    write_bench("main", end - start);////
 }
