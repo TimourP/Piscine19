@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 10:52:32 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 11:14:26 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,9 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 	const int indx = index % grid_info.width;
 	const int indy = index / grid_info.width;
 	const int max_value = grid[index];
+	char *toprint;
 
+	toprint = malloc(sizeof(char) * grid_info.width);
 	x = -1;
 	y = -1;
 	while (++y < grid_info.height)
@@ -169,14 +171,14 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 		while (++x < grid_info.width)
 		{
 			if (grid[y * grid_info.width + x] == 0)
-				write(1, &grid_info.notempty, 1);
+				toprint[x] = grid_info.notempty;
 			else if (x >= indx - max_value + 1 && x <= indx
 				&& y >= indy - max_value + 1 && y <= indy)
-				write(1, &grid_info.square, 1);
+				toprint[x] = grid_info.square;
 			else
-				write(1, &grid_info.empty, 1);
-			ft_putstr(" ");
+				toprint[x] = grid_info.empty;
 		}
+		write(1, toprint, grid_info.width);
 		ft_putstr("\n");
 	}
 

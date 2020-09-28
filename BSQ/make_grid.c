@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 10:14:42 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 11:21:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ void make_grid(int h, int w, char em, char nem, char square)
 {
     int i;
     int j;
+    char *toprint;
 
     i = -1;
+    toprint = malloc(sizeof(char) * w);
     ft_putnbr(h);
     write(1, &em, 1);
     write(1, &nem, 1);
@@ -29,10 +31,11 @@ void make_grid(int h, int w, char em, char nem, char square)
         while (++j < w)
         {
             if (rand() % 1000)
-                write(1, &em, 1);
+                toprint[j] = em;
             else
-                write(1, &nem, 1);
+                toprint[j] = nem;
         }
+        write(1, toprint, w);
         write(1, "\n", 1);
     }
 }
