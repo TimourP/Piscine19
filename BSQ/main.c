@@ -6,16 +6,11 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:40:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 13:07:20 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 15:26:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
-
-void write_bench(char *str, float t)
-{
-    fprintf(stderr, "%s: %f\n", str, t);
-}
 
 int main(int argc, char **argv)
 {
