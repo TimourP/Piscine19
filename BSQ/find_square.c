@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 01:21:47 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 10:52:32 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ typedef struct	s_grid_prop
 	char square;
 }				t_grid_prop;
 
+
 int	read_first_line(t_grid_prop *grid, char *file_title)
 {
+	const float start = (float)clock() / CLOCKS_PER_SEC;////
+
 	char	buff[128];
 	int		filedesc;
 	int		bufflen;
@@ -41,11 +44,17 @@ int	read_first_line(t_grid_prop *grid, char *file_title)
 		grid->square = buff[i + 2];
 	}
 	close(filedesc);
+
+	const float end = (float)clock() / CLOCKS_PER_SEC;////
+    write_bench("read_first_line", end - start);////
+
 	return (1);
 }
 
-int count_lines(t_grid_prop *grid, char *file_title)
+int count_colums(t_grid_prop *grid, char *file_title)
 {
+	const float start = (float)clock() / CLOCKS_PER_SEC;////
+
 	char	buff[1];
 	int		filedesc;
 	int		bufflen;
@@ -67,37 +76,11 @@ int count_lines(t_grid_prop *grid, char *file_title)
 	}
 	close(filedesc);
 	grid->width = count;
+
+	const float end = (float)clock() / CLOCKS_PER_SEC;////
+    write_bench("count_columns", end - start);////
+
 	return (1);
-}
-
-void init_grid(int *grid, int size)
-{
-	int i;
-
-	i = -1;
-	while (++i < size)
-		grid[i] = -1;
-}
-
-void print_grid(int *grid, int width, int height)
-{
-	int i;
-	int j;
-
-	i = -1;
-	while (++i < height)
-	{
-		j = -1;
-		while (++j < width)
-		{
-			if (grid[i * width + j] == -1)
-				ft_putstr(" ");
-			else
-				ft_putnbr(grid[i * width + j]);
-			ft_putstr(" ");
-		}
-		ft_putstr("\n");
-	}
 }
 
 int get_min(int *grid, t_grid_prop grid_info, int index)
@@ -119,6 +102,8 @@ int get_min(int *grid, t_grid_prop grid_info, int index)
 
 int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 {
+	const float start = (float)clock() / CLOCKS_PER_SEC;////
+
 	int index;
 	char	buff[1];
 	int		filedesc;
@@ -127,8 +112,6 @@ int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 	int max;
 	int index_of_max;
 
-	(void)grid_info;
-	(void)grid;
 	index = 0;
 	index_of_max = 0;
 	max = 0;
@@ -137,7 +120,7 @@ int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 		return 0;
 	while ((bufflen = read(filedesc, buff, 1)) > 0)
 	{
-		if (buff[0] != '\n' && first)
+		if (first && buff[0] != '\n')
 			;
 		else if (buff[0] == '\n')
 			first = 0;
@@ -147,7 +130,7 @@ int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 				grid[index] = 0;
 			else if (index < grid_info.width)
 				grid[index] = 1;
-			else if (!(index%grid_info.width))
+			else if (!(index % grid_info.width))
 				grid[index] = 1;
 			else
 			{
@@ -161,11 +144,50 @@ int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 		}
 	}
 	close(filedesc);
+
+	const float end = (float)clock() / CLOCKS_PER_SEC;////
+    write_bench("fill_up_grid", end - start);////
+
 	return (index_of_max);
+}
+
+void print_result(int *grid, t_grid_prop grid_info, int index)
+{
+	const float start = (float)clock() / CLOCKS_PER_SEC;////
+
+	int x;
+	int y;
+	const int indx = index % grid_info.width;
+	const int indy = index / grid_info.width;
+	const int max_value = grid[index];
+
+	x = -1;
+	y = -1;
+	while (++y < grid_info.height)
+	{
+		x = -1;
+		while (++x < grid_info.width)
+		{
+			if (grid[y * grid_info.width + x] == 0)
+				write(1, &grid_info.notempty, 1);
+			else if (x >= indx - max_value + 1 && x <= indx
+				&& y >= indy - max_value + 1 && y <= indy)
+				write(1, &grid_info.square, 1);
+			else
+				write(1, &grid_info.empty, 1);
+			ft_putstr(" ");
+		}
+		ft_putstr("\n");
+	}
+
+	const float end = (float)clock() / CLOCKS_PER_SEC;////
+    write_bench("print_result", end - start);////
 }
 
 void find_square(char *file_title)
 {
+	const float start = (float)clock() / CLOCKS_PER_SEC;////
+	
 	t_grid_prop grid_info;
 	int			*main_grid;
 	int index;
@@ -173,12 +195,14 @@ void find_square(char *file_title)
 	index = 0;
 	if (!read_first_line(&grid_info, file_title))
 		return ;
-	if (!count_lines(&grid_info, file_title))
+	if (!count_colums(&grid_info, file_title))
 		return ;
 	if (!(main_grid = malloc(sizeof(int) * (grid_info.width * grid_info.height))))
 		return ;
-	//init_grid(main_grid, grid_info.width * grid_info.height);
 	index = fill_up_grid(main_grid, grid_info, file_title);
+	print_result(main_grid, grid_info, index);
 	printf("x : %d\ty: %d\n", index % grid_info.width, index / grid_info.width);
-	//print_grid(main_grid, grid_info.width, grid_info.height);
+	
+	const float end = (float)clock() / CLOCKS_PER_SEC;////
+    write_bench("find_square", end - start);////
 }
