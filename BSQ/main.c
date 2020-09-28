@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:40:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 15:26:02 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 17:06:21 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int main(int argc, char **argv)
 
     i = 0;
     if (argc < 2)
-        ft_putstr("Please enter file(s)'s name");
+    {
+        read_std_in();
+        find_square("junk.txt");
+    }
     else
     {
         while (++i < argc)

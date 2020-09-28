@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 15:35:24 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 16:32:39 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,9 +166,9 @@ void find_square(char *file_title)
 		return (ft_puterr("Malloc error\n"));
 	if ((index = fill_up_grid(main_grid, &grid_info, file_title)) < 0)
 		return (ft_puterr("map error\n"));
-	ft_putnbr(index % grid_info.width);
-	ft_putstr("  ");
-	ft_putnbr(index / grid_info.width);
-	ft_putstr("\n");
+	//ft_putnbr(index % grid_info.width);
+	//ft_putstr("  ");
+	//ft_putnbr(index / grid_info.width);
+	//ft_putstr("\n");
 	print_result(main_grid, grid_info, (unsigned int)index);
 }
