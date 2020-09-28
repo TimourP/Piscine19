@@ -6,16 +6,16 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 11:21:40 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 12:47:11 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-void make_grid(int h, int w, char em, char nem, char square)
+void make_grid(unsigned int h, unsigned int w, char em, char nem, char square)
 {
-    int i;
-    int j;
+    unsigned int i;
+    unsigned int j;
     char *toprint;
 
     i = -1;
@@ -49,8 +49,8 @@ int main(void)
     char    square;
 
     srand( time( NULL ) );
-    height = 1000;
-    width = 1000;
+    height = 40000;
+    width = 10000;
     empty = '.';
     notempty = 'O';
     square = '#';

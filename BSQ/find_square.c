@@ -6,21 +6,11 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 11:14:26 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 12:45:34 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
-
-typedef struct	s_grid_prop
-{
-	int height;
-	int width;
-	char empty;
-	char notempty;
-	char square;
-}				t_grid_prop;
-
 
 int	read_first_line(t_grid_prop *grid, char *file_title)
 {
@@ -54,7 +44,6 @@ int	read_first_line(t_grid_prop *grid, char *file_title)
 int count_colums(t_grid_prop *grid, char *file_title)
 {
 	const float start = (float)clock() / CLOCKS_PER_SEC;////
-
 	char	buff[1];
 	int		filedesc;
 	int		bufflen;
@@ -79,7 +68,6 @@ int count_colums(t_grid_prop *grid, char *file_title)
 
 	const float end = (float)clock() / CLOCKS_PER_SEC;////
     write_bench("count_columns", end - start);////
-
 	return (1);
 }
 
@@ -100,33 +88,34 @@ int get_min(int *grid, t_grid_prop grid_info, int index)
     	return (nb3);
 }
 
-int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
+unsigned int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 {
 	const float start = (float)clock() / CLOCKS_PER_SEC;////
 
-	int index;
-	char	buff[1];
+	unsigned int index;
+	char	*buff;
 	int		filedesc;
 	int		bufflen;
 	int		first;
 	int max;
 	int index_of_max;
+	int i;
 
 	index = 0;
+	i = -1;
 	index_of_max = 0;
+	buff = malloc(sizeof(char) * (grid_info.width + 1));
 	max = 0;
 	first = 1;
 	if ((filedesc = open(file_title, O_RDONLY)) == -1)
 		return 0;
-	while ((bufflen = read(filedesc, buff, 1)) > 0)
+	read(filedesc, buff, 9); // hardcode degueu
+	while ((bufflen = read(filedesc, buff, grid_info.width + 1)) > 0)
 	{
-		if (first && buff[0] != '\n')
-			;
-		else if (buff[0] == '\n')
-			first = 0;
-		else if (!first)
+		i = -1;
+		while (++i < bufflen && buff[i] != '\n')
 		{
-			if (buff[0] == grid_info.notempty)
+			if (buff[i] == grid_info.notempty)
 				grid[index] = 0;
 			else if (index < grid_info.width)
 				grid[index] = 1;
@@ -154,11 +143,10 @@ int fill_up_grid(int *grid, t_grid_prop grid_info, char *file_title)
 void print_result(int *grid, t_grid_prop grid_info, int index)
 {
 	const float start = (float)clock() / CLOCKS_PER_SEC;////
-
-	int x;
-	int y;
-	const int indx = index % grid_info.width;
-	const int indy = index / grid_info.width;
+	unsigned int x;
+	unsigned int y;
+	const unsigned int indx = index % grid_info.width;
+	const unsigned int indy = index / grid_info.width;
 	const int max_value = grid[index];
 	char *toprint;
 
@@ -181,7 +169,6 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 		write(1, toprint, grid_info.width);
 		ft_putstr("\n");
 	}
-
 	const float end = (float)clock() / CLOCKS_PER_SEC;////
     write_bench("print_result", end - start);////
 }
@@ -192,7 +179,7 @@ void find_square(char *file_title)
 	
 	t_grid_prop grid_info;
 	int			*main_grid;
-	int index;
+	unsigned int index;
 
 	index = 0;
 	if (!read_first_line(&grid_info, file_title))
@@ -202,9 +189,11 @@ void find_square(char *file_title)
 	if (!(main_grid = malloc(sizeof(int) * (grid_info.width * grid_info.height))))
 		return ;
 	index = fill_up_grid(main_grid, grid_info, file_title);
+	ft_putnbr(index % grid_info.width);
+	ft_putstr("  ");
+	ft_putnbr(index / grid_info.width);
+	ft_putstr("\n");
 	print_result(main_grid, grid_info, index);
-	printf("x : %d\ty: %d\n", index % grid_info.width, index / grid_info.width);
-	
 	const float end = (float)clock() / CLOCKS_PER_SEC;////
     write_bench("find_square", end - start);////
 }

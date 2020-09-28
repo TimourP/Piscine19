@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:22:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 10:50:16 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 12:45:02 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,21 @@
 # include <time.h>
 # include <stdio.h>
 # include <fcntl.h>
+
+typedef struct	s_grid_prop
+{
+	unsigned int height;
+	unsigned int width;
+	char empty;
+	char notempty;
+	char square;
+}				t_grid_prop;
+
+typedef struct	s_vec2u
+{
+	unsigned int x;
+	unsigned int y;
+}				t_vec2d;
 
 void	ft_putnbr(int nb);
 void	ft_putstr(char *str);
