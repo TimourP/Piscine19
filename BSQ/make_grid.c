@@ -6,54 +6,52 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 08:43:01 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 09:12:21 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-void make_grid(unsigned int h, unsigned int w, char em, char nem, char square)
+void	make_grid(unsigned int h, unsigned int w, char *em_nem_square)
 {
-    unsigned int i;
-    unsigned int j;
-    char *toprint;
+	unsigned int	i;
+	unsigned int	j;
+	char			*toprint;
 
-    i = -1;
-    toprint = malloc(sizeof(char) * w);
-    ft_putnbr(h);
-    write(1, &em, 1);
-    write(1, &nem, 1);
-    write(1, &square, 1);
-    write(1, "\n", 1);
-    while (++i < h)
-    {
-        j = -1;
-        while (++j < w)
-        {
-            if (rand() % 2)
-                toprint[j] = em;
-            else
-                toprint[j] = nem;
-        }
-        write(1, toprint, w);
-        write(1, "\n", 1);
-    }
+	i = -1;
+	toprint = malloc(sizeof(char) * w);
+	ft_putnbr(h);
+	write(1, &em_nem_square[0], 1);
+	write(1, &em_nem_square[1], 1);
+	write(1, &em_nem_square[2], 1);
+	write(1, "\n", 1);
+	while (++i < h)
+	{
+		j = -1;
+		while (++j < w)
+		{
+			if (rand() % 100)
+				toprint[j] = em_nem_square[0];
+			else
+				toprint[j] = em_nem_square[1];
+		}
+		write(1, toprint, w);
+		write(1, "\n", 1);
+	}
 }
 
-int main(void)
+int		main(void)
 {
-    int     height;
-    int     width;
-    char    empty;
-    char    notempty;
-    char    square;
+	int		height;
+	int		width;
+	char	em_nem_square[3];
 
-    srand( time( NULL ) );
-    height = 5;
-    width = 5;
-    empty = '.';
-    notempty = 'O';
-    square = '#';
-    make_grid(height, width, empty, notempty, square);
-    return (0);
+	srand(time(NULL));
+	height = 100;
+	width = 100;
+	em_nem_square[0] = '.';
+	em_nem_square[1] = 'O';
+	em_nem_square[2] = '#';
+	make_grid(height, width, em_nem_square);
+	return (0);
 }

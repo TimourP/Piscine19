@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 08:44:44 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 09:24:13 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,13 @@ int fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 	t_fill_up_grid loc;
 
 	loc.index = 0;
+	loc.error = 0;
 	loc.i = -1;
 	loc.index_of_max = 0;
 	loc.max = 0;
 	loc.first = 1;
 	if ((loc.filedesc = open(file_title, O_RDONLY)) == -1)
-		return (0);
+		return (-2);
 	if (!(loc.buff = malloc(sizeof(char) * (grid_info->width + 1))))
 		return (-1);
 	read(loc.filedesc, loc.buff, grid_info->first_ligne_len);
@@ -118,18 +119,20 @@ int fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 					loc.index_of_max = loc.index;
 				}
 			}
-			else if ((grid[loc.index] = get_min(grid, grid_info, loc.index) + 1) > loc.max)
-				{
-					loc.max = grid[loc.index];
-					loc.index_of_max = loc.index;
-				}
+			else if (((grid[loc.index] = get_min(grid, grid_info, loc.index) + 1) > loc.max))
+			{
+				loc.max = grid[loc.index];
+				loc.index_of_max = loc.index;
+			}
+			else if (loc.buff[loc.i] != grid_info->empty)
+				loc.error = 1;
 			loc.index++;
 		}
 	}
 	free(loc.buff);
 	if (close(loc.filedesc) == -1 || loc.bufflen == -1
-	|| loc.index != grid_info->width * grid_info->height)
-		return (0);
+	|| loc.index != grid_info->width * grid_info->height || loc.error)
+		return (-2);
 	return (loc.index_of_max);
 }
 
@@ -180,10 +183,12 @@ void find_square(char *file_title)
 	if ((index = fill_up_grid(main_grid, &grid_info, file_title)) < 0)
 	{
 		free(main_grid);
-		if (index == 0)
+		if (index == -2)
 			return (ft_puterr("map error\n"));
 		else
-			return (ft_puterr("Malloc error\n"));
+			return (ft_puterr("malloc error\n"));
 	}
+	ft_putnbr(index / grid_info.width);
+	ft_putstr("\n");
 	print_result(main_grid, grid_info, index);
 }

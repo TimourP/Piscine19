@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lib.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:22:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 18:19:15 by mlefevre         ###   ########.fr       */
+/*   Updated: 2020/09/29 09:27:35 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 
 typedef struct	s_grid_prop
 {
-	unsigned int height;
-	unsigned int width;
-	unsigned int first_ligne_len;
-	char empty;
-	char notempty;
-	char square;
+	unsigned int	height;
+	unsigned int	width;
+	unsigned int	first_ligne_len;
+	char			empty;
+	char			notempty;
+	char			square;
 }				t_grid_prop;
 
 typedef struct	s_vec2u
@@ -43,17 +43,18 @@ typedef struct	s_fill_up_grid
 	int				bufflen;
 	int				first;
 	int				max;
-	int	index_of_max;
-	int	i;
+	int				index_of_max;
+	int				i;
+	int				error;
 }				t_fill_up_grid;
 
-void	ft_putnbr(int nb);
-void	ft_putstr(char *str);
-int		ft_atoi(char *str);
-void    find_square(char *file_title);
-void	ft_putstr(char *str);
-void	ft_puterr(char *str);
-t_vec2u c_vec2u(unsigned int x, unsigned int y);
-void	read_std_in();
+void			ft_putnbr(int nb);
+void			ft_putstr(char *str);
+int				ft_atoi(char *str);
+void			find_square(char *file_title);
+void			ft_putstr(char *str);
+void			ft_puterr(char *str);
+t_vec2u			c_vec2u(unsigned int x, unsigned int y);
+void			read_std_in();
 
 #endif
