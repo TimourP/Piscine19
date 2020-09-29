@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:22:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 10:22:48 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 17:21:41 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ typedef struct	s_vec2u
 {
 	unsigned int x;
 	unsigned int y;
+	unsigned int ind;
 }				t_vec2u;
 
 typedef struct	s_fill_up_grid
 {
 	unsigned int	index;
 	char			*buff;
-	int				filedesc;
+	int				fd;
 	int				bufflen;
 	int				first;
 	int				max;
@@ -54,9 +55,12 @@ int				ft_atoi(char *str);
 void			find_square(char *file_title);
 void			ft_putstr(char *str);
 void			ft_puterr(char *str);
-t_vec2u			c_vec2u(unsigned int x, unsigned int y);
+t_vec2u			c_vec2u(unsigned int x, unsigned int y, unsigned int ind);
 void			read_std_in();
 t_fill_up_grid	c_fill_up_grid(void);
-int				test_char_in_grid(const t_grid_prop*);
+int				test_char_in_grid(const t_grid_prop *grid);
+void			print_result(int *grid, t_grid_prop grid_info, int index);
+void			change_max(t_fill_up_grid *loc, int *grid);
+int				get_min(int *grid, const t_grid_prop *grid_info, int index);
 
 #endif

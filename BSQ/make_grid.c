@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 10:52:34 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 17:19:33 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int		main(void)
 	char	em_nem_square[3];
 
 	srand(time(NULL));
-	height = 1;
-	width = 1;
+	height = 100;
+	width = 100;
 	em_nem_square[0] = '.';
 	em_nem_square[1] = '0';
 	em_nem_square[2] = '#';

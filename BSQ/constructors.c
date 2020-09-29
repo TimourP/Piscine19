@@ -6,22 +6,23 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/28 15:33:43 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 09:37:03 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 17:08:19 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-t_vec2u	c_vec2u(unsigned int x, unsigned int y)
+t_vec2u			c_vec2u(unsigned int x, unsigned int y, unsigned int ind)
 {
 	t_vec2u r;
 
 	r.x = x;
 	r.y = y;
+	r.ind = ind;
 	return (r);
 }
 
-t_fill_up_grid c_fill_up_grid(void)
+t_fill_up_grid	c_fill_up_grid(void)
 {
 	t_fill_up_grid loc;
 

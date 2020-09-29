@@ -1,17 +1,29 @@
-SRCS = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_puterr.c constructors.c read_std_in.c other_functions.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/09/29 16:26:58 by tpetit            #+#    #+#              #
+#    Updated: 2020/09/29 17:19:00 by tpetit           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_puterr.c constructors.c read_std_in.c other_functions.c print_result.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
-PROG = BSQ
+NAME = BSQ
 
-all : ${PROG}
+all : ${NAME}
 
 allup : all clean
 
 grid :
 	bash make_grid.sh
 
-${PROG} : ${OBJS}
+${NAME} : ${OBJS}
 	@${CC} ${FLAGS} $^ -o $@
 
 .c.o:
