@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lib.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
+/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:22:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 17:05:53 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 18:19:15 by mlefevre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ typedef struct	s_vec2u
 	unsigned int x;
 	unsigned int y;
 }				t_vec2u;
+
+typedef struct	s_fill_up_grid
+{
+	unsigned int	index;
+	char			*buff;
+	int				filedesc;
+	int				bufflen;
+	int				first;
+	int				max;
+	int	index_of_max;
+	int	i;
+}				t_fill_up_grid;
 
 void	ft_putnbr(int nb);
 void	ft_putstr(char *str);

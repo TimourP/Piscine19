@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
+/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:40:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 17:06:21 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/28 17:43:13 by mlefevre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int main(int argc, char **argv)
     else
     {
         while (++i < argc)
-        {
             find_square(argv[i]);
-        }
     }
+    return (0);
 }

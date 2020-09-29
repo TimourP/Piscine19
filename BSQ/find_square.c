@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/28 16:32:39 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 08:44:44 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,18 @@ int	read_first_line(t_grid_prop *grid, char *file_title)
 		grid->square = buff[i + 2];
 	}
 	grid->first_ligne_len += 4;
-	close(filedesc);
+	if (close(filedesc) == -1 || bufflen == -1)
+		return (0);
 	return (1);
 }
 
-int count_colums(t_grid_prop *grid, char *file_title)
+int count_columns(t_grid_prop *grid, char *file_title)
 {
-	char	buff[1];
-	int		filedesc;
-	int		bufflen;
-	int		count;
-	int		first;
+	char			buff[1];
+	int				filedesc;
+	int				bufflen;
+	unsigned int	count;
+	int				first;
 
 	count = 0;
 	first = 1;
@@ -58,8 +59,9 @@ int count_colums(t_grid_prop *grid, char *file_title)
 		else if (!first)
 			count++;
 	}
-	close(filedesc);
 	grid->width = count;
+	if (close(filedesc) == -1 || bufflen == -1)
+		return (0);
 	return (1);
 }
 
@@ -79,50 +81,56 @@ int get_min(int *grid, const t_grid_prop *grid_info, int index)
 
 int fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 {
-	unsigned int index;
-	char	*buff;
-	int		filedesc;
-	int		bufflen;
-	int		first;
-	int max;
-	int index_of_max;
-	int i;
+	t_fill_up_grid loc;
 
-	index = 0;
-	i = -1;
-	index_of_max = 0;
-	buff = malloc(sizeof(char) * (grid_info->width + 1));
-	max = 0;
-	first = 1;
-	if ((filedesc = open(file_title, O_RDONLY)) == -1)
-		return 0;
-	read(filedesc, buff, grid_info->first_ligne_len);
-	while ((bufflen = read(filedesc, buff, grid_info->width + 1)) > 0)
+	loc.index = 0;
+	loc.i = -1;
+	loc.index_of_max = 0;
+	loc.max = 0;
+	loc.first = 1;
+	if ((loc.filedesc = open(file_title, O_RDONLY)) == -1)
+		return (0);
+	if (!(loc.buff = malloc(sizeof(char) * (grid_info->width + 1))))
+		return (-1);
+	read(loc.filedesc, loc.buff, grid_info->first_ligne_len);
+	while ((loc.bufflen = read(loc.filedesc, loc.buff, grid_info->width + 1)) > 0)
 	{
-		i = -1;
-		while (++i < bufflen && buff[i] != '\n')
+		loc.i = -1;
+		while (++loc.i < loc.bufflen && loc.buff[loc.i] != '\n')
 		{
-			if (buff[i] == grid_info->notempty)
-				grid[index] = 0;
-			else if (index < grid_info->width)
-				grid[index] = 1;
-			else if (i == 0)
-				grid[index] = 1;
-			else
+			if (loc.buff[loc.i] == grid_info->notempty)
+				grid[loc.index] = 0;
+			else if (loc.index < grid_info->width)
 			{
-				if ((grid[index] = get_min(grid, grid_info, index) + 1) > max)
+				grid[loc.index] = 1;
+				if (grid[loc.index] > loc.max)
 				{
-					max = grid[index];
-					index_of_max = index;
+					loc.max = grid[loc.index];
+					loc.index_of_max = loc.index;
 				}
 			}
-			index++;
+			else if (loc.i == 0)
+			{
+				grid[loc.index] = 1;
+				if (grid[loc.index] > loc.max)
+				{
+					loc.max = grid[loc.index];
+					loc.index_of_max = loc.index;
+				}
+			}
+			else if ((grid[loc.index] = get_min(grid, grid_info, loc.index) + 1) > loc.max)
+				{
+					loc.max = grid[loc.index];
+					loc.index_of_max = loc.index;
+				}
+			loc.index++;
 		}
 	}
-	if (index != grid_info->width * grid_info->height)
-		return (-1);
-	close(filedesc);
-	return (index_of_max);
+	free(loc.buff);
+	if (close(loc.filedesc) == -1 || loc.bufflen == -1
+	|| loc.index != grid_info->width * grid_info->height)
+		return (0);
+	return (loc.index_of_max);
 }
 
 void print_result(int *grid, t_grid_prop grid_info, int index)
@@ -132,7 +140,11 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 	const int max_value = grid[index];
 	char *toprint;
 
-	toprint = malloc(sizeof(char) * grid_info.width);
+	if (!(toprint = malloc(sizeof(char) * grid_info.width)))
+	{
+		free(grid);
+		return (ft_puterr("Malloc error\n"));
+	}
 	while (++pos.y < grid_info.height)
 	{
 		pos.x = -1;
@@ -149,26 +161,29 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 		write(1, toprint, grid_info.width);
 		ft_putstr("\n");
 	}
+	free(grid);
+	free(toprint);
 }
 
 void find_square(char *file_title)
 {
-	t_grid_prop grid_info;
+	t_grid_prop	grid_info;
 	int			*main_grid;
-	int index;
+	int			index;
 
-	index = 0;
 	if (!read_first_line(&grid_info, file_title))
-		return ;
-	if (!count_colums(&grid_info, file_title))
-		return ;
+		return (ft_puterr("map error\n"));
+	if (!count_columns(&grid_info, file_title))
+		return (ft_puterr("map error\n"));
 	if (!(main_grid = malloc(sizeof(int) * (grid_info.width * grid_info.height))))
 		return (ft_puterr("Malloc error\n"));
 	if ((index = fill_up_grid(main_grid, &grid_info, file_title)) < 0)
-		return (ft_puterr("map error\n"));
-	//ft_putnbr(index % grid_info.width);
-	//ft_putstr("  ");
-	//ft_putnbr(index / grid_info.width);
-	//ft_putstr("\n");
-	print_result(main_grid, grid_info, (unsigned int)index);
+	{
+		free(main_grid);
+		if (index == 0)
+			return (ft_puterr("map error\n"));
+		else
+			return (ft_puterr("Malloc error\n"));
+	}
+	print_result(main_grid, grid_info, index);
 }
