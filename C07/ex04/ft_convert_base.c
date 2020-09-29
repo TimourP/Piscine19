@@ -5,73 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/27 16:21:46 by timour            #+#    #+#             */
-/*   Updated: 2020/09/27 20:14:59 by tpetit           ###   ########.fr       */
+/*   Created: 2020/09/29 17:54:29 by tpetit            #+#    #+#             */
+/*   Updated: 2020/09/29 18:11:29 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int		ft_atoi_base(char *str, char *base, int size);
+int				ft_atoi_base(char *str, char *base);
+int				is_valid(const char *base);
+unsigned int	base_len(char *base);
+unsigned int	g_count = 0;
 
-int		ft_checkbase(char *base)
+unsigned int	next_nb_len(int nb, char *base_to)
 {
-	int i;
-	int j;
+	unsigned int r;
+	unsigned int unb;
 
-	i = -1;
-	while (base[++i])
-		if (base[i] == '-' || base[i] == '+')
-			return (0);
-	if (i <= 1)
-		return (0);
-	i = -1;
-	while (base[++i])
-	{
-		j = i;
-		while (base[j++])
-		{
-			if (base[j] == base[i] && i != j)
-				return (0);
-		}
-	}
-	i = -1;
-	while (base[++i])
-		;
-	return (i);
-}
-
-int		next_nbr_len(unsigned int n, unsigned int base_size)
-{
-	if (n < base_size)
+	if (nb == 0)
 		return (1);
-	return (1 + next_nbr_len(n / base_size, base_size));
+	r = 0;
+	unb = nb;
+	if (nb < 0)
+	{
+		unb = -nb;
+		r++;
+	}
+	while (unb)
+	{
+		unb /= base_len(base_to);
+		r++;
+	}
+	return (r);
 }
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char			*ft_putnbr_base(unsigned int unum, char *base_to, char *num)
 {
-	char			*dest;
-	unsigned int	nb;
-	int				base_len;
-	int				i;
-	int				n;
-
-	n = ft_checkbase(base_from);
-	if (!(n && (base_len = ft_checkbase(base_to))))
-		return (NULL);
-	n = ft_atoi_base(nbr, base_from, n);
-	nb = (n < 0) ? -n : n;
-	i = next_nbr_len(nb, base_len);
-	i += (n < 0) ? 1 : 0;
-	if (!(dest = malloc((i + 1) * sizeof(char))))
-		return (NULL);
-	dest[i] = 0;
-	while (i--)
+	if (unum < base_len(base_to))
 	{
-		dest[i] = base_to[nb % base_len];
-		nb /= base_len;
+		num[g_count] = base_to[unum];
+		g_count++;
 	}
-	if (n < 0)
-		dest[0] = '-';
-	return (dest);
+	else
+	{
+		ft_putnbr_base(unum / base_len(base_to), base_to, num);
+		num[g_count] = base_to[unum % base_len(base_to)];
+		g_count++;
+	}
+	return (num);
+}
+
+char			*ft_convert_base(char *nbr, char *base_from, char *base_to)
+{
+	int				nb;
+	char			*num;
+	unsigned int	unum;
+	int		next_base_nb_len;
+
+	g_count = 0;
+	if (!is_valid(base_from) || !is_valid(base_to))
+		return (0);
+	nb = ft_atoi_base(nbr, base_from);
+	next_base_nb_len = next_nb_len(nb, base_to);
+	if (!(num = malloc(next_base_nb_len + 1)))
+		return (0);
+	num[next_base_nb_len] = 0;
+	unum = nb;
+	if (nb < 0)
+	{
+		unum = -nb;
+		num[0] = '-';
+		g_count++;
+	}
+	return (ft_putnbr_base(unum, base_to, num));
 }
