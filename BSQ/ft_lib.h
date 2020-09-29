@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:22:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 09:27:35 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 09:37:34 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void			ft_putstr(char *str);
 void			ft_puterr(char *str);
 t_vec2u			c_vec2u(unsigned int x, unsigned int y);
 void			read_std_in();
+t_fill_up_grid	c_fill_up_grid(void);
 
 #endif

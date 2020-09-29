@@ -6,13 +6,13 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 09:24:13 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 09:37:45 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
 
-int	read_first_line(t_grid_prop *grid, char *file_title)
+int		read_first_line(t_grid_prop *grid, char *file_title)
 {
 	char	buff[128];
 	int		filedesc;
@@ -38,7 +38,7 @@ int	read_first_line(t_grid_prop *grid, char *file_title)
 	return (1);
 }
 
-int count_columns(t_grid_prop *grid, char *file_title)
+int		count_columns(t_grid_prop *grid, char *file_title)
 {
 	char			buff[1];
 	int				filedesc;
@@ -65,30 +65,25 @@ int count_columns(t_grid_prop *grid, char *file_title)
 	return (1);
 }
 
-int get_min(int *grid, const t_grid_prop *grid_info, int index)
+int		get_min(int *grid, const t_grid_prop *grid_info, int index)
 {
 	const int nb1 = grid[index - 1];
 	const int nb2 = grid[index - grid_info->width];
 	const int nb3 = grid[index - grid_info->width - 1];
 
 	if (nb1 <= nb2 && nb1 <= nb3)
-    	return (nb1);
+		return (nb1);
 	else if (nb2 <= nb3 && nb2 <= nb1)
-    	return (nb2);
-	else 
-    	return (nb3);
+		return (nb2);
+	else
+		return (nb3);
 }
 
-int fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
+int		fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 {
 	t_fill_up_grid loc;
 
-	loc.index = 0;
-	loc.error = 0;
-	loc.i = -1;
-	loc.index_of_max = 0;
-	loc.max = 0;
-	loc.first = 1;
+	loc = c_fill_up_grid();
 	if ((loc.filedesc = open(file_title, O_RDONLY)) == -1)
 		return (-2);
 	if (!(loc.buff = malloc(sizeof(char) * (grid_info->width + 1))))
@@ -136,13 +131,14 @@ int fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 	return (loc.index_of_max);
 }
 
-void print_result(int *grid, t_grid_prop grid_info, int index)
+void	print_result(int *grid, t_grid_prop grid_info, int index)
 {
-	t_vec2u pos = c_vec2u(-1, -1);
-	const t_vec2u posind = c_vec2u(index % grid_info.width, index / grid_info.width);
-	const int max_value = grid[index];
-	char *toprint;
+	t_vec2u			pos;
+	const t_vec2u	posind = c_vec2u(index % grid_info.width, index / grid_info.width);
+	const int		max_value = grid[index];
+	char			*toprint;
 
+	pos = c_vec2u(-1, -1);
 	if (!(toprint = malloc(sizeof(char) * grid_info.width)))
 	{
 		free(grid);
@@ -168,7 +164,7 @@ void print_result(int *grid, t_grid_prop grid_info, int index)
 	free(toprint);
 }
 
-void find_square(char *file_title)
+void	find_square(char *file_title)
 {
 	t_grid_prop	grid_info;
 	int			*main_grid;
