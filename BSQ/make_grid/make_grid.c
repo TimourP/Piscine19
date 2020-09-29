@@ -6,10 +6,11 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:19:53 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 17:19:33 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 17:44:21 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include "ft_lib.h"
 
 void	make_grid(unsigned int h, unsigned int w, char *em_nem_square)

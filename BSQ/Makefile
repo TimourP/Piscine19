@@ -6,11 +6,12 @@
 #    By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/29 16:26:58 by tpetit            #+#    #+#              #
-#    Updated: 2020/09/29 17:19:00 by tpetit           ###   ########.fr        #
+#    Updated: 2020/09/29 17:44:40 by tpetit           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_puterr.c constructors.c read_std_in.c other_functions.c print_result.c
+SRC = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_puterr.c constructors.c read_std_in.c other_functions.c print_result.c
+SRCS = ${addprefix srcs/, ${SRC}}
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror
@@ -21,13 +22,13 @@ all : ${NAME}
 allup : all clean
 
 grid :
-	bash make_grid.sh
+	bash make_grid/make_grid.sh
 
 ${NAME} : ${OBJS}
 	@${CC} ${FLAGS} $^ -o $@
 
 .c.o:
-	@${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+	@${CC} ${FLAGS} -I./includes -c $< -o ${<:.c=.o}
 
 clean:
 	@rm -f ${OBJS}

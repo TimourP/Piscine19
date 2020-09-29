@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:22:42 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 17:21:41 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 17:39:14 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <time.h>
 # include <stdio.h>
 # include <fcntl.h>
 
