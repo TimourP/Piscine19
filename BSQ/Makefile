@@ -1,4 +1,4 @@
-SRCS = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_puterr.c constructors.c read_std_in.c
+SRCS = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_puterr.c constructors.c read_std_in.c other_functions.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 FLAGS = -Wall -Wextra -Werror

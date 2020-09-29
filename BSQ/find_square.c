@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 09:37:45 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 10:13:30 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		read_first_line(t_grid_prop *grid, char *file_title)
 		grid->notempty = buff[i + 1];
 		grid->square = buff[i + 2];
 	}
+	if (!test_char_in_grid(grid))
+		return (0);
 	grid->first_ligne_len += 4;
 	if (close(filedesc) == -1 || bufflen == -1)
 		return (0);
@@ -108,7 +110,7 @@ int		fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 			else if (loc.i == 0)
 			{
 				grid[loc.index] = 1;
-				if (grid[loc.index] > loc.max)
+	 		if (grid[loc.index] > loc.max)
 				{
 					loc.max = grid[loc.index];
 					loc.index_of_max = loc.index;
@@ -184,7 +186,5 @@ void	find_square(char *file_title)
 		else
 			return (ft_puterr("malloc error\n"));
 	}
-	ft_putnbr(index / grid_info.width);
-	ft_putstr("\n");
 	print_result(main_grid, grid_info, index);
 }
