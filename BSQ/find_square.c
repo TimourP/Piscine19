@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 10:13:30 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 10:52:17 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		count_columns(t_grid_prop *grid, char *file_title)
 			count++;
 	}
 	grid->width = count;
-	if (close(filedesc) == -1 || bufflen == -1)
+	if (close(filedesc) == -1 || bufflen == -1 || count == 0)
 		return (0);
 	return (1);
 }
@@ -98,6 +98,8 @@ int		fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 		{
 			if (loc.buff[loc.i] == grid_info->notempty)
 				grid[loc.index] = 0;
+			else if (loc.buff[loc.i] != grid_info->empty)
+				loc.error = 1;
 			else if (loc.index < grid_info->width)
 			{
 				grid[loc.index] = 1;
@@ -121,8 +123,6 @@ int		fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 				loc.max = grid[loc.index];
 				loc.index_of_max = loc.index;
 			}
-			else if (loc.buff[loc.i] != grid_info->empty)
-				loc.error = 1;
 			loc.index++;
 		}
 	}
