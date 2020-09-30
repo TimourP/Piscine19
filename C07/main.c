@@ -4,6 +4,6 @@ char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 int main(void)
 {
-    printf("%s\n", ft_convert_base("-2147483648", "0123456789", "0123456789ABCDEF"));
+    printf("%s\n", ft_convert_base("5", "0123456789", "01"));
     return 0;
 }

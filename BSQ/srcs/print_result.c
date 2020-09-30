@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:17:52 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 19:27:43 by mlefevre         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:34:35 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	print_while(int *grid, t_grid_prop grid_info,
 	char			*toprint;
 
 	if (!(toprint = malloc(sizeof(char) * grid_info.width)))
-		return (ft_puterr("Malloc error\n"));
+		return (ft_puterr("malloc error\n"));
 	while (++pos.y < grid_info.height)
 	{
 		pos.x = -1;

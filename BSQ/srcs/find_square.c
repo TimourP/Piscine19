@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 19:41:16 by mlefevre         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:34:15 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,10 @@ void	find_square(char *file_title)
 		return (ft_puterr("map error\n"));
 	if (!(main_grid = malloc(sizeof(int) *
 		(grid_info.width * grid_info.height))))
-		return (ft_puterr("Malloc error\n"));
+		return (ft_puterr("malloc error\n"));
+	if ((unsigned long)grid_info.height *
+		(unsigned long)grid_info.width > 2000000000)
+		return (ft_puterr("file too big\n"));
 	if ((index = fill_up_grid(main_grid, &grid_info, file_title)) < 0)
 	{
 		free(main_grid);
