@@ -6,11 +6,11 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:11:07 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 19:40:39 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/30 13:17:08 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int				is_valid(const char *base)
+int		is_valid(const char *base)
 {
 	int i;
 	int j;
@@ -39,7 +39,7 @@ int				is_valid(const char *base)
 	return (1);
 }
 
-int				is_in_base(char c, char *base)
+int		is_in_base(char c, char *base)
 {
 	while (*base)
 	{
@@ -50,7 +50,7 @@ int				is_in_base(char c, char *base)
 	return (0);
 }
 
-int	base_len(char *base)
+int		base_len(char *base)
 {
 	int i;
 
@@ -60,7 +60,7 @@ int	base_len(char *base)
 	return (i);
 }
 
-int				get_index(char c, char *base)
+int		get_index(char c, char *base)
 {
 	int i;
 
@@ -74,7 +74,7 @@ int				get_index(char c, char *base)
 	return (-1);
 }
 
-int				ft_atoi_base(char *str, char *base)
+int		ft_atoi_base(char *str, char *base)
 {
 	unsigned int	num;
 	int				s;
