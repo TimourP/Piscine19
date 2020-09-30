@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 20:11:07 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 18:09:31 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 19:40:39 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,8 @@ int				ft_atoi_base(char *str, char *base)
 	}
 	while (*str && is_in_base(*str, base))
 	{
-		num =  num * base_len(base) + get_index(*str, base);
+		num = num * base_len(base) + get_index(*str, base);
 		str++;
 	}
 	return (num * s);
 }
-

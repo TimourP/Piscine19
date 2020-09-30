@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
+/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 17:41:28 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 19:41:16 by mlefevre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		read_first_line(t_grid_prop *grid, char *file_title)
 		grid->square = buff[i + 2];
 	}
 	if (!test_char_in_grid(grid))
-		return (0);
+		return (close(filedesc) * 0);
 	grid->first_ligne_len += 4;
 	if (close(filedesc) == -1 || bufflen == -1)
 		return (0);
@@ -104,7 +104,7 @@ int		fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 	if ((loc.fd = open(file_title, O_RDONLY)) == -1)
 		return (-2);
 	if (!(loc.buff = malloc(sizeof(char) * (grid_info->width + 1))))
-		return (-1);
+		return (close(loc.fd) * 0 - 1);
 	read(loc.fd, loc.buff, grid_info->first_ligne_len);
 	big_while(&loc, grid_info, grid);
 	free(loc.buff);

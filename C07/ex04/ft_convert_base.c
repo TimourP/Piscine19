@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:54:29 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 18:11:29 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 19:40:49 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char			*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int				nb;
 	char			*num;
 	unsigned int	unum;
-	int		next_base_nb_len;
+	int				next_base_nb_len;
 
 	g_count = 0;
 	if (!is_valid(base_from) || !is_valid(base_to))

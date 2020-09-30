@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+         #
+#    By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/29 16:26:58 by tpetit            #+#    #+#              #
-#    Updated: 2020/09/29 17:44:40 by tpetit           ###   ########.fr        #
+#    Updated: 2020/09/29 19:54:01 by mlefevre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ allup : all clean
 grid :
 	bash make_grid/make_grid.sh
 
-${NAME} : ${OBJS}
+$(NAME) : ${OBJS}
 	@${CC} ${FLAGS} $^ -o $@
 
 .c.o:

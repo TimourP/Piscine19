@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
+/*   By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 17:17:52 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/29 17:21:29 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/29 19:27:43 by mlefevre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,16 @@ void	print_while(int *grid, t_grid_prop grid_info,
 		write(1, toprint, grid_info.width);
 		ft_putstr("\n");
 	}
+	free(toprint);
 }
 
 void	print_result(int *grid, t_grid_prop grid_info, int index)
 {
 	t_vec2u			pos;
 	t_vec2u			posind;
-	char			*toprint;
 
 	pos = c_vec2u(-1, -1, grid[index]);
 	posind = c_vec2u(index % grid_info.width, index / grid_info.width, 0);
-	if (!(toprint = malloc(sizeof(char) * grid_info.width)))
-	{
-		free(grid);
-		return (ft_puterr("Malloc error\n"));
-	}
 	print_while(grid, grid_info, pos, posind);
 	free(grid);
-	free(toprint);
 }

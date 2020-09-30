@@ -48,8 +48,8 @@ int		main(void)
 	char	em_nem_square[3];
 
 	srand(time(NULL));
-	height = 100;
-	width = 100;
+	height = 2000;
+	width = 2000;
 	em_nem_square[0] = '.';
 	em_nem_square[1] = '0';
 	em_nem_square[2] = '#';
