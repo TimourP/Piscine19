@@ -6,7 +6,7 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/30 18:06:46 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/30 18:23:40 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		read_first_line(t_grid_prop *grid, char *file_title)
 	if (!test_char_in_grid(grid))
 		return (close(filedesc) * 0);
 	grid->first_ligne_len += 4;
-	if (close(filedesc) == -1 || bufflen == -1)
+	if (close(filedesc) == -1 || bufflen == -1 || buff[i + 3] != '\n')
 		return (0);
 	return (1);
 }
