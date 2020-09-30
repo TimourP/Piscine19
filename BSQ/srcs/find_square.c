@@ -6,11 +6,13 @@
 /*   By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/27 22:01:39 by tpetit            #+#    #+#             */
-/*   Updated: 2020/09/30 16:34:15 by tpetit           ###   ########.fr       */
+/*   Updated: 2020/09/30 18:06:46 by tpetit           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_lib.h"
+
+int g_bool = 0;
 
 int		read_first_line(t_grid_prop *grid, char *file_title)
 {
@@ -93,6 +95,7 @@ void	big_while(t_fill_up_grid *loc, const t_grid_prop *grid_info, int *grid)
 				change_max(loc, grid);
 			loc->index++;
 		}
+		g_bool = ((unsigned int)loc->bufflen != grid_info->width + 1) && loc->bufflen > 0;
 	}
 }
 
@@ -109,7 +112,7 @@ int		fill_up_grid(int *grid, const t_grid_prop *grid_info, char *file_title)
 	big_while(&loc, grid_info, grid);
 	free(loc.buff);
 	if (close(loc.fd) == -1 || loc.bufflen == -1
-	|| loc.index != grid_info->width * grid_info->height || loc.error)
+	|| loc.index != grid_info->width * grid_info->height || loc.error || g_bool)
 		return (-2);
 	return (loc.index_of_max);
 }
@@ -138,5 +141,6 @@ void	find_square(char *file_title)
 		else
 			return (ft_puterr("malloc error\n"));
 	}
+	g_bool = 0;
 	print_result(main_grid, grid_info, index);
 }
