@@ -6,7 +6,7 @@
 #    By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/29 16:26:58 by tpetit            #+#    #+#              #
-#    Updated: 2020/09/30 09:19:27 by tpetit           ###   ########.fr        #
+#    Updated: 2020/09/30 13:02:08 by tpetit           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@ SRC = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_pute
 SRCS = ${addprefix srcs/, ${SRC}}
 OBJS = ${SRCS:.c=.o}
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -fsanitize=address
+FLAGS = -Wall -Wextra -Werror
 NAME = BSQ
 
-all : ${NAME}
+all : $(NAME)
 
 allup : all clean
 
@@ -34,7 +34,7 @@ clean:
 	@rm -f ${OBJS}
 
 fclean : clean
-	@rm -f ${PROG} grid.txt
+	@rm -f ${NAME} grid.txt
 
 re : fclean all
 
