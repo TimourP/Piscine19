@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlefevre <mlefevre@student.42.fr>          +#+  +:+       +#+         #
+#    By: tpetit <tpetit@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/29 16:26:58 by tpetit            #+#    #+#              #
-#    Updated: 2020/09/29 19:54:01 by mlefevre         ###   ########.fr        #
+#    Updated: 2020/09/30 09:19:27 by tpetit           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRC = main.c ft_putstr.c ft_atoi.c ft_putstr.c find_square.c ft_putnbr.c ft_pute
 SRCS = ${addprefix srcs/, ${SRC}}
 OBJS = ${SRCS:.c=.o}
 CC = gcc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -fsanitize=address
 NAME = BSQ
 
 all : ${NAME}
